@@ -13,15 +13,42 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    /* background-color: #242526; */
+    background-color: #D4D5D6;
 }
 
 nav{
+    padding: 6px 20px 6px 20px;
     width: 100vw;
     height: 7vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #363738;
+}
+.fb-search{
+    height: 100%;
+    width: 22.5%;
     border: 1px solid red;
 }
-section{
+.fb-content{
+    height: 100%;
+    width: 55%;
     border: 1px solid red;
+}
+.fb-menu{
+    height: 100%;
+    width: 22.5%;
+    border: 1px solid red;
+}
+
+
+section{
     height: 93vh;
     width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
