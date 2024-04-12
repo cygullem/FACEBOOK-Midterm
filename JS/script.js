@@ -43,10 +43,7 @@ $(function(){
 
 
 //VIEW PASSWORD
-function togglePassword(passwordFieldId, toggleIconId) {
-    var passwordField = document.getElementById(passwordFieldId);
-    var icon = document.getElementById(toggleIconId);
-    
+function togglePassword(passwordField, icon) {
     if (passwordField.type === 'password') {
         passwordField.type = 'text';
         icon.classList.remove('fa-eye');
@@ -58,10 +55,30 @@ function togglePassword(passwordFieldId, toggleIconId) {
     }
 }
 
-document.getElementById('togglePassword').addEventListener('click', function() {
-    togglePassword('passwordField', 'togglePassword');
+// Show eye icon when user starts typing
+document.getElementById('passwordField').addEventListener('input', function() {
+    var passwordField = document.getElementById('passwordField');
+    var icon = document.getElementById('togglePassword');
+    icon.style.display = passwordField.value ? 'inline-block' : 'none';
 });
 
+// Toggle password visibility when eye icon is clicked
+document.getElementById('togglePassword').addEventListener('click', function() {
+    var passwordField = document.getElementById('passwordField');
+    var icon = document.getElementById('togglePassword');
+    togglePassword(passwordField, icon);
+});
+
+// Show eye icon when user starts typing in sign up password
+document.getElementById('SUpasswordField').addEventListener('input', function() {
+    var passwordField = document.getElementById('SUpasswordField');
+    var icon = document.getElementById('toggleSUPassword');
+    icon.style.display = passwordField.value ? 'inline-block' : 'none';
+});
+
+// Toggle password visibility when eye icon is clicked for sign up password
 document.getElementById('toggleSUPassword').addEventListener('click', function() {
-    togglePassword('SUpasswordField', 'toggleSUPassword');
+    var passwordField = document.getElementById('SUpasswordField');
+    var icon = document.getElementById('toggleSUPassword');
+    togglePassword(passwordField, icon);
 });
