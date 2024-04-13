@@ -13,17 +13,18 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #242526;
+    /* background-color: #242526; */
 }
 
 nav{
     padding: 6px 20px 6px 20px;
     width: 100vw;
-    height: 7vh;
+    height: 8vh;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    background-color: #ffffff;
     border-bottom: 1px solid #363738;
 }
 .fb-search{
@@ -37,6 +38,10 @@ nav{
 .fb-content{
     height: 100%;
     width: 55%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 10px;
     border: 1px solid red;
 }
 .fb-menu{
@@ -47,18 +52,19 @@ nav{
 
 
 section{
-    height: 93vh;
+    height: 92vh;
     width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: #f0f2f5;
 }
 
 
 .logo{
     height: 100%;
-    min-width: 14%;
+    min-width: 15%;
     border-radius: 50%;
     object-fit: cover;
 }
@@ -70,10 +76,10 @@ section{
 
 .search-bar{
     height: 100%;
-    width: 86%;
+    width: 85%;
+    border: 1px solid #f0f2f5;
     border-radius: 30px;
     margin-right: 13px;
-    background-color: #3a3b3c;
 }
 .search-bar form{
     height: 100%;
@@ -84,7 +90,15 @@ section{
     width: 100%;
     border-radius: 34px;
     outline: none;
-    border: none;
+    border: 1px solid transparent;
     padding: 10px;
-    background-color: #3a3b3c;
+    background-color: #f0f2f5;
+}
+
+.FBC{
+    height: 100%;
+    width: 120px;
+    border-radius: 10px;
+    border: 1px solid black;
+    background-color: #f0f2f5;
 }

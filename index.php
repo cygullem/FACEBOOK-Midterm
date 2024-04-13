@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="png" href="./Assets/Facebook-Logo.png">
-    <title>Gullem Chatbook | Midterm</title>
+    <title>Gullem Facenote | Midterm</title>
     <link rel="stylesheet" href="./CSS/login.css">
     <link rel="stylesheet" href="./CSS/signup.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -15,9 +15,9 @@
     <div class="container flex">
         <div class="facebook-page flex">
             <div class="text">
-                <h1>Chatbook</h1>
+                <h1>facenote</h1>
                 <p>Connect with friends and the world </p>
-                <p>around you on Facebook.</p>
+                <p>around you on Facenote.</p>
             </div>
             <div class="right">
                 <form id="login-form" class="login-form" action="login.php" method="POST" enctype="multipart/form-data">
