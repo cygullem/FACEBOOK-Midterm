@@ -42,7 +42,6 @@ nav{
     align-items: center;
     justify-content: space-evenly;
     gap: 10px;
-    border: 1px solid red;
 }
 .fb-menu{
     height: 100%;
@@ -63,8 +62,8 @@ section{
 
 
 .logo{
-    height: 100%;
-    min-width: 15%;
+    height: 45px;
+    min-width: 45px;
     border-radius: 50%;
     object-fit: cover;
 }
@@ -79,7 +78,7 @@ section{
     width: 85%;
     border: 1px solid #f0f2f5;
     border-radius: 30px;
-    margin-right: 13px;
+    margin-right: 10px;
 }
 .search-bar form{
     height: 100%;
@@ -91,14 +90,24 @@ section{
     border-radius: 34px;
     outline: none;
     border: 1px solid transparent;
-    padding: 10px;
+    padding: 10px 10px 10px 45px;
     background-color: #f0f2f5;
+}
+.search-bar input[type=text]::placeholder{
+    font-family: 'Roboto', sans-serif;
+    color: #737073;
+    font-size: 18px;
+    font-weight: 400;
 }
 
 .FBC{
     height: 100%;
-    width: 120px;
+    width: 115px;
     border-radius: 10px;
     border: 1px solid black;
     background-color: #f0f2f5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

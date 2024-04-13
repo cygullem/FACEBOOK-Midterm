@@ -30,7 +30,7 @@ if (!isset($_SESSION['email'])) {
             </div>
             <div class="search-bar">
                 <form action="">
-                    <input type="text">
+                    <input type="text" placeholder="Search Facenote">
                 </form>
             </div>
         </div>
@@ -46,7 +46,7 @@ if (!isset($_SESSION['email'])) {
 
     <section>
         <h1>
-            WELCOME TO CHATBOOK
+            WELCOME TO FACENOTE
         </h1>
 
         <a href="logout.php" id="logout">Logout</a>
