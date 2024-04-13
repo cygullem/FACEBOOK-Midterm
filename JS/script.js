@@ -82,3 +82,21 @@ document.getElementById('toggleSUPassword').addEventListener('click', function()
     var icon = document.getElementById('toggleSUPassword');
     togglePassword(passwordField, icon);
 });
+
+
+
+// CONTENT ICONS COLORS WHEN ACTIVE 
+document.addEventListener("DOMContentLoaded", function() {
+    const iconContainers = document.querySelectorAll(".FBC");
+
+    iconContainers.forEach(container => {
+        container.addEventListener("click", function() {
+            document.querySelectorAll('.FBC i').forEach(icon => {
+                icon.classList.remove("active");
+            });
+
+            const icon = container.querySelector('i');
+            icon.classList.add("active");
+        });
+    });
+});
