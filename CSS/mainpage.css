@@ -29,7 +29,6 @@ nav{
 .fb-search{
     height: 100%;
     width: 22.5%;
-    border: 1px solid red;
     gap: 8px;
     display: flex;
     align-items: center;
@@ -59,7 +58,7 @@ section{
 
 .logo{
     height: 100%;
-    width: 13%;
+    min-width: 14%;
     border-radius: 50%;
     object-fit: cover;
 }
@@ -71,7 +70,7 @@ section{
 
 .search-bar{
     height: 100%;
-    width: 87%;
+    width: 86%;
     border-radius: 30px;
     margin-right: 13px;
     background-color: #3a3b3c;
@@ -79,4 +78,13 @@ section{
 .search-bar form{
     height: 100%;
     width: 100%;
+}
+.search-bar input[type=text]{
+    height: 100%;
+    width: 100%;
+    border-radius: 34px;
+    outline: none;
+    border: none;
+    padding: 10px;
+    background-color: #3a3b3c;
 }
