@@ -13,8 +13,7 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* background-color: #242526; */
-    background-color: #D4D5D6;
+    background-color: #242526;
 }
 
 nav{
@@ -31,6 +30,10 @@ nav{
     height: 100%;
     width: 22.5%;
     border: 1px solid red;
+    gap: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .fb-content{
     height: 100%;
@@ -51,4 +54,29 @@ section{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+
+.logo{
+    height: 100%;
+    width: 13%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.logo img{
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+}
+
+.search-bar{
+    height: 100%;
+    width: 87%;
+    border-radius: 30px;
+    margin-right: 13px;
+    background-color: #3a3b3c;
+}
+.search-bar form{
+    height: 100%;
+    width: 100%;
 }
