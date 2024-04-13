@@ -53,7 +53,9 @@ if (!isset($_SESSION['email'])) {
                 <i class="fa-solid fa-gamepad" id="gamesIcon"></i>
             </div>
         </div>
-        <div class="fb-menu"></div>
+        <div class="fb-menu">
+            
+        </div>
     </nav>
 
     <section>
