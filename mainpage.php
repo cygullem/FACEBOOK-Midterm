@@ -72,7 +72,7 @@ if (!isset($_SESSION['email'])) {
         </div>
     </nav>
 
-    <section>
+    <section class="content-container"> 
         <div class="content-Left">
 
         </div>
@@ -91,7 +91,7 @@ if (!isset($_SESSION['email'])) {
                         <header>Create Post</header>
                         <form action="#">
                             <div class="content">
-                                <img src="icons/logo.png" alt="logo">
+                                <img src="Assets/Facebook-Logo.png" alt="logo">
                                 <div class="details">
                                     <p>Facenote</p>
                                     <div class="privacy">

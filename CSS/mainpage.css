@@ -26,9 +26,9 @@ nav{
     justify-content: space-evenly;
     background-color: #ffffff;
     box-sizing: border-box;
-    box-shadow: 0px 11px 24px -5px rgba(0,0,0,0.59);
-    -webkit-box-shadow: 0px 11px 24px -5px rgba(0,0,0,0.59);
-    -moz-box-shadow: 0px 11px 24px -5px rgba(0,0,0,0.59);
+    box-shadow: 0px 11px 24px -5px rgba(133, 133, 133, 0.59);
+    -webkit-box-shadow: 0px 11px 24px -5px rgba(133, 133, 133,0.59);
+    -moz-box-shadow: 0px 11px 24px -5px rgba(133, 133, 133,0.59);
 }
 .fb-search{
     height: 100%;
@@ -164,13 +164,12 @@ nav{
 
 
 /*-------------------------------------------------------- SECTION AREA --------------------------------------------------------*/
-section{
+.content-container{
     box-sizing: border-box;
     height: 92vh;
     width: 100%;
     display: flex;
     align-items: center;
-    background-color: #f0f2f5;
 }
 
 .content-Left{
@@ -211,7 +210,6 @@ section{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
     padding: 20px;
 }
 ::selection{
