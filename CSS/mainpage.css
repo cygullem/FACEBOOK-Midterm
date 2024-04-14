@@ -138,6 +138,7 @@ nav{
     align-items: center;
     justify-content: center;
     background-color: #e4e6eb;
+    cursor: pointer;
 }
 .FBM i{
     font-size: 20px;
@@ -195,12 +196,29 @@ section{
 
 
 /*-------------------------------------------------------- SECTION AREA --------------------------------------------------------*/
+.popup-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+.popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+}
 ::selection{
     color: #fff;
     background: #1a81ff;
   }
   .container{
-    display: none;
     width: 500px;
     height: 480px;
     overflow: hidden;
