@@ -73,11 +73,14 @@ if (!isset($_SESSION['email'])) {
     </nav>
 
     <section>
-        <h1>
-            WELCOME TO FACENOTE
-        </h1>
+        <div class="content-Left">
 
-        <a href="logout.php" id="logout">Logout</a>
+        </div>
+        <div class="content-Center">
+            <h1>WELCOME TO FACENOTE</h1>
+            <a href="logout.php" id="logout">Logout</a>
+        </div>
+        <div class="content-Right"></div>
     </section>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

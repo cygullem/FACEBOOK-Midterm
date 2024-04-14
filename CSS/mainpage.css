@@ -57,17 +57,6 @@ nav{
 }
 
 
-section{
-    height: 92vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #f0f2f5;
-}
-
-
 .logo{
     height: 45px;
     min-width: 45px;
@@ -169,4 +158,36 @@ section{
 }
 .UP-drpdwn i{
     font-size: 13px;
+}
+
+
+
+/*-------------------------------------------------------- SECTION AREA --------------------------------------------------------*/
+section{
+    box-sizing: border-box;
+    height: 92vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: #f0f2f5;
+}
+
+.content-Left{
+    height: 100%;
+    width: 25%;
+    border: 1px solid red;
+}
+.content-Center{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid red;
+}
+.content-Right{
+    height: 100%;
+    width: 25%;
+    border: 1px solid red;
 }
