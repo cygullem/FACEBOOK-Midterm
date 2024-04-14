@@ -57,14 +57,14 @@ if (!isset($_SESSION['email'])) {
             <div class="FBM" id="postContent">
                 <i class="fa-solid fa-plus"></i>
             </div>
-            <div class="FBM ">
+            <div class="FBM">
                 <i class="fa-brands fa-facebook-messenger"></i>
             </div>
-            <div class="FBM ">
+            <div class="FBM">
                 <i class="fa-solid fa-bell"></i>
             </div>
-            <div class="FBM ">
-                <i class="fa-solid fa-user-tie"></i>
+            <div class="FBM">
+                <img src="Assets/UserProfile.png" alt="Profle">
                 <div class="UP-drpdwn">
                     <i class="fa-solid fa-angle-down"></i>
                 </div>

@@ -139,10 +139,16 @@ nav{
     justify-content: center;
     background-color: #e4e6eb;
     cursor: pointer;
+    object-fit: cover;
+}
+.FBM img{
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
 }
 .FBM i{
-    font-size: 20px;
-    color: #050505;
+  font-size: 19px;
+  color: #050505;
 }
 .UP-drpdwn{
     height: 19px;
@@ -159,6 +165,7 @@ nav{
 }
 .UP-drpdwn i{
     font-size: 13px;
+    color: #050505;
 }
 
 
