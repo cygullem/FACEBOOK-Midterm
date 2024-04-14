@@ -17,13 +17,13 @@ body{
 }
 
 nav{
-    padding: 5px 20px 5px 20px;
+    padding: 5px 30px 5px 30px;
     width: 100vw;
     height: 8vh;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     background-color: #ffffff;
     /* border-bottom: 1px solid #363738; */
     box-shadow: 0 8px 8px -4px rgb(0, 0, 0);
@@ -42,12 +42,16 @@ nav{
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    padding: 0 40px 0 40px;
     gap: 10px;
 }
 .fb-menu{
     height: 100%;
     width: 22.5%;
-    border: 1px solid red;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
 }
 
 
@@ -127,9 +131,23 @@ section{
     background-color: #e4e6e8;
 }
 .FBC i{
-    font-size: 30px;
-    color: #65676b;
+    font-size: 28px;
+    color: #949596;
 }
 .active{
     color: #0866ff;
+}
+
+.FBM{
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #e4e6eb;
+}
+.FBM i{
+    font-size: 24px;
+    color: #050505;
 }
