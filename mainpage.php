@@ -54,7 +54,7 @@ if (!isset($_SESSION['email'])) {
             </div>
         </div>
         <div class="fb-menu">
-            <div class="FBM ">
+            <div class="FBM" id="postContent">
                 <i class="fa-solid fa-plus"></i>
             </div>
             <div class="FBM ">

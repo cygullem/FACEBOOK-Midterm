@@ -1,3 +1,18 @@
+document.addEventListener("DOMContentLoaded", function() {
+    const postContent = document.getElementById("postContent");
+    const popupContainer = document.getElementById("popupContainer");
+    const closePopupBtn = document.getElementById("closePopup");
+
+    postContent.addEventListener("click", function() {
+        popupContainer.style.display = "block";
+    });
+
+    closePopupBtn.addEventListener("click", function() {
+        popupContainer.style.display = "none";
+    });
+});
+
+
 //SIGN-UP POPUP
 document.addEventListener("DOMContentLoaded", function() {
     var showPopupButton = document.getElementById("showPopupButton");
@@ -112,4 +127,22 @@ container.classList.add("active");
 });
 arrowBack.addEventListener("click", () => {
 container.classList.remove("active");
+});
+
+
+// POST CONTAINER POPUP
+document.addEventListener("DOMContentLoaded", function() {
+    const postContent = document.getElementById("postContent");
+    const popupContainer = document.getElementById("popupContainer");
+    const closePopupBtn = document.getElementById("closePopup");
+
+    console.log("DOMContentLoaded event triggered");
+
+    postContent.addEventListener("click", function() {
+        popupContainer.style.display = "block";
+    });
+
+    closePopupBtn.addEventListener("click", function() {
+        popupContainer.style.display = "none";
+    });
 });
