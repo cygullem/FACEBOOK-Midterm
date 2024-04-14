@@ -67,8 +67,8 @@ section{
 
 
 .logo{
-    height: 40px;
-    min-width: 40px;
+    height: 45px;
+    min-width: 45px;
     border-radius: 50%;
     object-fit: cover;
 }
@@ -80,7 +80,7 @@ section{
 
 .search-bar{
     height: 100%;
-    width: 85%;
+    flex-grow: 1;
     padding: 4px;
     border: 1px solid transparent;
     border-radius: 30px;
