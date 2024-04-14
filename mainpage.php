@@ -65,6 +65,9 @@ if (!isset($_SESSION['email'])) {
             </div>
             <div class="FBM ">
                 <i class="fa-solid fa-user-tie"></i>
+                <div class="UP-drpdwn">
+                    <i class="fa-solid fa-angle-down"></i>
+                </div>
             </div>
         </div>
     </nav>

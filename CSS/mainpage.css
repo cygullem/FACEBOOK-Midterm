@@ -139,15 +139,32 @@ section{
 }
 
 .FBM{
-    height: 50px;
-    width: 50px;
+    position: relative;
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
     background-color: #e4e6eb;
 }
 .FBM i{
-    font-size: 24px;
+    font-size: 20px;
     color: #050505;
+}
+.UP-drpdwn{
+    height: 19px;
+    width: 19px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: -3px;
+    right: 0;
+    background-color: #e4e6eb;
+}
+.UP-drpdwn i{
+    font-size: 13px;
 }
