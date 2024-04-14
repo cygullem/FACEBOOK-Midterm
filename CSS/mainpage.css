@@ -285,6 +285,7 @@ nav{
 .content img{
   height: 100% !important;
   width: 100% !important;
+  border-radius: 50%;
 }
   .post form .content img{
     cursor: default;
@@ -301,6 +302,7 @@ nav{
     display: flex;
     height: 25px;
     cursor: pointer;
+    gap: 4px;
     padding: 0 10px;
     font-size: 11px;
     margin-top: 3px;

@@ -98,7 +98,7 @@ if (!isset($_SESSION['email'])) {
                             <div class="content">
                                 <img src="Assets/UserProfile.png" alt="logo">
                                 <div class="details">
-                                    <p>Facenote</p>
+                                    <p>Cy Gullem</p>
                                     <div class="privacy">
                                         <i class="fas fa-user-friends"></i>
                                         <span>Friends</span>
@@ -106,7 +106,7 @@ if (!isset($_SESSION['email'])) {
                                     </div>
                                 </div>
                             </div>
-                            <textarea placeholder="What's on your mind, Facenote?" spellcheck="false" required></textarea>
+                            <textarea placeholder="Share your daily acitivity on Facenote" spellcheck="false" required></textarea>
                             <div class="theme-emoji">
                                 <img src="icons/theme.svg" alt="theme">
                                 <img src="icons/smile.svg" alt="smile">
