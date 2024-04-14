@@ -246,11 +246,29 @@ nav{
     margin-left: -500px;
   }
   .post header{
+    position: relative;
     font-size: 22px;
     font-weight: 600;
     padding: 17px 0;
     text-align: center;
     border-bottom: 1px solid #bfbfbf;
+  }
+  .header-closeBtn{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 15px;
+    height: 37px;
+    width: 37px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e4e6eb;
+  }
+  .header-closeBtn i{
+    font-size: 25px;
+    color: #606770;
   }
   .post form{
     margin: 20px 25px;
@@ -260,6 +278,14 @@ nav{
     display: flex;
     align-items: center;
   }
+  .content{
+    object-fit: cover !important;
+    border-radius: 50% !important;
+  }
+.content img{
+  height: 100% !important;
+  width: 100% !important;
+}
   .post form .content img{
     cursor: default;
     max-width: 52px;

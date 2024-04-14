@@ -129,6 +129,12 @@ arrowBack.addEventListener("click", () => {
 container.classList.remove("active");
 });
 
+function closePostPopup() {
+    var closePopup = document.getElementById("popupContainer");
+
+    closePopup.style.display = "none";
+}
+
 
 // POST CONTAINER POPUP
 document.addEventListener("DOMContentLoaded", function() {
