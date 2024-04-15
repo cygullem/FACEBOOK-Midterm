@@ -72,8 +72,32 @@ if (!isset($_SESSION['email'])) {
             </div>
             <div class="UP-menu_container" id="UPmc">
                 <div class="upmc">
-                    <div class="upmc_Upper"></div>
-                    <div class="upmc_Lower"></div>
+                    <div class="upmc_Upper">
+                        <div class="upmcU _settings">
+                            <div class="upmcU_right">
+                                <i class="fa-solid fa-gear"></i>
+                            </div>
+                            <div class="upmcU_left">Settings & privacy</div>
+                        </div>
+                        <div class="upmcU _helpSupport">
+                            <div class="upmcU_right">
+                                <i class='bx bxs-help-circle'></i>
+                            </div>
+                            <div class="upmcU_left">Help & support</div>
+                        </div>
+                        <div class="upmcU _giveFeedback">
+                            <div class="upmcU_right">
+                                <i class='bx bxs-comment-error'></i>
+                            </div>
+                            <div class="upmcU_left">Give Feedback</div>
+                        </div>
+                        <a href="logout.php" class="upmcU" id="logout">
+                            <div class="upmcU_right">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                            </div>
+                            <div class="upmcU_left">Log Out</div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -85,7 +109,6 @@ if (!isset($_SESSION['email'])) {
         </div>
         <div class="content-Center">
             <h1>WELCOME TO FACENOTE</h1>
-            <a href="logout.php" id="logout">Logout</a>
         </div>
         <div class="content-Right"></div>
     </section>

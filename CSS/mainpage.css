@@ -27,7 +27,7 @@ nav {
   justify-content: space-evenly;
   background-color: #ffffff;
   box-sizing: border-box;
-  box-shadow: 0px 11px 24px -5px rgba(146, 146, 146, 0.59);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .fb-search {
@@ -213,43 +213,81 @@ nav {
 .UP-menu_container {
   display: none;
   position: absolute;
-  top: 53px;
+  top: 70px;
   right: 35px;
-  height: 50vh;
   width: 20vw;
   padding: 10px;
   border-radius: 6px;
   background-color: #ffffff;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .upmc {
-  height: 100%;
   width: 100%;
-  padding: 10px;
   gap: 10px;
   overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.upmc_Upper {
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 1px solid red;
+  gap: 10px;
 }
-
-.upmc_Upper {
-  height: 20%;
+.upmc_Upper a{
+  text-decoration: none;
+  color: #121212;
+}
+.upmcU{
+  height: 55px;
   width: 100%;
-  background-color: #ffffff;
+  padding: 7px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
   border-radius: 8px;
-  box-shadow: 5px 4px 17px #dfdfdf, -5px -4px 17px #e2e2e2;
+  gap: 13px;
 }
-
-.upmc_Lower {
-  height: 80%;
+.upmcU:hover{
+  background-color: #f1f1f1;
+}
+.upmcU_right{
+  position: relative;
+  text-align: center;
+  vertical-align: middle;
+  height: 45px;
+  width: 22%;
+  border-radius: 50%;
+  background-color: #e4e6eb;
+}
+.upmcU_right i{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 22px;
+  color: #121212;
+}
+.upmcU_left{
+  height: 100%;
   width: 100%;
-  border: 1px solid blue;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: .9375rem;
+  font-weight: 500;
+  color: #121212;
 }
-
+.upmcU_left a{
+  text-decoration: none;
+  color: #121212;
+}
 /*-------------------------------------------------------- SECTION AREA --------------------------------------------------------*/
 .content-container {
   box-sizing: border-box;
