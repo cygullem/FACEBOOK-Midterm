@@ -64,10 +64,15 @@ if (!isset($_SESSION['email'])) {
             <div class="FBM">
                 <i class="fa-solid fa-bell"></i>
             </div>
-            <div class="FBM">
-                <img src="Assets/UserProfile.png" alt="Profle">
+            <div class="FBM user_Profile" onclick="openUserProfileMenu()">
+                <img src="Assets/UserProfile.png" alt="Profile">
                 <div class="UP-drpdwn">
                     <i class="fa-solid fa-angle-down"></i>
+                </div>
+            </div>
+            <div class="UP-menu_container" id="UPmc">
+                <div class="upmc">
+
                 </div>
             </div>
         </div>

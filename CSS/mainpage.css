@@ -27,9 +27,7 @@ nav {
   justify-content: space-evenly;
   background-color: #ffffff;
   box-sizing: border-box;
-  box-shadow: 0px 11px 24px -5px rgba(212, 212, 212, 0.59);
-  -webkit-box-shadow: 0px 11px 24px -5px rgba(212, 212, 212, 0.59);
-  -moz-box-shadow: 0px 11px 24px -5px rgba(212, 212, 212, 0.59);
+  box-shadow: 0px 11px 24px -5px rgba(146, 146, 146, 0.59);
 }
 
 .fb-search {
@@ -207,8 +205,26 @@ nav {
   font-size: 13px;
   color: #050505;
 }
-
-
+.user_Profile{
+  position: relative;
+}
+.UP-menu_container{
+  display: none;
+  position: absolute;
+  top: 53px;
+  right: 35px;
+  height: 50vh;
+  width: 20vw;
+  padding: 10px;
+  border-radius: 6px;
+  background-color: #ffffff;
+  box-shadow: 0px 8px 16px rgba(0,  0, 0, 0.07);
+}
+.upmc{
+  height: 100%;
+  width: 100%;
+  border: 1px solid red;
+}
 
 /*-------------------------------------------------------- SECTION AREA --------------------------------------------------------*/
 .content-container {
@@ -222,7 +238,7 @@ nav {
 .content-Left {
   height: 100%;
   width: 25%;
-  background-color: #ffffff;
+  background-color: #f0f2f5;
 }
 
 .content-Center {
@@ -232,13 +248,13 @@ nav {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #f0f2f5;
+  background-color: #ffffff;
 }
 
 .content-Right {
   height: 100%;
   width: 25%;
-  background-color: #ffffff;
+  background-color: #f0f2f5;
 }
 
 

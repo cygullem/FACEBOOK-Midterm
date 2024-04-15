@@ -1,41 +1,41 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const postContent = document.getElementById("postContent");
     const popupContainer = document.getElementById("popupContainer");
     const closePopupBtn = document.getElementById("closePopup");
 
-    postContent.addEventListener("click", function() {
+    postContent.addEventListener("click", function () {
         popupContainer.style.display = "block";
     });
 
-    closePopupBtn.addEventListener("click", function() {
+    closePopupBtn.addEventListener("click", function () {
         popupContainer.style.display = "none";
     });
 });
 
 
 //SIGN-UP POPUP
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     var showPopupButton = document.getElementById("showPopupButton");
 
     var signupPopup = document.getElementById("signupPopup");
 
     var closePopupIcon = document.getElementById("closePopupIcon");
 
-    showPopupButton.addEventListener("click", function(event) {
-        event.preventDefault(); 
+    showPopupButton.addEventListener("click", function (event) {
+        event.preventDefault();
 
         if (signupPopup) {
             signupPopup.style.display = "flex";
         }
     });
 
-    closePopupIcon.addEventListener("click", function() {
+    closePopupIcon.addEventListener("click", function () {
         if (signupPopup) {
             signupPopup.style.display = "none";
         }
     });
 
-    window.addEventListener("click", function(event) {
+    window.addEventListener("click", function (event) {
         if (signupPopup && event.target === signupPopup) {
             signupPopup.style.display = "none";
         }
@@ -45,9 +45,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 //LOGOUT
-$(function(){
-    $('a#logout').click(function(){
-        if(confirm('Are you sure to logout')) {
+$(function () {
+    $('a#logout').click(function () {
+        if (confirm('Are you sure to logout')) {
             return true;
         }
 
@@ -71,28 +71,28 @@ function togglePassword(passwordField, icon) {
 }
 
 // Show eye icon when user starts typing
-document.getElementById('passwordField').addEventListener('input', function() {
+document.getElementById('passwordField').addEventListener('input', function () {
     var passwordField = document.getElementById('passwordField');
     var icon = document.getElementById('togglePassword');
     icon.style.display = passwordField.value ? 'inline-block' : 'none';
 });
 
 // Toggle password visibility when eye icon is clicked
-document.getElementById('togglePassword').addEventListener('click', function() {
+document.getElementById('togglePassword').addEventListener('click', function () {
     var passwordField = document.getElementById('passwordField');
     var icon = document.getElementById('togglePassword');
     togglePassword(passwordField, icon);
 });
 
 // Show eye icon when user starts typing in sign up password
-document.getElementById('SUpasswordField').addEventListener('input', function() {
+document.getElementById('SUpasswordField').addEventListener('input', function () {
     var passwordField = document.getElementById('SUpasswordField');
     var icon = document.getElementById('toggleSUPassword');
     icon.style.display = passwordField.value ? 'inline-block' : 'none';
 });
 
 // Toggle password visibility when eye icon is clicked for sign up password
-document.getElementById('toggleSUPassword').addEventListener('click', function() {
+document.getElementById('toggleSUPassword').addEventListener('click', function () {
     var passwordField = document.getElementById('SUpasswordField');
     var icon = document.getElementById('toggleSUPassword');
     togglePassword(passwordField, icon);
@@ -101,11 +101,11 @@ document.getElementById('toggleSUPassword').addEventListener('click', function()
 
 
 // CONTENT ICONS COLORS WHEN ACTIVE 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const iconContainers = document.querySelectorAll(".FBC");
 
     iconContainers.forEach(container => {
-        container.addEventListener("click", function() {
+        container.addEventListener("click", function () {
             document.querySelectorAll('.FBC i').forEach(icon => {
                 icon.classList.remove("active");
             });
@@ -120,13 +120,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
 // POSTING SCRIPT
 const container = document.querySelector(".container"),
-privacy = container.querySelector(".post .privacy"),
-arrowBack = container.querySelector(".audience .arrow-back");
+    privacy = container.querySelector(".post .privacy"),
+    arrowBack = container.querySelector(".audience .arrow-back");
 privacy.addEventListener("click", () => {
-container.classList.add("active");
+    container.classList.add("active");
 });
 arrowBack.addEventListener("click", () => {
-container.classList.remove("active");
+    container.classList.remove("active");
 });
 
 function closePostPopup() {
@@ -137,18 +137,33 @@ function closePostPopup() {
 
 
 // POST CONTAINER POPUP
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const postContent = document.getElementById("postContent");
     const popupContainer = document.getElementById("popupContainer");
     const closePopupBtn = document.getElementById("closePopup");
 
     console.log("DOMContentLoaded event triggered");
 
-    postContent.addEventListener("click", function() {
+    postContent.addEventListener("click", function () {
         popupContainer.style.display = "block";
     });
 
-    closePopupBtn.addEventListener("click", function() {
+    closePopupBtn.addEventListener("click", function () {
         popupContainer.style.display = "none";
     });
 });
+
+
+// USER PROFILE MENU
+function openUserProfileMenu() {
+    toggleDivVisibility("UPmc");
+}
+
+function toggleDivVisibility(divId) {
+    var div = document.getElementById(divId);
+    if (div.style.display === "none" || div.style.display === "") {
+        div.style.display = "block";
+    } else {
+        div.style.display = "none";
+    }
+}
