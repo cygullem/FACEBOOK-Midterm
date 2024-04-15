@@ -39,6 +39,7 @@ if (!isset($_SESSION['email'])) {
         <div class="fb-content">
             <div class="FBC fbchome">
                 <i class='bx bx-home-alt' id="homeIcon"></i>
+                <div class="underline"></div>
             </div>
             <div class="FBC friends">
                 <i class='bx bx-group' id="friendsIcon"></i>

@@ -136,7 +136,20 @@ nav {
   font-size: 28px;
   color: #949596;
 }
-
+.fbchome{
+  position: relative;
+}
+.underline{
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: #0866ff;
+}
+.fbchome i{
+  color: #0866ff;
+}
 .active {
   color: #0866ff;
 }
