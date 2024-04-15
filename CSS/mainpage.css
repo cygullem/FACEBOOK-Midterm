@@ -128,7 +128,10 @@ nav {
   justify-content: center;
 }
 
-.FBC:hover {
+.friends:hover,
+.market:hover,
+.groups:hover,
+.games:hover {
   background-color: #e4e6e8;
 }
 
@@ -136,10 +139,12 @@ nav {
   font-size: 28px;
   color: #949596;
 }
-.fbchome{
+
+.fbchome {
   position: relative;
 }
-.underline{
+
+.underline {
   position: absolute;
   bottom: -5px;
   left: 0;
@@ -147,9 +152,11 @@ nav {
   width: 100%;
   background-color: #0866ff;
 }
-.fbchome i{
+
+.fbchome i {
   color: #0866ff;
 }
+
 .active {
   color: #0866ff;
 }
@@ -168,7 +175,7 @@ nav {
 }
 
 .FBM:active {
-  scale: .923 ;
+  scale: .923;
 }
 
 .FBM img {
@@ -215,7 +222,7 @@ nav {
 .content-Left {
   height: 100%;
   width: 25%;
-  border: 1px solid red;
+  background-color: #ffffff;
 }
 
 .content-Center {
@@ -225,13 +232,13 @@ nav {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 1px solid red;
+  background-color: #f0f2f5;
 }
 
 .content-Right {
   height: 100%;
   width: 25%;
-  border: 1px solid red;
+  background-color: #ffffff;
 }
 
 
@@ -324,8 +331,9 @@ nav {
   font-size: 25px;
   color: #606770;
 }
-.header-closeBtn:active{
-  scale: .923 ;
+
+.header-closeBtn:active {
+  scale: .923;
 }
 
 .post form {
