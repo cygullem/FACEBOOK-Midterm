@@ -72,7 +72,8 @@ if (!isset($_SESSION['email'])) {
             </div>
             <div class="UP-menu_container" id="UPmc">
                 <div class="upmc">
-
+                    <div class="upmc_Upper"></div>
+                    <div class="upmc_Lower"></div>
                 </div>
             </div>
         </div>
