@@ -13,10 +13,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $pdo->prepare("SELECT * FROM login_table WHERE email = ?");
     $stmt->execute([$email]);
     $user = $stmt->fetch();
-    if ($user && password_verify($password, $user['password'])) {
-        $_SESSION['email'] = $email;
-        $response['status'] = 'success';
-        $response['message'] = 'Login successful';
+    
+    if ($user) {
+        // Retrieve salt from the database and convert it back to binary
+        $storedSalt = hex2bin($user['salt']);
+        
+        // Concatenate salt with provided password
+        $saltedPassword = $password . $storedSalt;
+        
+        // Hash the salted password
+        $hashedPassword = password_hash($saltedPassword, PASSWORD_DEFAULT);
+        
+        // Verify hashed password
+        if (password_verify($saltedPassword, $user['password'])) {
+            $_SESSION['email'] = $email;
+            $response['status'] = 'success';
+            $response['message'] = 'Login successful';
+        } else {
+            $response['status'] = 'error';
+            $response['message'] = 'Invalid email or password';
+        }
     } else {
         $response['status'] = 'error';
         $response['message'] = 'Invalid email or password';
@@ -27,3 +43,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 echo json_encode($response);
+?>
