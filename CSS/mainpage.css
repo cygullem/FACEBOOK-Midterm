@@ -303,17 +303,31 @@ nav {
 
 .content-Center {
   max-height: 100%;
-  padding-top: 33.5rem;
+  padding-top: 35.5rem;
   width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: #e8e8e8;
-  overflow-y: scroll;
+  overflow-y: hidden;
+}
+.content-Center:hover{
+  overflow-y: auto;
+}
+.center:hover::-webkit-scrollbar {
+  width: 3px; 
+}
+.center::-webkit-scrollbar {
+  width: 0; 
 }
 .post_Container{
+  padding-top: 410px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .users_Followers{
   height: 35vh;
@@ -323,7 +337,7 @@ nav {
 }
 .users_Posts{
   margin-top: 17px;
-  height: 300px;
+  height: 450px;
   width: 100%;
   border-radius: 10px;
   background-color: #ffffff;

@@ -167,3 +167,12 @@ function toggleDivVisibility(divId) {
         div.style.display = "none";
     }
 }
+
+document.querySelector('.content-Center').addEventListener('mouseenter', function() {
+    this.style.overflowY = 'auto';
+});
+
+document.querySelector('.content-Center').addEventListener('mouseleave', function() {
+    this.style.overflowY = 'hidden';
+});
+
