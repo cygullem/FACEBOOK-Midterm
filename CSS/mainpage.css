@@ -298,6 +298,7 @@ nav {
 .content-Left {
   height: 100%;
   width: 25%;
+  border: 1px solid red;
   background-color: #e8e8e8;
 }
 
