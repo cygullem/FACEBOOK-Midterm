@@ -304,7 +304,6 @@ nav {
   align-items: center;
   padding: 10px;
   background-color: #e8e8e8;
-  border: 1px solid red;
 }
 .content-Left > div{
   height: 60px;
@@ -312,7 +311,11 @@ nav {
   border-radius: 7px;
   background-color: #cbcbcb;
 }
-
+.CL-line{
+  height: 1px;
+  width: 100%;
+  border: 1px solid #cbcbcb;
+}
 .content-Center {
   max-height: 100%;
   padding-top: 35.5rem;
