@@ -261,7 +261,7 @@ nav {
   text-align: center;
   vertical-align: middle;
   height: 45px;
-  width: 22%;
+  width:45px;
   border-radius: 50%;
   background-color: #e4e6eb;
 }
@@ -275,7 +275,7 @@ nav {
 }
 .upmcU_left{
   height: 100%;
-  width: 100%;
+  flex-grow: 1;
   display: flex;
   align-items: center;
   justify-items: center;
