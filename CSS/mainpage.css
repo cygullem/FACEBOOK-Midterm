@@ -211,7 +211,7 @@ nav {
 .UP-menu_container {
   display: none;
   position: absolute;
-  top: 53px;
+  top: 59px;
   right: 35px;
   width: 20vw;
   padding: 10px;
@@ -340,7 +340,7 @@ nav {
   height: 450px;
   width: 100%;
   border-radius: 10px;
-  background-color: #ffffff;
+  background-color: #80B3FF;
 }
 
 .content-Right {
