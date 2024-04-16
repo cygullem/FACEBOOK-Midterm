@@ -104,7 +104,14 @@ if (!isset($_SESSION['email'])) {
     </nav>
 
     <section class="content-container">
-        <div class="content-Left"></div>
+        <div class="content-Left">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
 
         <div class="content-Center">
             <div class="post_Container">
@@ -114,7 +121,7 @@ if (!isset($_SESSION['email'])) {
                 <div class="users_Posts"></div>
             </div>
         </div>
-        
+
         <div class="content-Right"></div>
     </section>
 
