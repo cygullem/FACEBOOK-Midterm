@@ -111,6 +111,7 @@ if (!isset($_SESSION['email'])) {
             <div></div>
             <div></div>
             <div></div>
+            <div class="CL-line"></div>
         </div>
 
         <div class="content-Center">

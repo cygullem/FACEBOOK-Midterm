@@ -298,6 +298,7 @@ nav {
 .content-Left {
   height: 100%;
   width: 25%;
+  gap: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -305,11 +306,12 @@ nav {
   background-color: #e8e8e8;
   border: 1px solid red;
 }
-/* .content-Left > div{
-  height: 100px;
+.content-Left > div{
+  height: 60px;
   width: 100%;
-
-} */
+  border-radius: 7px;
+  background-color: #cbcbcb;
+}
 
 .content-Center {
   max-height: 100%;
