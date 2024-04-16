@@ -298,39 +298,41 @@ nav {
 .content-Left {
   height: 100%;
   width: 25%;
-  background-color: #f0f2f5;
+  background-color: #e8e8e8;
 }
 
 .content-Center {
-  max-height: 557px;
-  padding-top: 300px;
-  padding-bottom: 100px;
+  max-height: 100%;
+  padding-top: 33.5rem;
   width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #ffffff;
+  background-color: #e8e8e8;
   overflow-y: scroll;
 }
-.users_Followers{
-  margin-top: 30px;
-  margin-bottom: 30px;
-  height: 70vh;
+.post_Container{
   width: 100%;
-  border: 1px solid red;
+}
+.users_Followers{
+  height: 35vh;
+  width: 100%;
+  border-radius: 10px;
+  background-color: #0866ff;
 }
 .users_Posts{
-  margin-top: 30px;
+  margin-top: 17px;
   height: 300px;
-  width: 50vh;
-  border: 1px solid red;
+  width: 100%;
+  border-radius: 10px;
+  background-color: #ffffff;
 }
 
 .content-Right {
   height: 100%;
   width: 25%;
-  background-color: #f0f2f5;
+  background-color: #e8e8e8;
 }
 .content-Center iframe{
   height: 1000px;
