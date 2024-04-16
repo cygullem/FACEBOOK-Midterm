@@ -28,7 +28,7 @@
                         <i class="fa-regular fa-eye" id="togglePassword"></i>
                     </div>
 
-
+                    
                     <div class="link">
                         <input type="submit" name="submit" value="Log In" class="login"></input>
                         <a href="#" class="forgot">Forgot password?</a>

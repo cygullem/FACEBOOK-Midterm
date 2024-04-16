@@ -108,9 +108,15 @@ if (!isset($_SESSION['email'])) {
 
         </div>
         <div class="content-Center">
-            <h1>WELCOME TO FACENOTE</h1>
+            <div class="users_Followers"></div>
+            <!-- <div class="users_Posts"></div> -->
+            <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fcarlcastanas%2Fposts%2Fpfbid02UPUQcZrjfdPworFjF9A2RjKe3rESRAf7Pa9T1qXd5M5Z7dF7dQ3nHNuMFuW5bPjQl&show_text=true&width=500" width="500" height="573" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FJASZDevicePad%2Fposts%2Fpfbid0TTrP8HBZGhWYQ8sJbdGBhMZTnoBUCKv1h1hKyGg8cSRmhR2xahfQNfJerUV4zmfEl&show_text=true&width=500" width="500" height="802" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fiamswertified%2Fposts%2Fpfbid02JUhauvgsf5AgPS7xXZaU9Sbte7No3H2HtaaKmvcP3ChvSTUG6hbiCCqhQat8TNQAl&show_text=true&width=500" width="500" height="589" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
         </div>
-        <div class="content-Right"></div>
+        <div class="content-Right">
+
+        </div>
     </section>
 
     <div class="popup-container" id="popupContainer">
