@@ -14,7 +14,8 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #f0f2f5;
+  overflow: hidden;
+  background-color: #e9e9e9;
 }
 
 nav {
@@ -228,6 +229,7 @@ nav {
   align-items: center;
   justify-content: center;
 }
+
 .upmc_Upper {
   height: 100%;
   width: 100%;
@@ -237,11 +239,13 @@ nav {
   justify-content: center;
   gap: 10px;
 }
-.upmc_Upper a{
+
+.upmc_Upper a {
   text-decoration: none;
   color: #121212;
 }
-.upmcU{
+
+.upmcU {
   height: 55px;
   width: 100%;
   padding: 7px 10px;
@@ -251,19 +255,22 @@ nav {
   border-radius: 8px;
   gap: 13px;
 }
-.upmcU:hover{
+
+.upmcU:hover {
   background-color: #f1f1f1;
 }
-.upmcU_right{
+
+.upmcU_right {
   position: relative;
   text-align: center;
   vertical-align: middle;
   height: 45px;
-  width:45px;
+  width: 45px;
   border-radius: 50%;
   background-color: #e4e6eb;
 }
-.upmcU_right i{
+
+.upmcU_right i {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -271,7 +278,8 @@ nav {
   font-size: 22px;
   color: #121212;
 }
-.upmcU_left{
+
+.upmcU_left {
   height: 100%;
   flex-grow: 1;
   display: flex;
@@ -282,10 +290,12 @@ nav {
   font-weight: 500;
   color: #121212;
 }
-.upmcU_left a{
+
+.upmcU_left a {
   text-decoration: none;
   color: #121212;
 }
+
 /*-------------------------------------------------------- SECTION AREA --------------------------------------------------------*/
 .content-container {
   box-sizing: border-box;
@@ -303,74 +313,120 @@ nav {
   flex-direction: column;
   align-items: center;
   padding: 10px;
-  background-color: #e8e8e8;
+  background-color: #dbdbdb;
 }
-.content-Left > div{
+
+.content-Left>div {
   height: 60px;
   width: 100%;
   border-radius: 7px;
-  background-color: #cbcbcb;
+  border: 1px solid red;
 }
-.CL-line{
+
+.content-Left>div:hover {
+  background-color: #b1b1b1;
+}
+
+.CL-line {
   height: 1px;
   width: 100%;
   border: 1px solid #cbcbcb;
 }
+
 .content-Center {
   max-height: 100%;
-  padding-top: 35.5rem;
+  padding-top: 34.5rem;
   width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #e8e8e8;
+  background-color: #dbdbdb;
   overflow-y: hidden;
 }
-.content-Center:hover{
+
+.content-Center:hover {
   overflow-y: auto;
 }
+
 .center:hover::-webkit-scrollbar {
-  width: 3px; 
+  width: 3px;
 }
+
 .center::-webkit-scrollbar {
-  width: 0; 
+  width: 0;
 }
-.post_Container{
-  padding-top: 410px;
+
+.post_Container {
+  padding-top: 510px;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-.users_Followers{
-  height: 35vh;
+
+.users_Followers {
+  height: 32vh;
   width: 100%;
   border-radius: 10px;
   background-color: #0866ff;
 }
-.users_Posts{
+
+.users_Posts {
   margin-top: 17px;
   height: 450px;
   width: 100%;
   border-radius: 10px;
-  background-color: #80B3FF;
+  background-color: #ffffff;
 }
 
 .content-Right {
   height: 100%;
   width: 25%;
-  background-color: #e8e8e8;
+  background-color: #dbdbdb;
   border: 1px solid red;
 }
-.content-Center iframe{
+
+.content-Center iframe {
   height: 1000px;
   margin-top: 30px;
   overflow-y: auto;
 }
 
+.CL-userProfile {
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+}
 
+.CL-userProfile>div {
+  height: 100%;
+}
+
+._profileSettings {
+  width: 43px;
+  border-radius: 50%;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+._profileSettings img {
+  height: 100%;
+  width: 100%;
+}
+
+._userName {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: .9375rem;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+  flex-grow: 1;
+}
 
 /*-------------------------------------------------------- SECTION AREA --------------------------------------------------------*/
 .popup-container {

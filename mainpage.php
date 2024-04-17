@@ -105,17 +105,17 @@ if (!isset($_SESSION['email'])) {
 
     <section class="content-container">
         <div class="content-Left">
+            <div class="CL-userProfile">
+                <div class="_profileSettings">
+                    <img src="Assets/UserProfile.png" alt="Profile">
+                </div>
+                <div class="_userName">Cy Gullem</div>
+            </div>
             <div></div>
             <div></div>
             <div></div>
             <div></div>
-            <div></div>
-            <div></div>
-            <a class="CL-line"></a>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+           
         </div>
 
         <div class="content-Center">
