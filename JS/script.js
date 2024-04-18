@@ -13,6 +13,21 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+// OPEN POSTING POPUP WHEN USER CLICK THE "users_Followers" div
+document.addEventListener("DOMContentLoaded", function() {
+    const triggerDiv = document.getElementById("users_Followers");
+    const popupContainer1 = document.getElementById("popupContainer");
+    const closePopupBtn = document.getElementById("closePopup");
+
+    triggerDiv.addEventListener("click", function() {
+        popupContainer1.style.display = "block";
+    })
+    closePopupBtn.addEventListener("click", function () {
+        popupContainer.style.display = "none";
+    });
+})
+
+
 //SIGN-UP POPUP
 document.addEventListener("DOMContentLoaded", function () {
     var showPopupButton = document.getElementById("showPopupButton");
@@ -177,13 +192,3 @@ document.querySelector('.content-Center').addEventListener('mouseleave', functio
 });
 
 
-
-// OPEN POSTING POPUP WHEN USER CLICK THE "users_Followers" div
-document.addEventListener("DOMContentLoaded", function() {
-    const triggerDiv = document.getElementById("users_Followers");
-    const popupContainer1 = document.getElementById("popupContainer");
-
-    triggerDiv.addEventListener("click", function() {
-        popupContainer1.style.display = "block";
-    })
-})
