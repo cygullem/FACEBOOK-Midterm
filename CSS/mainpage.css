@@ -61,8 +61,8 @@ nav {
 
 
 .logo {
-  height: 40px;
-  min-width: 43px;
+  height: 48px;
+  min-width: 48px;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -313,14 +313,13 @@ nav {
   flex-direction: column;
   align-items: center;
   padding: 10px;
-  background-color: #dbdbdb;
+  background-color: #f0f2f5;
 }
 
-.content-Left>div {
+.content-Left > div {
   height: 60px;
   width: 100%;
   border-radius: 7px;
-  border: 1px solid red;
 }
 
 .content-Left>div:hover {
@@ -341,7 +340,7 @@ nav {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #dbdbdb;
+  background-color: #f0f2f5;
   overflow-y: hidden;
 }
 
@@ -370,24 +369,75 @@ nav {
 
 
 .post_Container {
-  padding-top: 510px;
+  padding-top: 310px;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-.post_Container div:nth-child(even){
+/* .post_Container div:nth-child(even){
   background-color: #A569BD;
 }
 .post_Container div:nth-child(odd){
   background-color: #5499C7;
-}
+} */
 .users_Followers {
-  height: 32vh;
+  height: 20vh;
   width: 100%;
+  padding: 15px;
   border-radius: 10px;
-  background-color: #0866ff !important;
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff !important;
+}
+.Uf_cont{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.Uf_cont img{
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+.ask_Post{
+  height: 50px;
+  width: 100%;
+  border-radius: 45px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  color: #7f8185;
+  background-color: #f0f2f5;
+}
+.Uf_activity{
+  margin-top: 5px;
+  height: 100%;
+  width: 100%;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border-top: 1px solid #bdbdbd;
+}
+.Uf_activity > div{
+  height: 100%;
+  flex-grow: 1;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid red;
+}
+.Uf_activity > div:hover{
+  background-color: #eaeaea;
 }
 
 .users_Posts {
@@ -401,7 +451,7 @@ nav {
 .content-Right {
   height: 100%;
   width: 25%;
-  background-color: #dbdbdb;
+  background-color: #f0f2f5;
   border: 1px solid red;
 }
 

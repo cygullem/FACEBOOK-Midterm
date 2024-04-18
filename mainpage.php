@@ -16,7 +16,7 @@ if (!isset($_SESSION['email'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="png" href="./Assets/Facebook-Logo.png">
+    <link rel="icon" type="png" href="https://img.icons8.com/fluency/48/facebook-new.png">
     <title>Welcome to Facenote</title>
     <link rel="stylesheet" href="./CSS/mainpage.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -27,7 +27,8 @@ if (!isset($_SESSION['email'])) {
     <nav>
         <div class="fb-search">
             <div class="logo">
-                <img src="./Assets/Facebook-Logo.png" alt="">
+                <!-- <img src="./Assets/Facebook-Logo.png" alt=""> -->
+                <img width="48" height="48" src="https://img.icons8.com/fluency/48/facebook-new.png" alt="facebook-new"/>
             </div>
             <div class="search-bar">
                 <form action="">
@@ -111,16 +112,24 @@ if (!isset($_SESSION['email'])) {
                 </div>
                 <div class="_userName">Cy Gullem</div>
             </div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
            
         </div>
 
         <div class="content-Center">
             <div class="post_Container">
-                <div class="users_Followers"></div>
+                <div class="users_Followers">
+                    <div class="Uf_cont">
+                        <img src="Assets/UserProfile.png" alt="Profile">
+                        <div class="ask_Post">
+                            What's on your mind Cy?
+                        </div>
+                    </div>
+                    <div class="Uf_activity">
+                        <div class="ufa_1"></div>
+                        <div class="ufa_2"></div>
+                        <div class="ufa_3"></div>
+                    </div>
+                </div>
                 <div class="users_Posts"></div>
                 <div class="users_Posts"></div>
                 <div class="users_Posts"></div>
