@@ -28,7 +28,7 @@ if (!isset($_SESSION['email'])) {
         <div class="fb-search">
             <div class="logo">
                 <!-- <img src="./Assets/Facebook-Logo.png" alt=""> -->
-                <img width="48" height="48" src="https://img.icons8.com/fluency/48/facebook-new.png" alt="facebook-new"/>
+                <img width="48" height="48" src="https://img.icons8.com/fluency/48/facebook-new.png" alt="facebook-new" />
             </div>
             <div class="search-bar">
                 <form action="">
@@ -112,7 +112,7 @@ if (!isset($_SESSION['email'])) {
                 </div>
                 <div class="_userName">Cy Gullem</div>
             </div>
-           
+
         </div>
 
         <div class="content-Center">
@@ -125,9 +125,18 @@ if (!isset($_SESSION['email'])) {
                         </div>
                     </div>
                     <div class="Uf_activity">
-                        <div class="ufa_1"></div>
-                        <div class="ufa_2"></div>
-                        <div class="ufa_3"></div>
+                        <div class="ufa_1">
+                            <i class="fa-solid fa-video"></i>
+                            <p>Live video</p>
+                        </div>
+                        <div class="ufa_2">
+                            <i class="fa-solid fa-images"></i>
+                            <p>Photo/video</p>
+                        </div>
+                        <div class="ufa_3">
+                            <i class="fa-regular fa-face-laugh"></i>
+                            <p>Feeling/activity</p>
+                        </div>
                     </div>
                 </div>
                 <div class="users_Posts"></div>

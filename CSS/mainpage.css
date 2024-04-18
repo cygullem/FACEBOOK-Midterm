@@ -428,16 +428,34 @@ nav {
 }
 .Uf_activity > div{
   height: 100%;
-  flex-grow: 1;
+  width: 33.3%;
   border-radius: 9px;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: 500;
   gap: 8px;
-  border: 1px solid red;
 }
 .Uf_activity > div:hover{
   background-color: #eaeaea;
+}
+.ufa_1 p,
+.ufa_2 p,
+.ufa_3 p{
+  color: #7f8185;
+  font-weight: 500;
+}
+.ufa_1 i{
+  color: #f02849;
+  font-size: 25px;
+}
+.ufa_2 i{
+  color: #45bd62;
+  font-size: 25px;
+}
+.ufa_3 i{
+  color: #f7b928;
+  font-size: 25px;
 }
 
 .users_Posts {
