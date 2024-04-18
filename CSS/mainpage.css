@@ -376,12 +376,6 @@ nav {
   align-items: center;
   justify-content: center;
 }
-/* .post_Container div:nth-child(even){
-  background-color: #A569BD;
-}
-.post_Container div:nth-child(odd){
-  background-color: #5499C7;
-} */
 .users_Followers {
   height: 20vh;
   width: 100%;
