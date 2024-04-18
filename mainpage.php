@@ -120,7 +120,7 @@ if (!isset($_SESSION['email'])) {
                 <div class="users_Followers">
                     <div class="Uf_cont">
                         <img src="Assets/UserProfile.png" alt="Profile">
-                        <div class="ask_Post">
+                        <div class="ask_Post" id="ask_Post">
                             What's on your mind Cy?
                         </div>
                     </div>
