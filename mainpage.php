@@ -112,6 +112,8 @@ if (!isset($_SESSION['email'])) {
                 </div>
                 <div class="_userName">Cy Gullem</div>
             </div>
+            <div></div>
+            <div></div>
 
         </div>
 
