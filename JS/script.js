@@ -176,3 +176,14 @@ document.querySelector('.content-Center').addEventListener('mouseleave', functio
     this.style.overflowY = 'hidden';
 });
 
+
+
+// OPEN POSTING POPUP WHEN USER CLICK THE "users_Followers" div
+document.addEventListener("DOMContentLoaded", function() {
+    const triggerDiv = document.getElementById("users_Followers");
+    const popupContainer1 = document.getElementById("popupContainer");
+
+    triggerDiv.addEventListener("click", function() {
+        popupContainer1.style.display = "block";
+    })
+})

@@ -117,7 +117,7 @@ if (!isset($_SESSION['email'])) {
 
         <div class="content-Center">
             <div class="post_Container">
-                <div class="users_Followers">
+                <div class="users_Followers" id="users_Followers">
                     <div class="Uf_cont">
                         <img src="Assets/UserProfile.png" alt="Profile">
                         <div class="ask_Post" id="ask_Post">
