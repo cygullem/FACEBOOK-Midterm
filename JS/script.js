@@ -15,17 +15,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // OPEN POSTING POPUP WHEN USER CLICK THE "users_Followers" div
 document.addEventListener("DOMContentLoaded", function() {
-    const triggerDiv = document.getElementById("users_Followers");
+    const triggerDivs = document.querySelectorAll("._postTrigg");
     const popupContainer1 = document.getElementById("popupContainer");
     const closePopupBtn = document.getElementById("closePopup");
 
-    triggerDiv.addEventListener("click", function() {
-        popupContainer1.style.display = "block";
-    })
-    closePopupBtn.addEventListener("click", function () {
-        popupContainer.style.display = "none";
+    triggerDivs.forEach(function(triggerDiv) {
+        triggerDiv.addEventListener("click", function() {
+            popupContainer1.style.display = "block";
+        });
     });
-})
+
+    closePopupBtn.addEventListener("click", function () {
+        popupContainer1.style.display = "none";
+    });
+});
+
 
 
 //SIGN-UP POPUP

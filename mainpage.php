@@ -123,20 +123,20 @@ if (!isset($_SESSION['email'])) {
                 <div class="users_Followers" id="users_Followers">
                     <div class="Uf_cont">
                         <img src="Assets/UserProfile.png" alt="Profile">
-                        <div class="ask_Post" id="ask_Post">
+                        <div class="ask_Post  _postTrigg" id="ask_Post">
                             What's on your mind Cy?
                         </div>
                     </div>
                     <div class="Uf_activity">
-                        <div class="ufa_1">
+                        <div class="ufa_1  _postTrigg">
                             <i class="fa-solid fa-video"></i>
                             <p>Live video</p>
                         </div>
-                        <div class="ufa_2">
+                        <div class="ufa_2  _postTrigg">
                             <i class="fa-solid fa-images"></i>
                             <p>Photo/video</p>
                         </div>
-                        <div class="ufa_3">
+                        <div class="ufa_3  _postTrigg">
                             <i class="fa-regular fa-face-laugh"></i>
                             <p>Feeling/activity</p>
                         </div>
