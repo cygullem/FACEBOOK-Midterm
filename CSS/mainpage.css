@@ -116,7 +116,19 @@ nav {
   font-size: 16px;
   font-weight: 300;
 }
-
+.fb-content a{
+  height: 100%;
+  width: 115px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+.fb-content FBC i{
+  font-size: 28px;
+  color: #949596;
+}
 .FBC {
   height: 100%;
   width: 115px;

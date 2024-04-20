@@ -42,9 +42,11 @@ if (!isset($_SESSION['email'])) {
                 <i class='bx bx-home-alt' id="homeIcon"></i>
                 <div class="underline"></div>
             </div>
-            <div class="FBC friends">
-                <i class='bx bx-group' id="friendsIcon"></i>
-            </div>
+            <a href="friendsList.php">
+                <div class="FBC friends">
+                    <i class='bx bx-group' id="friendsIcon"></i>
+                </div>
+            </a>
             <div class="FBC market">
                 <i class='bx bx-store-alt' id="marketIcon"></i>
             </div>
