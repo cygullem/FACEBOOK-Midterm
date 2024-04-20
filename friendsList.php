@@ -95,6 +95,16 @@
             </div>
         </div>
     </nav>
+    <section class="friendsList_Container">
+        <div class="FLC-Left">
+           <div class="flcl_menu">
+            
+           </div>
+        </div>
+        <div class="FLC-Right">
+
+        </div>
+    </section>
 
 
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
