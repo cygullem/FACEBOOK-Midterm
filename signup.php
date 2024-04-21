@@ -24,14 +24,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Hash the salted password
     $hashedPassword = password_hash($saltedPassword, PASSWORD_DEFAULT);
 
+    $defaultProfilePicture = './Assets/default-profilepicture.png';
+
     $stmt = $pdo->prepare("SELECT * FROM login_table WHERE email = ?");
     $stmt->execute([$email]);
     if ($stmt->rowCount() > 0) {
         $response['status'] = 'error';
         $response['message'] = 'Email already exists';
     } else {
-        $stmt = $pdo->prepare("INSERT INTO login_table (firstname, lastname, email, password, salt) VALUES (?, ?, ?, ?, ?)");
-        $stmt->execute([$firstName, $lastName, $email, $hashedPassword, $hexSalt]);
+        $stmt = $pdo->prepare("INSERT INTO login_table (firstname, lastname, email, password, salt, profile_picture) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->execute([$firstName, $lastName, $email, $hashedPassword, $hexSalt, $defaultProfilePicture]);
         $response['status'] = 'success';
         $response['message'] = 'User created successfully';
     }
