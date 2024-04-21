@@ -94,4 +94,35 @@ $(document).ready(function() {
             });
         }
     });
+
+
+    // fetch all acounts: Follow or Delete
+    $.ajax({
+        type: 'GET',
+        url: 'fetch_accounts.php',
+        dataType: 'json',
+        success: function(response) {
+            // Loop through each account and display profile
+            response.forEach(function(account) {
+                // Create profile element
+                var profile = $('<div>').addClass('user_follow');
+                var profileImg = $('<img>').attr('src', account.profile_picture).attr('alt', 'Profile Picture');
+                var profileInfo = $('<div>').addClass('uf_info');
+                var profileName = $('<h3>').text(account.firstname + ' ' + account.lastname);
+                var followBtn = $('<button>').addClass('followBtn').text('Follow');
+                var removeBtn = $('<button>').addClass('removeBtn').text('Delete');
+                
+                // Append elements to profile
+                profileInfo.append(profileName, followBtn, removeBtn);
+                profile.append(profileImg, profileInfo);
+                
+                // Append profile to container
+                $('.flcr_container').append(profile);
+            });
+        },
+        error: function(xhr, status, error) {
+            console.error(xhr.responseText);
+            alert('An error occurred while fetching accounts.');
+        }
+    });
 });

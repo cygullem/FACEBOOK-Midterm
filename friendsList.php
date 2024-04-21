@@ -112,14 +112,15 @@
                 </div>
             </div>
             <div class="flcr_container">
-                <div class="user_follow">
+                <!-- <div class="user_follow">
                     <img src="Assets/default-profilepicture.png" alt="Profile Picture">
                     <div class="uf_info">
                         <h3>Cy Gullem</h3>
                         <button class="followBtn">Follow</button>
                         <button class="removeBtn">Delete</button>
                     </div>
-                </div>
+                </div> -->
+                <!-- USER PROFILES WILL BE DISPLAYED HERE THROUGH AJAX -->
             </div>
         </div>
     </section>
@@ -127,6 +128,7 @@
 
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="./JS/main.js"></script>
     <script src="./JS/script.js"></script>
 </body>
 
