@@ -380,7 +380,7 @@ nav {
   justify-content: space-between;
 }
 .see_all{
-  color: #6599dd;
+  color: #0866ff;
   padding: 10px;
   cursor: pointer;
 }
@@ -398,10 +398,75 @@ nav {
   gap: 10px;
   overflow-y: auto;
 }
+.flcr_container::-webkit-scrollbar{
+  width: 7px;
+}
+.flcr_container::-webkit-scrollbar-track {
+  background: #dbdbdb;
+}
+
+.flcr_container::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: #59a1ff;
+}
+
+.flcr_container::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
 .user_follow{
-  height: 300px;
+  height: 350px;
   width: 100%;
   border-radius: 10px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
   background-color: #ffffff;
+}
+.user_follow img{
+  height: 60%;
+  width: 100%;
+}
+.uf_info{
+  height: 40%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  gap: 5px;
+}
+.uf_info h3{
+  width: 100%;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 10px;
+}
+.uf_info button{
+  height: 55px;
+  width: 100%;
+  border-radius: 8px;
+  border: none;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+.uf_info button:hover{
+  opacity: .8;
+}
+.uf_info button:active{
+  scale: .965;
+}
+.followBtn{
+  background-color: #0866ff;
+  color: #ffffff;
+}
+.removeBtn{
+  background-color: #e4e6eb;
 }
