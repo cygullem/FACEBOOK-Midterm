@@ -96,29 +96,37 @@ $(document).ready(function() {
     });
 
 
-    // fetch all acounts: Follow or Delete
-    $.ajax({
-        type: 'GET',
-        url: 'fetch_accounts.php',
-        dataType: 'json',
-        success: function(response) {
-            response.forEach(function(account) {
-                var profile = $('<div>').addClass('user_follow');
-                var profileImg = $('<img>').attr('src', account.profile_picture).attr('alt', 'Profile Picture');
-                var profileInfo = $('<div>').addClass('uf_info');
-                var profileName = $('<h3>').text(account.firstname + ' ' + account.lastname);
-                var followBtn = $('<button>').addClass('followBtn').text('Follow');
-                var removeBtn = $('<button>').addClass('removeBtn').text('Delete');
-                
-                profileInfo.append(profileName, followBtn, removeBtn);
-                profile.append(profileImg, profileInfo);
-                
-                $('.flcr_container').append(profile);
-            });
-        },
-        error: function(xhr, status, error) {
-            console.error(xhr.responseText);
-            alert('An error occurred while fetching accounts.');
-        }
+    $(document).ready(function() {
+        // Get current user's email
+        var userEmail = "<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ''; ?>";
+    
+        // AJAX request to fetch accounts data
+        $.ajax({
+            type: 'GET',
+            url: 'fetch_accounts.php',
+            data: { userEmail: userEmail }, // Pass user email as parameter
+            dataType: 'json',
+            success: function(response) {
+                response.forEach(function(account) {
+                    // Create profile elements
+                    var profile = $('<div>').addClass('user_follow');
+                    var profileImg = $('<img>').attr('src', account.profile_picture).attr('alt', 'Profile Picture');
+                    var profileInfo = $('<div>').addClass('uf_info');
+                    var profileName = $('<h3>').text(account.firstname + ' ' + account.lastname);
+                    var followBtn = $('<button>').addClass('followBtn').text('Follow');
+                    var removeBtn = $('<button>').addClass('removeBtn').text('Delete');
+    
+                    // Append profile elements to container
+                    profileInfo.append(profileName, followBtn, removeBtn);
+                    profile.append(profileImg, profileInfo);
+                    $('.flcr_container').append(profile);
+                });
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr.responseText);
+                alert('An error occurred while fetching accounts.');
+            }
+        });
     });
+    
 });

@@ -1,8 +1,16 @@
 <?php
+session_start();
 include 'dbconnection.php';
 
-$stmt = $pdo->query("SELECT * FROM login_table");
+if (!isset($_SESSION['email'])) {
+    echo json_encode([]);
+    exit();
+}
+
+$userEmail = $_SESSION['email'];
+
+$stmt = $pdo->prepare("SELECT * FROM login_table WHERE email != ? ORDER BY id DESC");
+$stmt->execute([$userEmail]);
 $accounts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 echo json_encode($accounts);
-?>
