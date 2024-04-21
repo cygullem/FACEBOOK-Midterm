@@ -370,8 +370,7 @@ nav {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 35px 35px 0 35px;
-  border: 1px solid red;
+  padding: 15px 35px 0 35px;
 }
 .flcr_header{
   height: 10%;
@@ -379,7 +378,6 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid red;
 }
 .see_all{
   color: #6599dd;
@@ -389,8 +387,21 @@ nav {
 .see_all:hover{
   background-color: #e4e6eb;
 }
+
+
 .flcr_container{
   height: 90%;
   width: 100%;
-  border: 1px solid red;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 10px;
+  overflow-y: auto;
+}
+.user_follow{
+  height: 300px;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
 }
