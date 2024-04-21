@@ -113,92 +113,11 @@
             </div>
             <div class="flcr_container">
                 <div class="user_follow">
-                    <img src="Assets/UserProfile.png" alt="Profile Picture">
+                    <img src="Assets/default-profilepicture.png" alt="Profile Picture">
                     <div class="uf_info">
-                        <h3>Clyde Cyril Simbajon Gullem</h3>
+                        <h3>Cy Gullem</h3>
                         <button class="followBtn">Follow</button>
-                        <button class="removeBtn">Remove</button>
-                    </div>
-                </div>
-
-                <div class="user_follow">
-                    <img src="Assets/UserProfile.png" alt="Profile Picture">
-                    <div class="uf_info">
-                        <h3>Clyde Cyril Simbajon Gullem</h3>
-                        <button class="followBtn">Follow</button>
-                        <button class="removeBtn">Remove</button>
-                    </div>
-                </div>
-
-                <div class="user_follow">
-                    <img src="Assets/UserProfile.png" alt="Profile Picture">
-                    <div class="uf_info">
-                        <h3>Clyde Cyril Simbajon Gullem</h3>
-                        <button class="followBtn">Follow</button>
-                        <button class="removeBtn">Remove</button>
-                    </div>
-                </div>
-
-                <div class="user_follow">
-                    <img src="Assets/UserProfile.png" alt="Profile Picture">
-                    <div class="uf_info">
-                        <h3>Clyde Cyril Simbajon Gullem</h3>
-                        <button class="followBtn">Follow</button>
-                        <button class="removeBtn">Remove</button>
-                    </div>
-                </div>
-
-                <div class="user_follow">
-                    <img src="Assets/UserProfile.png" alt="Profile Picture">
-                    <div class="uf_info">
-                        <h3>Clyde Cyril Simbajon Gullem</h3>
-                        <button class="followBtn">Follow</button>
-                        <button class="removeBtn">Remove</button>
-                    </div>
-                </div>
-
-                <div class="user_follow">
-                    <img src="Assets/UserProfile.png" alt="Profile Picture">
-                    <div class="uf_info">
-                        <h3>Clyde Cyril Simbajon Gullem</h3>
-                        <button class="followBtn">Follow</button>
-                        <button class="removeBtn">Remove</button>
-                    </div>
-                </div>
-
-                <div class="user_follow">
-                    <img src="Assets/UserProfile.png" alt="Profile Picture">
-                    <div class="uf_info">
-                        <h3>Clyde Cyril Simbajon Gullem</h3>
-                        <button class="followBtn">Follow</button>
-                        <button class="removeBtn">Remove</button>
-                    </div>
-                </div>
-
-                <div class="user_follow">
-                    <img src="Assets/UserProfile.png" alt="Profile Picture">
-                    <div class="uf_info">
-                        <h3>Clyde Cyril Simbajon Gullem</h3>
-                        <button class="followBtn">Follow</button>
-                        <button class="removeBtn">Remove</button>
-                    </div>
-                </div>
-
-                <div class="user_follow">
-                    <img src="Assets/UserProfile.png" alt="Profile Picture">
-                    <div class="uf_info">
-                        <h3>Clyde Cyril Simbajon Gullem</h3>
-                        <button class="followBtn">Follow</button>
-                        <button class="removeBtn">Remove</button>
-                    </div>
-                </div>
-
-                <div class="user_follow">
-                    <img src="Assets/UserProfile.png" alt="Profile Picture">
-                    <div class="uf_info">
-                        <h3>Clyde Cyril Simbajon Gullem</h3>
-                        <button class="followBtn">Follow</button>
-                        <button class="removeBtn">Remove</button>
+                        <button class="removeBtn">Delete</button>
                     </div>
                 </div>
             </div>
