@@ -97,12 +97,23 @@
     </nav>
     <section class="friendsList_Container">
         <div class="FLC-Left">
-           <div class="flcl_menu">
-            
-           </div>
+            <div class="flcl_menu">
+                <h1>Friends</h1>
+                <div class="flcl_menu-settings">
+                    <i class="fa-solid fa-gear"></i>
+                </div>
+            </div>
         </div>
         <div class="FLC-Right">
+            <div class="flcr_header">
+                <h2>People you may know</h2>
+                <div class="see_all">
+                    See all
+                </div>
+            </div>
+            <div class="flcr_container">
 
+            </div>
         </div>
     </section>
 
