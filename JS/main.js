@@ -37,6 +37,7 @@ $(document).ready(function() {
     });
 
 
+
     // Login AJAX Request
     $('#login-form').submit(function(e) {
         e.preventDefault(); 
@@ -73,18 +74,16 @@ $(document).ready(function() {
     });
 
 
+
     // Logout AJAX Request
     $('#logout-form').submit(function(e) {
         e.preventDefault();
     
-        // Display confirmation dialog
         if (window.confirm('Are you sure you want to log out?')) {
-            // If user confirms, proceed with logout AJAX request
             $.ajax({
                 type: 'POST',
                 url: 'logout.php',
                 success: function() {
-                    // Redirect to index.php after successful logout
                     window.location.href = 'index.php';
                 },
                 error: function(xhr, status, error) {
@@ -96,27 +95,26 @@ $(document).ready(function() {
     });
 
 
-    $(document).ready(function() {
-        // Get current user's email
+
+    // Function to fetch accounts
+    function fetchAccounts() {
         var userEmail = "<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ''; ?>";
-    
-        // AJAX request to fetch accounts data
+        
         $.ajax({
             type: 'GET',
             url: 'fetch_accounts.php',
-            data: { userEmail: userEmail }, // Pass user email as parameter
+            data: { userEmail: userEmail }, 
             dataType: 'json',
             success: function(response) {
+                $('.flcr_container').empty(); 
                 response.forEach(function(account) {
-                    // Create profile elements
-                    var profile = $('<div>').addClass('user_follow');
+                    var profile = $('<div>').addClass('user_follow').attr('data-user-id', account.id); 
                     var profileImg = $('<img>').attr('src', account.profile_picture).attr('alt', 'Profile Picture');
                     var profileInfo = $('<div>').addClass('uf_info');
                     var profileName = $('<h3>').text(account.firstname + ' ' + account.lastname);
                     var followBtn = $('<button>').addClass('followBtn').text('Follow');
                     var removeBtn = $('<button>').addClass('removeBtn').text('Delete');
     
-                    // Append profile elements to container
                     profileInfo.append(profileName, followBtn, removeBtn);
                     profile.append(profileImg, profileInfo);
                     $('.flcr_container').append(profile);
@@ -127,6 +125,32 @@ $(document).ready(function() {
                 alert('An error occurred while fetching accounts.');
             }
         });
+    }
+
+    // Call fetchAccounts
+    fetchAccounts();
+
+    // Follow Button Click Event
+    $(document).on('click', '.followBtn', function() {
+        var friendId = $(this).closest('.user_follow').attr('data-user-id');
+
+        $.ajax({
+            type: 'POST',
+            url: 'follow.php',
+            data: { friendId: friendId },
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    alert(response.message);
+                    fetchAccounts();
+                } else {
+                    alert(response.message);
+                }
+            },            
+            error: function(xhr, status, error) {
+                console.error(xhr.responseText);
+                alert('An error occurred while following');
+            }
+        });
     });
-    
 });

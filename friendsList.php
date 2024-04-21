@@ -111,7 +111,7 @@
                     See all
                 </div>
             </div>
-            <div class="flcr_container">
+            <div class="flcr_container" data-user-id="<?php echo $account['id']; ?>">
                 <!-- <div class="user_follow">
                     <img src="Assets/default-profilepicture.png" alt="Profile Picture">
                     <div class="uf_info">
