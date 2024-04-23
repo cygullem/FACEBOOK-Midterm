@@ -334,6 +334,11 @@ nav {
   height: 60px;
   width: 100%;
   border-radius: 7px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
 }
 
 .content-Left>div:hover {
@@ -347,50 +352,44 @@ nav {
 }
 
 .content-Center {
-  max-height: 100%;
-  padding-top: 34.5rem;
+  max-height: 92vh;
   width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: #f0f2f5;
-  overflow-y: hidden;
-}
-
-.content-Center:hover {
   overflow-y: auto;
 }
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   width: 7px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
   background: #dbdbdb;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
   border-radius: 5px;
   background: #59a1ff;
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
-}
+} */
 
 
-.post_Container {
-  padding-top: 310px;
-  width: 100%;
+/* .post_Container {
+  height: 92vh;
+  width: 100%; 
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-}
+  overflow-y: auto;
+} */
 .users_Followers {
+  margin-top: 20px;
   height: 20vh;
   width: 100%;
   padding: 15px;
@@ -469,23 +468,33 @@ nav {
 
 .users_Posts {
   margin-top: 17px;
-  height: 450px;
+  height: 10em;
+  flex-grow: 1; 
   width: 100%;
   border-radius: 10px;
   background-color: #ffffff;
 }
 
 .content-Right {
-  height: 100%;
+  height: 92vh;
   width: 25%;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   background-color: #f0f2f5;
-  border: 1px solid red;
-}
-
-.content-Center iframe {
-  height: 1000px;
-  margin-top: 30px;
   overflow-y: auto;
+}
+.content-Right > div{
+  height: 60px;
+  flex-grow: 1;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  background-color: #050505;
 }
 
 .CL-userProfile {
@@ -496,7 +505,7 @@ nav {
   gap: 8px;
 }
 
-.CL-userProfile>div {
+.CL-userProfile > div {
   height: 100%;
 }
 

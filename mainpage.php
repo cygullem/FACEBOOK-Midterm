@@ -114,14 +114,16 @@ if (!isset($_SESSION['email'])) {
                 </div>
                 <div class="_userName">Cy Gullem</div>
             </div>
-            <div></div>
+            <div>
+                <h1>Following</h1>
+            </div>
             <div></div>
             <div></div>
             <div></div>
         </div>
 
         <div class="content-Center">
-            <div class="post_Container">
+            <!-- <div class="post_Container"> -->
                 <div class="users_Followers" id="users_Followers">
                     <div class="Uf_cont">
                         <img src="Assets/UserProfile.png" alt="Profile">
@@ -145,12 +147,22 @@ if (!isset($_SESSION['email'])) {
                     </div>
                 </div>
                 <div class="users_Posts"></div>
-                <div class="users_Posts"></div>
-                <div class="users_Posts"></div>
-            </div>
+            <!-- </div> -->
         </div>
 
-        <div class="content-Right"></div>
+        <div class="content-Right">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
     </section>
 
     <div class="popup-container" id="popupContainer">
