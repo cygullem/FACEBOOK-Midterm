@@ -153,4 +153,31 @@ $(document).ready(function() {
             }
         });
     });
+
+
+
+    // Remove Button Click Event
+    $(document).on('click', '.removeBtn', function() {
+        var userId = $(this).closest('.user_follow').attr('data-user-id');
+
+        $.ajax({
+            type: 'POST',
+            url: 'remove_accounts.php',
+            data: { userId: userId },
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    alert(response.message);
+                    fetchAccounts(); 
+                } else {
+                    alert(response.message);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr.responseText);
+                alert('An error occurred while removing');
+            }
+        });
+    });
+
 });
