@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scrollbar-gutter: stable;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -30,7 +31,6 @@ nav {
   justify-content: space-evenly;
   background-color: #ffffff;
   box-sizing: border-box;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .fb-search {
@@ -351,14 +351,19 @@ nav {
   border: 1px solid #cbcbcb;
 }
 
+
+
 .content-Center {
-  max-height: 92vh;
+  height: 92vh;
   width: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  scrollbar-gutter: stable;
+  overflow-y: auto;
   background-color: #f0f2f5;
+}
+.content-Center:hover{
   overflow-y: auto;
 }
 ::-webkit-scrollbar {
@@ -378,16 +383,6 @@ nav {
   background: #555;
 }
 
-
-.post_Container {
-  height: 92vh;
-  width: 100%; 
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  overflow-y: auto;
-}
 .users_Followers {
   margin-top: 20px;
   height: 20vh;
@@ -468,33 +463,34 @@ nav {
 
 .users_Posts {
   margin-top: 17px;
-  height: 10em;
-  flex-grow: 1; 
-  width: 100%;
+  height: 50vh;
+  width: 100%; 
   border-radius: 10px;
   background-color: #ffffff;
 }
+
+
 
 .content-Right {
   height: 92vh;
   width: 25%;
   gap: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  background-color: #f0f2f5;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
   overflow-y: auto;
+  background-color: #f0f2f5;
 }
 .content-Right > div{
   height: 60px;
-  flex-grow: 1;
+  width: 100%;
   border-radius: 7px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 8px;
-  background-color: #050505;
+  background-color: #8ad2ff;
 }
 
 .CL-userProfile {
