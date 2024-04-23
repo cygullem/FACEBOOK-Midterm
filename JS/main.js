@@ -113,7 +113,7 @@ $(document).ready(function() {
                     var profileInfo = $('<div>').addClass('uf_info');
                     var profileName = $('<h3>').text(account.firstname + ' ' + account.lastname);
                     var followBtn = $('<button>').addClass('followBtn').text('Follow');
-                    var removeBtn = $('<button>').addClass('removeBtn').text('Delete');
+                    var removeBtn = $('<button>').addClass('removeBtn').text('Remove');
                     
                     profileInfo.append(profileName, followBtn, removeBtn);
                     profile.append(profileImg, profileInfo);
