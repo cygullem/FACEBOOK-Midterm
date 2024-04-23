@@ -48,7 +48,7 @@
             </div>
         </div>
         <div class="fb-menu">
-            <div class="FBM" id="postContent">
+            <div class="FBM" id="postContent" onclick="goToMainPage()">
                 <i class="fa-solid fa-plus"></i>
             </div>
             <div class="FBM">
