@@ -4,7 +4,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  scrollbar-gutter: stable;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -481,6 +480,9 @@ nav {
   grid-template-rows: 1fr;
   overflow-y: auto;
   background-color: #f0f2f5;
+}
+.content-Right::-webkit-scrollbar{
+  width: 0;
 }
 .content-Right > div{
   height: 60px;
