@@ -10,12 +10,12 @@ if (!isset($_SESSION['email'])) {
 $userEmail = $_SESSION['email'];
 $friendId = $_POST['friendId']; 
 
-$stmt = $pdo->prepare("INSERT INTO user_following (follower_id, followed_id, created_at) VALUES ((SELECT id FROM login_table WHERE email = ?), ?, NOW())");
+$stmt = $pdo->prepare("DELETE FROM user_following WHERE follower_id = (SELECT id FROM login_table WHERE email = ?) AND followed_id = ?");
 $stmt->execute([$userEmail, $friendId]);
 
 if ($stmt->rowCount() > 0) {
-    echo json_encode(['status' => 'success', 'message' => 'Followed successfully']);
+    echo json_encode(['status' => 'success', 'message' => 'Unfollowed successfully']);
 } else {
-    echo json_encode(['status' => 'error', 'message' => 'Failed to follow']);
+    echo json_encode(['status' => 'error', 'message' => 'Failed to unfollow']);
 }
 ?>

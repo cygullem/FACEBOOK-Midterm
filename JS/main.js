@@ -114,7 +114,7 @@ $(document).ready(function() {
                     var profileName = $('<h3>').text(account.firstname + ' ' + account.lastname);
                     var followBtn = $('<button>').addClass('followBtn').text('Follow');
                     var removeBtn = $('<button>').addClass('removeBtn').text('Delete');
-    
+                    
                     profileInfo.append(profileName, followBtn, removeBtn);
                     profile.append(profileImg, profileInfo);
                     $('.flcr_container').append(profile);
@@ -130,13 +130,14 @@ $(document).ready(function() {
     // Call fetchAccounts
     fetchAccounts();
 
-    // Follow Button Click Event
-    $(document).on('click', '.followBtn', function() {
+    // Follow & Remove Button Click Event
+    $(document).on('click', '.followBtn, .removeBtn', function() {
         var friendId = $(this).closest('.user_follow').attr('data-user-id');
+        var isFollowAction = $(this).hasClass('followBtn'); // Check if it's a follow action
 
         $.ajax({
             type: 'POST',
-            url: 'follow.php',
+            url: isFollowAction ? 'follow.php' : 'unfollow.php', // Use follow.php or unfollow.php based on the button clicked
             data: { friendId: friendId },
             dataType: 'json',
             success: function(response) {
@@ -149,33 +150,7 @@ $(document).ready(function() {
             },            
             error: function(xhr, status, error) {
                 console.error(xhr.responseText);
-                alert('An error occurred while following');
-            }
-        });
-    });
-
-
-
-    // Remove Button Click Event
-    $(document).on('click', '.removeBtn', function() {
-        var userId = $(this).closest('.user_follow').attr('data-user-id');
-
-        $.ajax({
-            type: 'POST',
-            url: 'remove_accounts.php',
-            data: { userId: userId },
-            dataType: 'json',
-            success: function(response) {
-                if (response.status === 'success') {
-                    alert(response.message);
-                    fetchAccounts(); 
-                } else {
-                    alert(response.message);
-                }
-            },
-            error: function(xhr, status, error) {
-                console.error(xhr.responseText);
-                alert('An error occurred while removing');
+                alert('An error occurred while ' + (isFollowAction ? 'following' : 'unfollowing'));
             }
         });
     });
