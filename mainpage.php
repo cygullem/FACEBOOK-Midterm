@@ -158,66 +158,11 @@ if (!isset($_SESSION['email'])) {
                 <h2>Contacts</h2>
             </div>
             <div class="following_container">
-                <div class="fc-img">
-                    <img src="Assets/default-profilepicture.png" alt="Profile picture">
+                <!-- <div class="fc-img">
+                    <img src="" alt="Profile picture">
                 </div>
-                <div>Junalisa Jumao-as</div>
+                <div>display firstname and lastname here</div> -->
             </div>
-            <div class="following_container">
-                <div class="fc-img">
-                    <img src="Assets/default-profilepicture.png" alt="Profile picture">
-                </div>
-                <div>Junalisa Jumao-as</div>
-            </div>
-            <div class="following_container">
-                <div class="fc-img">
-                    <img src="Assets/default-profilepicture.png" alt="Profile picture">
-                </div>
-                <div>Junalisa Jumao-as</div>
-            </div>
-            <div class="following_container">
-                <div class="fc-img">
-                    <img src="Assets/default-profilepicture.png" alt="Profile picture">
-                </div>
-                <div>Junalisa Jumao-as</div>
-            </div>
-            <div class="following_container">
-                <div class="fc-img">
-                    <img src="Assets/default-profilepicture.png" alt="Profile picture">
-                </div>
-                <div>Junalisa Jumao-as</div>
-            </div>
-            <div class="following_container">
-                <div class="fc-img">
-                    <img src="Assets/default-profilepicture.png" alt="Profile picture">
-                </div>
-                <div>Junalisa Jumao-as</div>
-            </div>
-            <div class="following_container">
-                <div class="fc-img">
-                    <img src="Assets/default-profilepicture.png" alt="Profile picture">
-                </div>
-                <div>Junalisa Jumao-as</div>
-            </div>
-            <div class="following_container">
-                <div class="fc-img">
-                    <img src="Assets/default-profilepicture.png" alt="Profile picture">
-                </div>
-                <div>Junalisa Jumao-as</div>
-            </div>
-            <div class="following_container">
-                <div class="fc-img">
-                    <img src="Assets/default-profilepicture.png" alt="Profile picture">
-                </div>
-                <div>Junalisa Jumao-as</div>
-            </div>
-            <div class="following_container">
-                <div class="fc-img">
-                    <img src="Assets/default-profilepicture.png" alt="Profile picture">
-                </div>
-                <div>Junalisa Jumao-as</div>
-            </div>
-
         </div>
     </section>
 

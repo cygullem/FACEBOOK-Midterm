@@ -155,4 +155,37 @@ $(document).ready(function() {
         });
     });
 
+
+
+    // Function to fetch followed accounts
+    function fetchFollowing() {
+        var userEmail = "<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ''; ?>";
+
+        $.ajax({
+            type: 'GET',
+            url: 'fetch_following.php',
+            data: { userEmail: userEmail },
+            dataType: 'json',
+            success: function(response) {
+                $('.user_following').empty(); // Clear previous data before appending new data
+                response.forEach(function(account) {
+                    var container = $('<div>').addClass('following_container');
+                    var profileImg = $('<img>').attr('src', account.profile_picture).attr('alt', 'Profile Picture');
+                    var nameDiv = $('<div>').text(account.firstname + ' ' + account.lastname);
+
+                    container.append(profileImg, nameDiv);
+                    $('.user_following').append(container); // Append the container to the user_following div
+                });
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr.responseText);
+                alert('An error occurred while fetching followed accounts.');
+            }
+        });
+    }
+
+    // Call fetchFollowing
+    fetchFollowing();
+
+
 });
