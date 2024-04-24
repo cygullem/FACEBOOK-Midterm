@@ -133,11 +133,11 @@ $(document).ready(function() {
     // Follow & Remove Button Click Event
     $(document).on('click', '.followBtn, .removeBtn', function() {
         var friendId = $(this).closest('.user_follow').attr('data-user-id');
-        var isFollowAction = $(this).hasClass('followBtn'); // Check if it's a follow action
+        var isFollowAction = $(this).hasClass('followBtn'); 
 
         $.ajax({
             type: 'POST',
-            url: isFollowAction ? 'follow.php' : 'unfollow.php', // Use follow.php or unfollow.php based on the button clicked
+            url: isFollowAction ? 'follow.php' : 'unfollow.php', 
             data: { friendId: friendId },
             dataType: 'json',
             success: function(response) {
@@ -156,9 +156,8 @@ $(document).ready(function() {
     });
 
 
-
     // Function to fetch followed accounts
-    function fetchFollowing() {
+    function fetchFollowedAccounts() {
         var userEmail = "<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ''; ?>";
 
         $.ajax({
@@ -167,14 +166,16 @@ $(document).ready(function() {
             data: { userEmail: userEmail },
             dataType: 'json',
             success: function(response) {
-                $('.user_following').empty(); // Clear previous data before appending new data
-                response.forEach(function(account) {
-                    var container = $('<div>').addClass('following_container');
-                    var profileImg = $('<img>').attr('src', account.profile_picture).attr('alt', 'Profile Picture');
-                    var nameDiv = $('<div>').text(account.firstname + ' ' + account.lastname);
+                var container = $('.content-Right .following_container');
 
-                    container.append(profileImg, nameDiv);
-                    $('.user_following').append(container); // Append the container to the user_following div
+                // Append each followed account to the container
+                response.forEach(function(account) {
+                    var profileContainer = $('<div>').addClass('following_container');
+                    var profileImg = $('<div>').addClass('fc-img').append($('<img>').attr('src', account.profile_picture).attr('alt', 'Profile picture'));
+                    var profileName = $('<div>').text(account.firstname + ' ' + account.lastname);
+
+                    profileContainer.append(profileImg, profileName);
+                    container.append(profileContainer); // Append to the parent container
                 });
             },
             error: function(xhr, status, error) {
@@ -184,8 +185,7 @@ $(document).ready(function() {
         });
     }
 
-    // Call fetchFollowing
-    fetchFollowing();
-
+    // Call fetchFollowedAccounts
+    fetchFollowedAccounts();
 
 });

@@ -157,11 +157,11 @@ if (!isset($_SESSION['email'])) {
             <div>
                 <h2>Contacts</h2>
             </div>
-            <div class="following_container">
+            <div class="following_container" data-user-id="<?php echo $account['id']; ?>">
                 <!-- <div class="fc-img">
-                    <img src="" alt="Profile picture">
+                    <img src="Assets/default-profilepicture.png" alt="Profile picture">
                 </div>
-                <div>display firstname and lastname here</div> -->
+                <div>Dhaniel Malinao</div> -->
             </div>
         </div>
     </section>
