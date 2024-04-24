@@ -392,8 +392,7 @@ nav {
   height: 90%;
   width: 100%;
   display: grid;
-  /* grid-template-columns: repeat(5, 1fr); */
-  grid-template-columns: repeat(auto-fill, minmax( repeat(5, 1fr)));
+  grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(5, 1fr);
   gap: 10px;
   overflow-y: auto;
