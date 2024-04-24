@@ -1,4 +1,39 @@
 $(document).ready(function() {
+    // Function to fetch followed accounts
+    function fetchFollowedAccounts() {
+        var userEmail = "<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ''; ?>";
+
+        $.ajax({
+            type: 'GET',
+            url: 'fetch_following.php',
+            data: { userEmail: userEmail },
+            dataType: 'json',
+            success: function(response) {
+                // Clear the existing content
+                $('.content-Right .following_container').empty();
+
+                // Iterate through the response and create HTML for each account
+                response.forEach(function(account) {
+                    var profileContainer = $('<div>').addClass('following_container');
+                    var profileImg = $('<div>').addClass('fc-img').append($('<img>').attr('src', account.profile_picture).attr('alt', 'Profile picture'));
+                    var profileName = $('<div>').text(account.firstname + ' ' + account.lastname);
+
+                    profileContainer.append(profileImg, profileName);
+                    $('.content-Right').append(profileContainer);
+                });
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr.responseText);
+                alert('An error occurred while fetching followed accounts.');
+            }
+        });
+    }
+
+    // Call fetchFollowedAccounts when the page loads
+    fetchFollowedAccounts();
+
+
+
     // Signup AJAX Request
     $('#signup-form').submit(function(e) {
         e.preventDefault(); 
@@ -154,38 +189,4 @@ $(document).ready(function() {
             }
         });
     });
-
-
-    // Function to fetch followed accounts
-    function fetchFollowedAccounts() {
-        var userEmail = "<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ''; ?>";
-
-        $.ajax({
-            type: 'GET',
-            url: 'fetch_following.php',
-            data: { userEmail: userEmail },
-            dataType: 'json',
-            success: function(response) {
-                var container = $('.content-Right .following_container');
-
-                // Append each followed account to the container
-                response.forEach(function(account) {
-                    var profileContainer = $('<div>').addClass('following_container');
-                    var profileImg = $('<div>').addClass('fc-img').append($('<img>').attr('src', account.profile_picture).attr('alt', 'Profile picture'));
-                    var profileName = $('<div>').text(account.firstname + ' ' + account.lastname);
-
-                    profileContainer.append(profileImg, profileName);
-                    container.append(profileContainer); // Append to the parent container
-                });
-            },
-            error: function(xhr, status, error) {
-                console.error(xhr.responseText);
-                alert('An error occurred while fetching followed accounts.');
-            }
-        });
-    }
-
-    // Call fetchFollowedAccounts
-    fetchFollowedAccounts();
-
 });

@@ -471,6 +471,7 @@ nav {
 
 
 .content-Right {
+  z-index: 9999;
   height: 92vh;
   width: 25%;
   gap: 10px;
@@ -492,6 +493,7 @@ nav {
   align-items: center;
   justify-content: flex-start;
   gap: 8px;
+  cursor: pointer;
 }
 .fc-img{
   height: 43px;

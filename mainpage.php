@@ -115,7 +115,7 @@ if (!isset($_SESSION['email'])) {
                 <div class="_userName">Cy Gullem</div>
             </div>
             <div>
-                <h1>Following</h1>
+                <h1></h1>
             </div>
             <div></div>
             <div></div>
@@ -157,12 +157,12 @@ if (!isset($_SESSION['email'])) {
             <div>
                 <h2>Contacts</h2>
             </div>
-            <div class="following_container" data-user-id="<?php echo $account['id']; ?>">
-                <!-- <div class="fc-img">
+            <!-- <div class="following_container">
+                <div class="fc-img">
                     <img src="Assets/default-profilepicture.png" alt="Profile picture">
                 </div>
-                <div>Dhaniel Malinao</div> -->
-            </div>
+                <div>Dhaniel Malinao</div>
+            </div> -->
         </div>
     </section>
 
@@ -274,10 +274,9 @@ if (!isset($_SESSION['email'])) {
         </div>
     </div>
 
-
-
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="./JS/main.js"></script>
     <script src="./JS/script.js"></script>
 </body>
 
