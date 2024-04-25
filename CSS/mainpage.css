@@ -473,7 +473,6 @@ nav {
 .content-Right {
   height: 92vh;
   width: 25%;
-  gap: 10px;
   padding: 10px;
   display: grid;
   align-content: flex-start;
