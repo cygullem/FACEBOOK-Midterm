@@ -14,7 +14,7 @@
 <body id="link">
     <nav>
         <div class="fb-search">
-            <div class="logo">
+            <div class="logo" onclick="toggleRefresh()">
                 <!-- <img src="./Assets/Facebook-Logo.png" alt=""> -->
                 <img width="48" height="48" src="https://img.icons8.com/fluency/48/facebook-new.png" alt="facebook-new" />
             </div>

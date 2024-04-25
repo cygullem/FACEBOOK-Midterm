@@ -203,3 +203,7 @@ function goToMainPage() {
         exit;
     }
 }
+
+function toggleRefresh() {
+    window.location.href = "mainpage.php";
+}
