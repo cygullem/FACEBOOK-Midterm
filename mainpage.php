@@ -146,11 +146,6 @@ if (!isset($_SESSION['email'])) {
                 </div>
             </div>
             <div class="users_Posts"></div>
-            <div class="users_Posts"></div>
-            <div class="users_Posts"></div>
-            <div class="users_Posts"></div>
-            <div class="users_Posts"></div>
-            <div class="users_Posts"></div>
         </div>
 
         <div class="content-Right">

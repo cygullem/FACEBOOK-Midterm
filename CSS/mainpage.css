@@ -359,6 +359,7 @@ nav {
   display: grid;
   align-content: flex-start;
   scrollbar-gutter: stable;
+  padding-bottom: 17px;
   overflow-y: auto;
   background-color: #f0f2f5;
 }
@@ -370,16 +371,16 @@ nav {
 }
 
 ::-webkit-scrollbar-track {
-  background: #dbdbdb;
+  background: #f0f2f5;
 }
 
 ::-webkit-scrollbar-thumb {
   border-radius: 5px;
-  background: #59a1ff;
+  background: #f0f2f5;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #0866ff;
 }
 
 .users_Followers {
@@ -462,7 +463,7 @@ nav {
 
 .users_Posts {
   margin-top: 17px;
-  height: 50vh;
+  height: 70vh;
   width: 100%; 
   border-radius: 10px;
   background-color: #ffffff;
