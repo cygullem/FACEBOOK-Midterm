@@ -1,36 +1,72 @@
 $(document).ready(function() {
-    // Function to fetch followed accounts
-    function fetchFollowedAccounts() {
-        var userEmail = "<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ''; ?>";
+// Function to fetch followed accounts
+function fetchFollowedAccounts() {
+    var userEmail = "<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ''; ?>";
 
-        $.ajax({
-            type: 'GET',
-            url: 'fetch_following.php',
-            data: { userEmail: userEmail },
-            dataType: 'json',
-            success: function(response) {
-                // Clear the existing content
-                $('.content-Right .following_container').empty();
+    $.ajax({
+        type: 'GET',
+        url: 'fetch_following.php',
+        data: { userEmail: userEmail },
+        dataType: 'json',
+        success: function(response) {
+            // Clear the existing content
+            $('.content-Right .following_container').empty();
 
-                // Iterate through the response and create HTML for each account
-                response.forEach(function(account) {
-                    var profileContainer = $('<div>').addClass('following_container');
-                    var profileImg = $('<div>').addClass('fc-img').append($('<img>').attr('src', account.profile_picture).attr('alt', 'Profile picture'));
-                    var profileName = $('<div>').text(account.firstname + ' ' + account.lastname);
+            // Iterate through the response and create HTML for each account
+            response.forEach(function(account) {
+                var profileContainer = $('<div>').addClass('following_container');
+                var profileImg = $('<div>').addClass('fc-img').append($('<img>').attr('src', account.profile_picture).attr('alt', 'Profile picture'));
+                var profileName = $('<div>').addClass("uname_followed").text(account.firstname + ' ' + account.lastname);
 
-                    profileContainer.append(profileImg, profileName);
-                    $('.content-Right').append(profileContainer);
+                // Create the unfollow button
+                var unfollowBtn = $('<div>').addClass('unfollowBtn').text('❌');
+
+                // Bind click event to the unfollow button
+                unfollowBtn.click(function() {
+                    var friendId = account.id; // Retrieve friendId from account
+                    console.log("Unfollowing user with ID: " + friendId); // Log friendId
+                    unfollowUser(friendId); // Call function to unfollow user
                 });
-            },
-            error: function(xhr, status, error) {
-                console.error(xhr.responseText);
-                alert('An error occurred while fetching followed accounts.');
-            }
-        });
-    }
 
-    // Call fetchFollowedAccounts when the page loads
-    fetchFollowedAccounts();
+                profileContainer.append(profileImg, profileName, unfollowBtn);
+                $('.content-Right').append(profileContainer);
+            });
+        },
+        error: function(xhr, status, error) {
+            console.error(xhr.responseText);
+            alert('An error occurred while fetching followed accounts.');
+        }
+    });
+}
+
+// Call fetchFollowedAccounts when the page loads
+fetchFollowedAccounts();
+
+// Function to unfollow a user
+function unfollowUser(friendId) {
+    $.ajax({
+        type: 'POST',
+        url: 'unfollow.php',
+        data: { friendId: friendId },
+        dataType: 'json',
+        success: function(response) {
+            if (response.status === 'success') {
+                console.log(response.message); // Log success message
+                fetchFollowedAccounts(); // Refresh the list of followed accounts
+            } else {
+                console.error(response.message); // Log error message
+                alert('Failed to unfollow user.'); // Show error message to user
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error(xhr.responseText);
+            alert('An error occurred while unfollowing user.');
+        }
+    });
+}
+
+
+
 
 
 

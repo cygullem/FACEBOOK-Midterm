@@ -495,8 +495,8 @@ nav {
   cursor: pointer;
 }
 .fc-img{
-  height: 43px;
-  width: 43px;
+  height: 45px;
+  width: 45px;
   border-radius: 50%;
   object-fit: cover;
   overflow: hidden;
@@ -549,6 +549,16 @@ nav {
   font-weight: 500;
   font-family: 'Roboto', sans-serif;
   flex-grow: 1;
+}
+
+.uname_followed{
+  position: relative;
+  flex-grow: 1;
+}
+.followBtn{
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 /*-------------------------------------------------------- SECTION AREA --------------------------------------------------------*/

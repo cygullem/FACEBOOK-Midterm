@@ -8,7 +8,7 @@ if (!isset($_SESSION['email'])) {
 }
 
 $userEmail = $_SESSION['email'];
-$friendId = $_POST['friendId']; 
+$friendId = $_POST['friendId'];
 
 $stmt = $pdo->prepare("DELETE FROM user_following WHERE follower_id = (SELECT id FROM login_table WHERE email = ?) AND followed_id = ?");
 $stmt->execute([$userEmail, $friendId]);
@@ -18,4 +18,3 @@ if ($stmt->rowCount() > 0) {
 } else {
     echo json_encode(['status' => 'error', 'message' => 'Failed to unfollow']);
 }
-?>
