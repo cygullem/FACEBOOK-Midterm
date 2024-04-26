@@ -183,15 +183,25 @@ function openUserProfileMenu() {
     }
 }
 
-document.querySelector('.FBM .user_Profile').addEventListener('click', openUserProfileMenu);
-
+// Close the modal when clicking outside of it
 document.addEventListener('click', function(event) {
+    console.log("Clicked outside modal");
     var modal = document.getElementById('UPmc');
-    var profileTrigger = document.querySelector('.FBM.user_Profile');
-    if (!modal.contains(event.target) && event.target !== profileTrigger) {
+    var userProfileButton = document.querySelector('.FBM .user_Profile');
+    console.log("Clicked target:", event.target);
+    if (!modal.contains(event.target) && event.target !== userProfileButton) {
+        console.log("Closing modal");
         modal.style.display = 'none';
     }
 });
+
+// Open the modal when the user clicks on the user profile button
+document.querySelector('.FBM .user_Profile').addEventListener('click', function(event) {
+    event.stopPropagation();
+    openUserProfileMenu();
+});
+
+
 
 
 
