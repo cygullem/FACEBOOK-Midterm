@@ -183,7 +183,6 @@ function openUserProfileMenu() {
     }
 }
 
-
 document.querySelector('.FBM.user_Profile').addEventListener('click', openUserProfileMenu);
 
 document.addEventListener('click', function(event) {
@@ -193,8 +192,6 @@ document.addEventListener('click', function(event) {
         modal.style.display = 'none';
     }
 });
-
-
 
 
 
