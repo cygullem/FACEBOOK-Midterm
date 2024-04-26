@@ -175,17 +175,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // USER PROFILE MENU
 function openUserProfileMenu() {
-    toggleDivVisibility("UPmc");
-}
-
-function toggleDivVisibility(divId) {
-    var div = document.getElementById(divId);
-    if (div.style.display === "none" || div.style.display === "") {
-        div.style.display = "block";
+    var modal = document.getElementById('UPmc');
+    if (modal.style.display === 'none' || modal.style.display === '') {
+        modal.style.display = 'block';
     } else {
-        div.style.display = "none";
+        modal.style.display = 'none';
     }
 }
+
+
+document.querySelector('.FBM.user_Profile').addEventListener('click', openUserProfileMenu);
+
+document.addEventListener('click', function(event) {
+    var modal = document.getElementById('UPmc');
+    var profileTrigger = document.querySelector('.FBM.user_Profile');
+    if (!modal.contains(event.target) && event.target !== profileTrigger) {
+        modal.style.display = 'none';
+    }
+});
+
+
+
+
 
 document.querySelector('.content-Center').addEventListener('mouseenter', function() {
     this.style.overflowY = 'auto';

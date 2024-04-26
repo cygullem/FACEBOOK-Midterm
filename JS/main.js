@@ -19,7 +19,7 @@ function fetchFollowedAccounts() {
                 var profileName = $('<div>').addClass("uname_followed").text(account.firstname + ' ' + account.lastname);
 
                 // Create the unfollow button
-                var unfollowBtn = $('<div>').addClass('unfollowBtn').text('❌');
+                var unfollowBtn = $('<div>').addClass('unfollowBtn').html('<i class="fa-solid fa-xmark"></i>');
 
                 // Bind click event to the unfollow button
                 unfollowBtn.click(function() {

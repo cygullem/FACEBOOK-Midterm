@@ -223,6 +223,7 @@ nav {
 }
 
 .UP-menu_container {
+  z-index: 2;
   display: none;
   position: absolute;
   top: 59px;
@@ -559,6 +560,9 @@ nav {
   position: absolute;
   top: 0;
   right: 0;
+}
+.unfollowBtn i:hover{
+  color: #f02849;
 }
 
 /*-------------------------------------------------------- SECTION AREA --------------------------------------------------------*/
