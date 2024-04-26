@@ -183,7 +183,7 @@ function openUserProfileMenu() {
     }
 }
 
-document.querySelector('.FBM.user_Profile').addEventListener('click', openUserProfileMenu);
+document.querySelector('.FBM .user_Profile').addEventListener('click', openUserProfileMenu);
 
 document.addEventListener('click', function(event) {
     var modal = document.getElementById('UPmc');
