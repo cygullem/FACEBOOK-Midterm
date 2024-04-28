@@ -82,7 +82,17 @@ $(function () {
 
 
 
-//VIEW PASSWORD
+// Get references to the password field and the eye icon
+var passwordField = document.getElementById('passwordField');
+var togglePasswordIcon = document.getElementById('togglePassword');
+
+// Check if togglePasswordIcon exists before adding event listener
+if (togglePasswordIcon) {
+    togglePasswordIcon.addEventListener('click', function() {
+        togglePassword(passwordField, togglePasswordIcon);
+    });
+}
+
 function togglePassword(passwordField, icon) {
     if (passwordField.type === 'password') {
         passwordField.type = 'text';
@@ -94,6 +104,8 @@ function togglePassword(passwordField, icon) {
         icon.classList.add('fa-eye');
     }
 }
+
+
 
 
 
@@ -168,21 +180,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 // POSTING SCRIPT
-const container = document.querySelector(".container"),
-    privacy = container.querySelector(".post .privacy"),
-    arrowBack = container.querySelector(".audience .arrow-back");
-privacy.addEventListener("click", () => {
-    container.classList.add("active");
-});
-arrowBack.addEventListener("click", () => {
-    container.classList.remove("active");
-});
+// Select the container element
+const container = document.querySelector(".container");
 
-function closePostPopup() {
-    var closePopup = document.getElementById("popupContainer");
+// Check if the container element exists
+if (container) {
+    // Select the privacy element within the container
+    const privacy = container.querySelector(".post .privacy");
+    // Add event listener to the privacy element if it exists
+    if (privacy) {
+        privacy.addEventListener("click", () => {
+            container.classList.add("active");
+        });
+    }
 
-    closePopup.style.display = "none";
+    // Select the arrowBack element within the container
+    const arrowBack = container.querySelector(".audience .arrow-back");
+    // Add event listener to the arrowBack element if it exists
+    if (arrowBack) {
+        arrowBack.addEventListener("click", () => {
+            container.classList.remove("active");
+        });
+    }
 }
+
 
 
 
@@ -196,10 +217,20 @@ document.addEventListener("DOMContentLoaded", function () {
         popupContainer.style.display = "block";
     });
 
-    closePopupBtn.addEventListener("click", function () {
-        popupContainer.style.display = "none";
-    });
+    // Check if closePopupBtn exists before adding event listener
+    if (closePopupBtn) {
+        closePopupBtn.addEventListener("click", function () {
+            popupContainer.style.display = "none";
+        });
+    }
 });
+function closePostPopup() {
+    // Your logic to close the post popup goes here
+    // For example:
+    const popupContainer = document.getElementById("popupContainer");
+    popupContainer.style.display = "none";
+}
+
 
 
 
@@ -228,13 +259,25 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-document.querySelector('.content-Center').addEventListener('mouseenter', function() {
-    this.style.overflowY = 'auto';
-});
+// Select the element with the class .content-Center
+const contentCenter = document.querySelector('.content-Center');
 
-document.querySelector('.content-Center').addEventListener('mouseleave', function() {
-    this.style.overflowY = 'hidden';
-});
+// Check if the contentCenter element exists
+if (contentCenter) {
+    // Add event listener to the contentCenter element if it exists
+    contentCenter.addEventListener('mouseenter', function() {
+        this.style.overflowY = 'auto';
+    });
+}
+
+// Check if the contentCenter element exists
+if (contentCenter) {
+    // Add event listener to the contentCenter element if it exists
+    contentCenter.addEventListener('mouseleave', function() {
+        this.style.overflowY = 'hidden';
+    });
+}
+
 
 
 
