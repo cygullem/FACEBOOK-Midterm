@@ -7,10 +7,13 @@ document.addEventListener("DOMContentLoaded", function () {
         popupContainer.style.display = "block";
     });
 
-    closePopupBtn.addEventListener("click", function () {
-        popupContainer.style.display = "none";
-    });
+    if (closePopupBtn) { // Check if closePopupBtn exists
+        closePopupBtn.addEventListener("click", function () {
+            popupContainer.style.display = "none";
+        });
+    }
 });
+
 
 
 // POST POPUP
@@ -25,9 +28,11 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    closePopupBtn.addEventListener("click", function () {
-        popupContainer1.style.display = "none";
-    });
+    if (closePopupBtn) { // Check if closePopupBtn exists
+        closePopupBtn.addEventListener("click", function () {
+            popupContainer1.style.display = "none";
+        });
+    }
 });
 
 
@@ -36,29 +41,30 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener("DOMContentLoaded", function () {
     var showPopupButton = document.getElementById("showPopupButton");
 
-    var signupPopup = document.getElementById("signupPopup");
+    if (showPopupButton) { // Check if showPopupButton exists
+        var signupPopup = document.getElementById("signupPopup");
+        var closePopupIcon = document.getElementById("closePopupIcon");
 
-    var closePopupIcon = document.getElementById("closePopupIcon");
+        showPopupButton.addEventListener("click", function (event) {
+            event.preventDefault();
 
-    showPopupButton.addEventListener("click", function (event) {
-        event.preventDefault();
+            if (signupPopup) {
+                signupPopup.style.display = "flex";
+            }
+        });
 
-        if (signupPopup) {
-            signupPopup.style.display = "flex";
-        }
-    });
+        closePopupIcon.addEventListener("click", function () {
+            if (signupPopup) {
+                signupPopup.style.display = "none";
+            }
+        });
 
-    closePopupIcon.addEventListener("click", function () {
-        if (signupPopup) {
-            signupPopup.style.display = "none";
-        }
-    });
-
-    window.addEventListener("click", function (event) {
-        if (signupPopup && event.target === signupPopup) {
-            signupPopup.style.display = "none";
-        }
-    });
+        window.addEventListener("click", function (event) {
+            if (signupPopup && event.target === signupPopup) {
+                signupPopup.style.display = "none";
+            }
+        });
+    }
 });
 
 
@@ -89,32 +95,56 @@ function togglePassword(passwordField, icon) {
     }
 }
 
+
+
 // Show eye icon when user starts typing
-document.getElementById('passwordField').addEventListener('input', function () {
+document.addEventListener("DOMContentLoaded", function() {
     var passwordField = document.getElementById('passwordField');
-    var icon = document.getElementById('togglePassword');
-    icon.style.display = passwordField.value ? 'inline-block' : 'none';
+    if (passwordField) {
+        passwordField.addEventListener('input', function () {
+            var icon = document.getElementById('togglePassword');
+            icon.style.display = passwordField.value ? 'inline-block' : 'none';
+        });
+    }
 });
+
+
 
 // Toggle password visibility when eye icon is clicked
-document.getElementById('togglePassword').addEventListener('click', function () {
-    var passwordField = document.getElementById('passwordField');
-    var icon = document.getElementById('togglePassword');
-    togglePassword(passwordField, icon);
+document.addEventListener("DOMContentLoaded", function() {
+    var togglePassword = document.getElementById('togglePassword');
+    if (togglePassword) {
+        togglePassword.addEventListener('click', function () {
+            var passwordField = document.getElementById('passwordField');
+            togglePasswordVisibility(passwordField, togglePassword);
+        });
+    }
 });
+
+
 
 // Show eye icon when user starts typing in sign up password
-document.getElementById('SUpasswordField').addEventListener('input', function () {
-    var passwordField = document.getElementById('SUpasswordField');
-    var icon = document.getElementById('toggleSUPassword');
-    icon.style.display = passwordField.value ? 'inline-block' : 'none';
+document.addEventListener("DOMContentLoaded", function() {
+    var SUpasswordField = document.getElementById('SUpasswordField');
+    if (SUpasswordField) {
+        SUpasswordField.addEventListener('input', function () {
+            var icon = document.getElementById('toggleSUPassword');
+            icon.style.display = SUpasswordField.value ? 'inline-block' : 'none';
+        });
+    }
 });
 
+
+
 // Toggle password visibility when eye icon is clicked for sign up password
-document.getElementById('toggleSUPassword').addEventListener('click', function () {
-    var passwordField = document.getElementById('SUpasswordField');
-    var icon = document.getElementById('toggleSUPassword');
-    togglePassword(passwordField, icon);
+document.addEventListener("DOMContentLoaded", function() {
+    var toggleSUPassword = document.getElementById('toggleSUPassword');
+    if (toggleSUPassword) {
+        toggleSUPassword.addEventListener('click', function () {
+            var passwordField = document.getElementById('SUpasswordField');
+            togglePasswordVisibility(passwordField, toggleSUPassword);
+        });
+    }
 });
 
 
@@ -155,13 +185,12 @@ function closePostPopup() {
 }
 
 
+
 // POST CONTAINER POPUP
 document.addEventListener("DOMContentLoaded", function () {
     const postContent = document.getElementById("postContent");
     const popupContainer = document.getElementById("popupContainer");
     const closePopupBtn = document.getElementById("closePopup");
-
-    console.log("DOMContentLoaded event triggered");
 
     postContent.addEventListener("click", function () {
         popupContainer.style.display = "block";
@@ -171,6 +200,7 @@ document.addEventListener("DOMContentLoaded", function () {
         popupContainer.style.display = "none";
     });
 });
+
 
 
 // USER PROFILE MENU
@@ -183,25 +213,18 @@ function openUserProfileMenu() {
     }
 }
 
-// Close the modal when clicking outside of it
-document.addEventListener('click', function(event) {
-    console.log("Clicked outside modal");
-    var modal = document.getElementById('UPmc');
-    var userProfileButton = document.querySelector('.FBM .user_Profile');
-    console.log("Clicked target:", event.target);
-    if (!modal.contains(event.target) && event.target !== userProfileButton) {
-        console.log("Closing modal");
-        modal.style.display = 'none';
-    }
-});
+
 
 // Open the modal when the user clicks on the user profile button
-document.querySelector('.FBM .user_Profile').addEventListener('click', function(event) {
-    event.stopPropagation();
-    openUserProfileMenu();
+document.addEventListener("DOMContentLoaded", function() {
+    var user_Profile = document.querySelector('.FBM .user_Profile');
+    if (user_Profile) {
+        user_Profile.addEventListener('click', function(event) {
+            event.stopPropagation();
+            openUserProfileMenu();
+        });
+    }
 });
-
-
 
 
 
@@ -214,6 +237,7 @@ document.querySelector('.content-Center').addEventListener('mouseleave', functio
 });
 
 
+
 function goToMainPage() {
     if (confirm("Unable to post here, go to mainpage instead?")) {
         window.location.href = "mainpage.php"
@@ -221,6 +245,8 @@ function goToMainPage() {
         exit;
     }
 }
+
+
 
 function toggleRefresh() {
     window.location.href = "mainpage.php";
