@@ -189,7 +189,7 @@ if (!isset($_SESSION['email'])) {
                                     </div>
                                 </div>
                             </div>
-                            <textarea placeholder="Share your daily acitivity on Facenote" spellcheck="false" required></textarea>
+                            <textarea placeholder="Share your daily acitivity on Facenote" spellcheck="false"></textarea>
                             <div class="theme-emoji">
                                 <img src="icons/theme.svg" alt="theme">
                                 <img src="icons/smile.svg" alt="smile">
