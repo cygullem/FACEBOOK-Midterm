@@ -1,5 +1,4 @@
 $(document).ready(function() {
-    // Function to fetch followed accounts
     function fetchFollowedAccounts() {
         var userEmail = "<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ''; ?>";
 
@@ -11,13 +10,11 @@ $(document).ready(function() {
             success: function(response) {
                 $('.content-Right .following_container').empty();
 
-                // Iterate through the response and create HTML for each account
                 response.forEach(function(account) {
                     var profileContainer = $('<div>').addClass('following_container');
                     var profileImg = $('<div>').addClass('fc-img').append($('<img>').attr('src', account.profile_picture).attr('alt', 'Profile picture'));
                     var profileName = $('<div>').addClass("uname_followed").text(account.firstname + ' ' + account.lastname);
 
-                    // unfollow button
                     var unfollowBtn = $('<div>').addClass('unfollowBtn').html('<i class="fa-solid fa-xmark"></i>');
 
                     unfollowBtn.click(function() {
@@ -201,7 +198,7 @@ $(document).ready(function() {
     }
     fetchAccounts();
 
-    
+
 
     // Follow & Remove Button Click Event
     $(document).on('click', '.followBtn, .removeBtn', function() {
