@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-// OPEN POSTING POPUP WHEN USER CLICK THE "users_Followers" div
+// POST POPUP
 document.addEventListener("DOMContentLoaded", function() {
     const triggerDivs = document.querySelectorAll("._postTrigg");
     const popupContainer1 = document.getElementById("popupContainer");
