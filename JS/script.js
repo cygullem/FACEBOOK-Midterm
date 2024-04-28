@@ -138,13 +138,27 @@ document.addEventListener("DOMContentLoaded", function() {
 // Show eye icon when user starts typing in sign up password
 document.addEventListener("DOMContentLoaded", function() {
     var SUpasswordField = document.getElementById('SUpasswordField');
-    if (SUpasswordField) {
+    var toggleSUPassword = document.getElementById('toggleSUPassword');
+
+    if (SUpasswordField && toggleSUPassword) {
         SUpasswordField.addEventListener('input', function () {
-            var icon = document.getElementById('toggleSUPassword');
-            icon.style.display = SUpasswordField.value ? 'inline-block' : 'none';
+            toggleSUPassword.style.display = SUpasswordField.value ? 'inline-block' : 'none';
+        });
+
+        toggleSUPassword.addEventListener('click', function() {
+            if (SUpasswordField.type === 'password') {
+                SUpasswordField.type = 'text';
+                toggleSUPassword.classList.remove('fa-eye');
+                toggleSUPassword.classList.add('fa-eye-slash');
+            } else {
+                SUpasswordField.type = 'password';
+                toggleSUPassword.classList.remove('fa-eye-slash');
+                toggleSUPassword.classList.add('fa-eye');
+            }
         });
     }
 });
+
 
 
 
