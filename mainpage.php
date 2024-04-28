@@ -177,7 +177,8 @@ if (!isset($_SESSION['email'])) {
                                 <i class="fa-solid fa-xmark"></i>
                             </div>
                         </header>
-                        <form action="#">
+
+                        <form class="scroll" action="#">
                             <div class="content">
                                 <img src="Assets/UserProfile.png" alt="logo">
                                 <div class="details">
@@ -189,7 +190,12 @@ if (!isset($_SESSION['email'])) {
                                     </div>
                                 </div>
                             </div>
-                            <textarea placeholder="Share your daily acitivity on Facenote" spellcheck="false"></textarea>
+                            <div class="post-scroll-effect">
+                                <textarea class="textarea" placeholder="What's on  your mind Cy?" spellcheck="false" required></textarea>
+                                <div class="post-image">
+                                    <img src="Assets/UserProfile.png" alt="">
+                                </div>
+                            </div>
                             <div class="theme-emoji">
                                 <img src="icons/theme.svg" alt="theme">
                                 <img src="icons/smile.svg" alt="smile">
@@ -206,6 +212,7 @@ if (!isset($_SESSION['email'])) {
                             </div>
                             <button>Post</button>
                         </form>
+
                     </section>
                     <section class="audience">
                         <header>

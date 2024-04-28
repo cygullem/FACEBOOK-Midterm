@@ -935,3 +935,26 @@ form textarea:valid~button:hover {
 .list li.active .radio::before {
   background: #4599FF;
 }
+
+.post-image{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border: 1px solid red;
+  border-radius: 10px;
+  object-fit: cover;
+  overflow: hidden;
+}
+.post-image img{
+  height: 100%;
+  width: 100%;
+}
+.post-scroll-effect{
+  height: 20vh;
+  width: 100%;
+  overflow-y: auto;
+}
+.textarea{
+  height: 40px !important;
+}
