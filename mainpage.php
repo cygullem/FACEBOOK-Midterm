@@ -190,10 +190,10 @@ if (!isset($_SESSION['email'])) {
                                     </div>
                                 </div>
                             </div>
+                            <textarea placeholder="What's on  your mind Cy?" spellcheck="false"></textarea>
                             <div class="post-scroll-effect">
-                                <textarea class="textarea" placeholder="What's on  your mind Cy?" spellcheck="false" required></textarea>
                                 <div class="post-image">
-                                    <img src="Assets/UserProfile.png" alt="">
+                                    <img id="chosenImage" src="" alt=" ">
                                 </div>
                             </div>
                             <div class="theme-emoji">
@@ -203,14 +203,14 @@ if (!isset($_SESSION['email'])) {
                             <div class="options">
                                 <p>Add to Your Post</p>
                                 <ul class="list">
-                                    <li><img src="icons/gallery.svg" alt="gallery"></li>
+                                    <li id="fileInputTrigger"><img src="icons/gallery.svg" alt="gallery"></li>
                                     <li><img src="icons/tag.svg" alt="gallery"></li>
                                     <li><img src="icons/emoji.svg" alt="gallery"></li>
                                     <li><img src="icons/mic.svg" alt="gallery"></li>
                                     <li><img src="icons/more.svg" alt="gallery"></li>
                                 </ul>
                             </div>
-                            <button>Post</button>
+                            <button type="submit">Post</button>
                         </form>
 
                     </section>
@@ -285,6 +285,7 @@ if (!isset($_SESSION['email'])) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="./JS/main.js"></script>
     <script src="./JS/script.js"></script>
+    <script src="./JS/openInputFile.js"></script>
 </body>
 
 </html>

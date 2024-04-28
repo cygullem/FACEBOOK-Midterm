@@ -592,7 +592,8 @@ nav {
 
 .container {
   width: 500px;
-  height: 480px;
+  height: 610px;
+  padding-bottom: 10px;
   overflow: hidden;
   background: #fff;
   border-radius: 10px;
@@ -941,7 +942,6 @@ form textarea:valid~button:hover {
   align-items: center;
   justify-content: center;
   width: 100%;
-  border: 1px solid red;
   border-radius: 10px;
   object-fit: cover;
   overflow: hidden;
