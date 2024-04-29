@@ -178,7 +178,7 @@ if (!isset($_SESSION['email'])) {
                             </div>
                         </header>
 
-                        <form class="scroll" action="#">
+                        <form class="scroll" action="post.php" method="post">
                             <div class="content">
                                 <img src="Assets/UserProfile.png" alt="logo">
                                 <div class="details">
@@ -190,7 +190,7 @@ if (!isset($_SESSION['email'])) {
                                     </div>
                                 </div>
                             </div>
-                            <textarea placeholder="What's on  your mind Cy?" spellcheck="false"></textarea>
+                            <textarea name="post_text" placeholder="What's on your mind Cy?" spellcheck="false"></textarea>
                             <div class="post-scroll-effect">
                                 <div class="post-image">
                                     <img id="chosenImage" src="" alt=" ">

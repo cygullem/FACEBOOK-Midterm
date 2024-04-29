@@ -194,23 +194,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 // POSTING SCRIPT
-// Select the container element
 const container = document.querySelector(".container");
 
-// Check if the container element exists
 if (container) {
-    // Select the privacy element within the container
     const privacy = container.querySelector(".post .privacy");
-    // Add event listener to the privacy element if it exists
     if (privacy) {
         privacy.addEventListener("click", () => {
             container.classList.add("active");
         });
     }
 
-    // Select the arrowBack element within the container
     const arrowBack = container.querySelector(".audience .arrow-back");
-    // Add event listener to the arrowBack element if it exists
     if (arrowBack) {
         arrowBack.addEventListener("click", () => {
             container.classList.remove("active");
@@ -231,7 +225,6 @@ document.addEventListener("DOMContentLoaded", function () {
         popupContainer.style.display = "block";
     });
 
-    // Check if closePopupBtn exists before adding event listener
     if (closePopupBtn) {
         closePopupBtn.addEventListener("click", function () {
             popupContainer.style.display = "none";
@@ -239,8 +232,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 function closePostPopup() {
-    // Your logic to close the post popup goes here
-    // For example:
     const popupContainer = document.getElementById("popupContainer");
     popupContainer.style.display = "none";
 }
