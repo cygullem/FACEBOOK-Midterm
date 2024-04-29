@@ -95,6 +95,8 @@
             </div>
         </div>
     </nav>
+
+
     <section class="friendsList_Container">
         <div class="FLC-Left">
             <div class="flcl_menu">
@@ -103,7 +105,60 @@
                     <i class="fa-solid fa-gear"></i>
                 </div>
             </div>
+            <div class="flcl_menu_New fmn01">
+                <div class="icont home01">
+                    <i class="fa-solid fa-user-group"></i>
+                </div>
+                <div class="fmn_label">
+                    Home
+                </div>
+            </div>
+            <div class="flcl_menu_New">
+                <div class="icont">
+                    <i class="fa-solid fa-user-check"></i>
+                </div>
+                <div class="fmn_label">
+                    Friend Requests
+                    <i class="fa-solid fa-angle-right"></i>
+                </div>
+            </div>
+            <div class="flcl_menu_New">
+                <div class="icont">
+                    <i class="fa-solid fa-user-plus"></i>
+                </div>
+                <div class="fmn_label">
+                    Suggestions
+                    <i class="fa-solid fa-angle-right"></i>
+                </div>
+            </div>
+            <div class="flcl_menu_New">
+                <div class="icont">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+                <div class="fmn_label">
+                    All friends
+                    <i class="fa-solid fa-angle-right"></i>
+                </div>
+            </div>
+            <div class="flcl_menu_New">
+                <div class="icont">
+                    <i class="fa-solid fa-gift"></i>
+                </div>
+                <div class="fmn_label">
+                    Birthdays
+                </div>
+            </div>
+            <div class="flcl_menu_New">
+                <div class="icont">
+                    <i class="fa-solid fa-user-pen"></i>
+                </div>
+                <div class="fmn_label">
+                    Custom Lists
+                    <i class="fa-solid fa-angle-right"></i>
+                </div>
+            </div>
         </div>
+
         <div class="FLC-Right">
             <div class="flcr_header">
                 <h2>People you may know</h2>
