@@ -267,22 +267,17 @@ document.addEventListener("DOMContentLoaded", function() {
 // Select the element with the class .content-Center
 const contentCenter = document.querySelector('.content-Center');
 
-// Check if the contentCenter element exists
 if (contentCenter) {
-    // Add event listener to the contentCenter element if it exists
     contentCenter.addEventListener('mouseenter', function() {
         this.style.overflowY = 'auto';
     });
 }
 
-// Check if the contentCenter element exists
 if (contentCenter) {
-    // Add event listener to the contentCenter element if it exists
     contentCenter.addEventListener('mouseleave', function() {
         this.style.overflowY = 'hidden';
     });
 }
-
 
 
 

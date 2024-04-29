@@ -178,7 +178,7 @@ if (!isset($_SESSION['email'])) {
                             </div>
                         </header>
 
-                        <form class="scroll" action="post.php" method="post">
+                        <form class="scroll" action="post.php" method="post" enctype="multipart/form-data">
                             <div class="content">
                                 <img src="Assets/UserProfile.png" alt="logo">
                                 <div class="details">
@@ -192,6 +192,7 @@ if (!isset($_SESSION['email'])) {
                             </div>
                             <textarea name="post_text" placeholder="What's on your mind Cy?" spellcheck="false"></textarea>
                             <div class="post-scroll-effect">
+                                <input type="file" name="image" id="imageInput" style="display: none;">
                                 <div class="post-image">
                                     <img id="chosenImage" src="" alt=" ">
                                 </div>
@@ -282,6 +283,7 @@ if (!isset($_SESSION['email'])) {
     </div>
 
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="./JS/main.js"></script>
     <script src="./JS/script.js"></script>
