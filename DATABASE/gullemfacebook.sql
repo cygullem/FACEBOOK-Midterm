@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 25, 2024 at 05:30 PM
+-- Generation Time: Apr 29, 2024 at 04:57 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -53,7 +53,8 @@ INSERT INTO `login_table` (`id`, `firstname`, `lastname`, `email`, `profile_pict
 (16, 'Christy Lynn Pearl', 'Cose', 'christylynn@gmail.com', './Assets/default-profilepicture.png', '$2y$10$nZ3Gz5ctfujI5ufckMA7r./oOq/2Cv/XW5Sj92Gdj3RQ9XWsMO2DG', 'dc6b208505afca907dc8ad6d5fcb780b'),
 (17, 'Ann Phia', 'Alfafara', 'annphia@gmail.com', './Assets/default-profilepicture.png', '$2y$10$eakp0jpNBL0iqW9y.9rlR.BT.ySbawxq97N4CRvIUNZZtMF7OXgAm', '082b112fe6abe339adf4a53343248acb'),
 (18, 'Jessa Mae', 'Redondo', 'jessa@gmail.com', './Assets/default-profilepicture.png', '$2y$10$sS.BMALkRI6wZ.olaSd5pOC9NH0j4MYm/X4YVzQ5Nay5V6XvHb0xG', '2d08b6ce39597faea298e0de8a2abd28'),
-(19, 'Cathlenwin', 'Lawas', 'cathlennwin@gmail.com', './Assets/default-profilepicture.png', '$2y$10$kk68o/N5LDr6D.oMDW9Bh.6cVz.0SuPbRq0it5gQV00RaNObyurqe', '3a469834d2efcd12fd6385a357c3e5a7');
+(19, 'Cathlenwin', 'Lawas', 'cathlennwin@gmail.com', './Assets/default-profilepicture.png', '$2y$10$kk68o/N5LDr6D.oMDW9Bh.6cVz.0SuPbRq0it5gQV00RaNObyurqe', '3a469834d2efcd12fd6385a357c3e5a7'),
+(20, 'cyril', 'cyril', 'cyril@gmail.com', './Assets/default-profilepicture.png', '$2y$10$ZU7xu1BF00pdNvkXo3C.lucnCHbQwYeH7Zf2wgyjp3K7NgNi9Pleu', '9d9bae3b29422e47da16188306e4853d');
 
 -- --------------------------------------------------------
 
@@ -66,8 +67,17 @@ CREATE TABLE `post_table` (
   `user_id` int(11) NOT NULL,
   `caption` text DEFAULT NULL,
   `imagePost` varchar(255) DEFAULT NULL,
-  `created_at` datetime NOT NULL
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `post_table`
+--
+
+INSERT INTO `post_table` (`id`, `user_id`, `caption`, `imagePost`, `created_at`) VALUES
+(1, 14, 'try 01', NULL, '2024-04-29 13:37:45'),
+(2, 14, '', 'Post_Images/662fa2b812174_UserProfile.png', '2024-04-29 13:38:00'),
+(3, 14, 'yeey', 'Post_Images/662fa2c5bab2f_UserProfile.png', '2024-04-29 13:38:13');
 
 -- --------------------------------------------------------
 
@@ -87,21 +97,12 @@ CREATE TABLE `user_following` (
 --
 
 INSERT INTO `user_following` (`id`, `follower_id`, `followed_id`, `created_at`) VALUES
-(1, 4, 19, '2024-04-24 05:38:48'),
-(2, 4, 18, '2024-04-24 06:47:46'),
-(3, 4, 17, '2024-04-24 07:43:11'),
-(4, 4, 16, '2024-04-24 07:43:14'),
-(5, 4, 15, '2024-04-24 07:43:16'),
-(6, 4, 14, '2024-04-24 07:43:18'),
-(7, 4, 13, '2024-04-24 07:43:21'),
-(8, 4, 12, '2024-04-24 07:43:24'),
-(9, 4, 11, '2024-04-24 07:43:28'),
-(10, 4, 10, '2024-04-24 07:43:31'),
-(11, 4, 9, '2024-04-24 07:43:33'),
 (12, 10, 19, '2024-04-25 12:03:43'),
 (13, 10, 18, '2024-04-25 14:04:53'),
 (14, 10, 13, '2024-04-25 14:54:02'),
-(15, 10, 16, '2024-04-25 14:54:20');
+(15, 10, 16, '2024-04-25 14:54:20'),
+(26, 4, 9, '2024-04-28 17:12:00'),
+(27, 4, 20, '2024-04-28 17:17:33');
 
 --
 -- Indexes for dumped tables
@@ -135,19 +136,19 @@ ALTER TABLE `user_following`
 -- AUTO_INCREMENT for table `login_table`
 --
 ALTER TABLE `login_table`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `post_table`
 --
 ALTER TABLE `post_table`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user_following`
 --
 ALTER TABLE `user_following`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- Constraints for dumped tables
