@@ -455,16 +455,16 @@ nav {
   font-size: 16px;
   letter-spacing: 1px;
 }
-.uf_info button:hover{
-  opacity: .8;
-}
-.uf_info button:active{
-  scale: .965;
-}
 .followBtn{
   cursor: pointer;
   background-color: #0866ff;
   color: #ffffff;
+}
+.followBtn button:hover{
+  opacity: .8;
+}
+.followBtn button:active{
+  scale: .965;
 }
 .removeBtn{
   cursor: not-allowed;
