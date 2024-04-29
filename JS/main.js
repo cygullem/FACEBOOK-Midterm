@@ -196,6 +196,8 @@ $(document).ready(function() {
             }
         });
     }
+
+
     fetchAccounts();
 
 

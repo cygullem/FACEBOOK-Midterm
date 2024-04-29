@@ -423,11 +423,11 @@ nav {
   background-color: #ffffff;
 }
 .user_follow img{
-  height: 60%;
+  height: 55%;
   width: 100%;
 }
 .uf_info{
-  height: 40%;
+  height: 45%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -454,7 +454,6 @@ nav {
   font-weight: 500;
   font-size: 16px;
   letter-spacing: 1px;
-  cursor: pointer;
 }
 .uf_info button:hover{
   opacity: .8;
@@ -463,9 +462,11 @@ nav {
   scale: .965;
 }
 .followBtn{
+  cursor: pointer;
   background-color: #0866ff;
   color: #ffffff;
 }
 .removeBtn{
+  cursor: not-allowed;
   background-color: #e4e6eb;
 }
