@@ -326,26 +326,80 @@ nav {
 .content-Left {
   height: 92vh;
   width: 25%;
-  gap: 10px;
+  gap: 3px;
   display: grid;
   align-content: flex-start;
   padding: 10px;
   background-color: #f0f2f5;
 }
+.CL > div{
+  height: 43px;
+  width: 43px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  object-fit: cover;
+}
+.CL img{
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+}
+.memories{
+  margin: 0 2px 3px 0;
+  height: 48px !important;
+  width: 55px  !important;
+}
+.saved{
+  margin-left: 7px;
+  height: 73px !important;
+  width: 70px !important;
+}
+.groups{
+  margin: 1px 0 0 2px;
+  height: 78px !important;
+  width: 78px !important;
+}
+.video,
+.marketplace{
+  height: 70px !important;
+  width: 70px !important;
+}
+._seeMore > div{
+  height: 43px;
+  width: 43px;
+  border-radius: 50%;
+  background-color: #e4e6eb;
+}
+._seeMore i{
+  font-size: 22px;
+}
+
+.CL p{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: .9375rem;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+  flex-grow: 1;
+}
 
 .content-Left > div {
-  height: 60px;
+  height: 55px;
   width: 100%;
   border-radius: 7px;
-  padding: 8px;
+  padding: 10px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 8px;
 }
-.content-Left > div:nth-child(2){
-  background-color: transparent !important;
-}
+  /* .content-Left > div:nth-child(2){
+    background-color: transparent !important;
+  } */
 .content-Left > div:hover {
   background-color: #dfdfdf;
 }
@@ -535,6 +589,7 @@ nav {
 }
 
 ._profileSettings {
+  height: 43px;
   width: 43px;
   border-radius: 50%;
   object-fit: cover;

@@ -108,18 +108,54 @@ if (!isset($_SESSION['email'])) {
 
     <section class="content-container">
         <div class="content-Left">
-            <div class="CL-userProfile">
-                <div class="_profileSettings">
+            <div class="CL">
+                <div>
                     <img src="Assets/UserProfile.png" alt="Profile">
                 </div>
-                <div class="_userName">Cy Gullem</div>
+                <p>Cy Gullem</p>
             </div>
-            <div>
-                <h1></h1>
+            <div class="CL">
+                <div>
+                    <img src="./SVG/Friends.png" alt="">
+                </div>
+                <p>Friends</p>
             </div>
-            <div></div>
-            <div></div>
-            <div></div>
+            <div class="CL">
+                <div>
+                    <img class="memories" src="./SVG/Memories.png" alt="">
+                </div>
+                <p>Memories</p>
+            </div>
+            <div class="CL">
+                <div>
+                    <img class="saved" src="./SVG/Saved.png" alt="">
+                </div>
+                <p>Saved</p>
+            </div>
+            <div class="CL">
+                <div>
+                    <img class="groups" src="./SVG/Groups.png" alt="">
+                </div>
+                <p>Groups</p>
+            </div>
+            <div class="CL">
+                <div>
+                    <img class="video" src="./SVG/Video.png" alt="">
+                </div>
+                <p>Video</p>
+            </div>
+            <div class="CL">
+                <div>
+                    <img class="marketplace" src="./SVG/Marketplace.png" alt="">
+                </div>
+                <p>Marketplace</p>
+            </div>
+            <div class="CL _seeMore">
+                <div>
+                    <i class="fa-solid fa-angle-down"></i>
+                </div>
+                <p>See more</p>
+            </div>
         </div>
 
         <div class="content-Center">
