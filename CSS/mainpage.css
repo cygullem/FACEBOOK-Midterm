@@ -595,18 +595,20 @@ nav {
   width: 0;
 }
 .CR{
-  height: 41vh !important;
+  height: 340px !important;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
   padding: 0 !important;
   margin-bottom: 5px;
+  border: 1px solid red;
 }
 .CR > div:hover{
   background-color: #e9e9e9;
 }
 .CR p{
+  height: 30px;
   width: 100%;
   color: #6c6e72;
   line-height: 1.1765;
@@ -614,7 +616,7 @@ nav {
   font-weight: 600;
 }
 .sponsored{
-  height: 50%;
+  height: 100%;
   width: 100%;
   padding: 8px;
   gap: 8px;
