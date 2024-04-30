@@ -178,7 +178,12 @@ if (!isset($_SESSION['email'])) {
                 </div>
                 <p>Basketball Stars</p>
             </div>
-            <div class="SCL _Policies"></div>
+            <div class="SCL _Policies">
+                <p>
+                    Privacy &#183; Terms &#183; Advertising &#183; Ad Choices &#183; Cookies &#183; <br>
+                    More &#183; Meta &copy; 2024
+                </p>
+            </div>
         </div>
 
         <div class="content-Center">

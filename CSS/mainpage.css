@@ -326,7 +326,7 @@ nav {
 .content-Left {
   height: 92vh;
   width: 25%;
-  gap: 3px;
+  gap: 2px;
   display: grid;
   align-content: flex-start;
   overflow-y: auto;
@@ -409,7 +409,7 @@ nav {
   height: 55px;
   width: 100%;
   border-radius: 7px;
-  padding: 10px;
+  padding: 8px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -451,8 +451,15 @@ nav {
 .SCL p{
   flex-grow: 1;
 }
-._Policies{
-  border: 1px solid blue;
+
+._Policies:hover{
+  background-color: transparent !important;
+}
+._Policies p{
+  color: #65676B;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
 }
 
 
