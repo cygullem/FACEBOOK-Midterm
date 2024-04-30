@@ -218,8 +218,37 @@ if (!isset($_SESSION['email'])) {
         </div>
 
         <div class="content-Right">
+            <div class="CR">
+                <p>Sponsored</p>
+                <div class="sponsored">
+                    <div class="sponsored_img">
+                        <img src="./Assets/Birdland.png" alt="Sponsor">
+                    </div>
+                    <div class="sponsored_label">
+                        <span>
+                            <strong>Birdland: Logo Maker and Designer</strong> <br>
+                        </span>
+                        <span class="sponsor_website">
+                            www.birdland.com
+                        </span>
+                    </div>
+                </div>
+                <div class="sponsored">
+                    <div class="sponsored_img">
+                        <img src="./Assets/Birdland.png" alt="Sponsor">
+                    </div>
+                    <div class="sponsored_label">
+                        <span>
+                            <strong>Birdland: Logo Maker and Designer</strong> <br>
+                        </span>
+                        <span class="sponsor_website">
+                            www.csgdefender.com
+                        </span>
+                    </div>
+                </div>
+            </div>
             <div>
-                <h2>Contacts</h2>
+                <p>Contacts</p>
             </div>
             <!-- <div class="following_container">
                 <div class="fc-img">
