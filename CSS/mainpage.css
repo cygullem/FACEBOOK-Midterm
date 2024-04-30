@@ -414,6 +414,7 @@ nav {
   align-items: center;
   justify-content: flex-start;
   gap: 8px;
+  cursor: pointer;
 }
   /* .content-Left > div:nth-child(2){
     background-color: transparent !important;
