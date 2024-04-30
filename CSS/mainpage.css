@@ -378,6 +378,18 @@ nav {
   font-size: 22px;
 }
 
+.urshortcut{
+  height: 20px !important;
+  margin-bottom: 13px;
+}
+.urshortcut p{
+  color: #6c6e72;
+  line-height: 1.1765;
+  font-size: 1.0625rem;
+  font-weight: 600;
+}
+
+.SCL p,
 .CL p{
   display: flex;
   align-items: center;
@@ -386,6 +398,11 @@ nav {
   font-weight: 500;
   font-family: 'Roboto', sans-serif;
   flex-grow: 1;
+}
+
+.line{
+  margin: 8px 0 8px 0;
+  width: 300px;
 }
 
 .content-Left > div {
@@ -411,6 +428,32 @@ nav {
   border: 1px solid #cbcbcb;
 }
 
+.SCL{
+  height: 55px;
+  width: 100%;
+  border-radius: 7px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+}
+.SCL > div{
+  height: 43px;
+  width: 43px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+.SCL > div img{
+  height: 100%;
+  width: 100%;
+}
+.SCL p{
+  flex-grow: 1;
+}
+._Policies{
+  border: 1px solid blue;
+}
 
 
 .content-Center {

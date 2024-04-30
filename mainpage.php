@@ -156,6 +156,29 @@ if (!isset($_SESSION['email'])) {
                 </div>
                 <p>See more</p>
             </div>
+            <hr class="line">
+            <div class="urshortcut">
+                <p>Your shortcuts</p>
+            </div>
+            <div class="SCL">
+                <div>
+                    <img src="./Assets/TBKK.png" alt="">
+                </div>
+                <p>TAGA BOGO KA KUNG??????</p>
+            </div>
+            <div class="SCL">
+                <div>
+                    <img src="./Assets/8BALLPOOL.png" alt="">
+                </div>
+                <p>8 Ball Pool</p>
+            </div>
+            <div class="SCL">
+                <div>
+                    <img src="./Assets/BASKETBALLSTARS.png" alt="">
+                </div>
+                <p>Basketball Stars</p>
+            </div>
+            <div class="SCL _Policies"></div>
         </div>
 
         <div class="content-Center">
