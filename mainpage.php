@@ -235,11 +235,11 @@ if (!isset($_SESSION['email'])) {
                 </div>
                 <div class="sponsored">
                     <div class="sponsored_img">
-                        <img src="./Assets/Birdland.png" alt="Sponsor">
+                        <img src="./Assets/csg-logo.jpg" alt="Sponsor">
                     </div>
                     <div class="sponsored_label">
                         <span>
-                            <strong>Birdland: Logo Maker and Designer</strong> <br>
+                            <strong>CSG: Your defender against cyberattacks</strong> <br>
                         </span>
                         <span class="sponsor_website">
                             www.csgdefender.com
