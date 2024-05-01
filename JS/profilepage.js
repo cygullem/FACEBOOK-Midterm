@@ -11,3 +11,10 @@ document.addEventListener("DOMTContentLoaded", function() {
         homeIcon.style.color = "#949596";
     });
 })
+
+function goToMainPage() {
+    if (confirm("Unable to post here, go to mainpage instead?")) {
+        window.location.href = "mainpage.php";
+    } else {
+    }
+}
