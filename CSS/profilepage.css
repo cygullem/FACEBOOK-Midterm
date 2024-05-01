@@ -141,19 +141,19 @@ nav {
 }
 
 .fbchome:hover,
+.friends:hover,
 .market:hover,
 .groups:hover,
-.games:hover {
-  color: #0866ff;
-  background-color: #e4e6e8;
-}
+.games:hover,
 .fbchome i:hover,
+.friends i:hover,
 .market i:hover,
 .groups i:hover,
-.games i:hover {
+.games i:hover{
   color: #0866ff;
   background-color: #e4e6e8;
 }
+
 
 .FBC i {
   font-size: 28px;
