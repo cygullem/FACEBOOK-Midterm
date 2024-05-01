@@ -330,7 +330,7 @@ nav {
 }
 .FLC-Left{
   height: 100%;
-  width: 24%;
+  width: 25%;
   display: grid;
   align-content: flex-start;
   padding: 10px;
@@ -399,7 +399,7 @@ nav {
 
 .FLC-Right{
   height: 100%;
-  width: 76%;
+  width: 75%;
   display: flex;
   flex-direction: column;
   align-items: center;
