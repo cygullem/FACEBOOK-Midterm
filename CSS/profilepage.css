@@ -164,19 +164,6 @@ nav {
   position: relative;
 }
 
-.underline {
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  height: 3px;
-  width: 100%;
-  background-color: #0866ff;
-}
-
-.friends i {
-  color: #0866ff;
-}
-
 .active {
   color: #0866ff;
 }

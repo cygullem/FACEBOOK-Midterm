@@ -1024,7 +1024,6 @@ form textarea:valid~button:hover {
 .audience header p {
   font-size: 22px;
   font-weight: 600;
-  color: var(--color);
 }
 
 .audience .content {
