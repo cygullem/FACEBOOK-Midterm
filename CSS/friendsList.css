@@ -340,6 +340,9 @@ nav {
   gap: 5px;
   background-color: #ffffff;
 }
+.FLC-Left > div{
+  cursor: pointer;
+}
 
 .flcl_menu,
 .flcl_menu_New{
