@@ -7,6 +7,10 @@
   font-family: 'Roboto', sans-serif;
 }
 
+::root{
+  --color: #050505;
+}
+
 body {
   height: 100vh;
   width: 100vw;
@@ -30,7 +34,6 @@ nav {
   justify-content: space-evenly;
   background-color: #ffffff;
   box-sizing: border-box;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .fb-search {

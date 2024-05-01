@@ -38,10 +38,12 @@ if (!isset($_SESSION['email'])) {
             </div>
         </div>
         <div class="fb-content">
-            <div class="FBC fbchome">
-                <i class='bx bx-home-alt' id="homeIcon"></i>
-                <div class="underline"></div>
-            </div>
+            <a href="mainpage.php">
+                <div class="FBC fbchome">
+                    <i class='bx bx-home-alt' id="homeIcon"></i>
+                    <div class="underline"></div>
+                </div>
+            </a>
             <a href="friendsList.php">
                 <div class="FBC friends">
                     <i class='bx bx-group' id="friendsIcon"></i>
@@ -134,7 +136,7 @@ if (!isset($_SESSION['email'])) {
             </div>
             <div class="CL">
                 <div>
-                    <img class="groups" src="./SVG/Groups.png" alt="">
+                    <img class="groups1" src="./SVG/Groups.png" alt="">
                 </div>
                 <p>Groups</p>
             </div>
