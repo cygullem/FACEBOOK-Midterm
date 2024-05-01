@@ -294,3 +294,10 @@ function goToMainPage() {
 function toggleRefresh() {
     window.location.href = "mainpage.php";
 }
+
+
+
+//Redirect to Profile Page
+function redirectToProfilePage() {
+    window.location.href = "profile_page.php";
+}

@@ -155,6 +155,10 @@ nav {
   color: #949596;
 }
 
+.FBC i:hover{
+  color: #0866ff;
+}
+
 .fbchome {
   position: relative;
 }

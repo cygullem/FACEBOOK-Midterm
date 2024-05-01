@@ -108,7 +108,7 @@ if (!isset($_SESSION['email'])) {
 
     <section class="content-container">
         <div class="content-Left">
-            <div class="CL">
+            <div class="CL" onclick="redirectToProfilePage()">
                 <div>
                     <img src="Assets/UserProfile.png" alt="Profile">
                 </div>
