@@ -79,7 +79,7 @@ if (!isset($_SESSION['email'])) {
                     <div class="upmc_Upper">
                         <div class="upmcU _settings">
                             <div class="upmcU_right">
-                                <i class="fa-solid fa-gear"></i>
+                                <i class="fa-solid fa-gear changeColor"></i>
                             </div>
                             <div class="upmcU_left">Settings & privacy</div>
                         </div>
@@ -115,7 +115,7 @@ if (!isset($_SESSION['email'])) {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="./JS/main.js"></script>
-    <script src="./JS/script.js"></script>
+    <script src="./JS/profilepage.js"></script>
 </body>
 
 </html>
