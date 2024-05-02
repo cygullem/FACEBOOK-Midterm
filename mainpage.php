@@ -8,6 +8,19 @@ if (!isset($_SESSION['email'])) {
     header('Location: index.php');
     exit();
 }
+
+include 'dbconnection.php';
+
+$email = $_SESSION['email'];
+$stmt = $pdo->prepare("SELECT profile_picture FROM login_table WHERE email = ?");
+$stmt->execute([$email]);
+$user = $stmt->fetch();
+
+if ($user && isset($user['profile_picture'])) {
+    $_SESSION['profile_picture'] = $user['profile_picture'];
+} else {
+    $_SESSION['profile_picture'] = "./Assets/default-profilepicture.png";
+}
 ?>
 
 <!DOCTYPE html>
@@ -70,7 +83,7 @@ if (!isset($_SESSION['email'])) {
                 <i class="fa-solid fa-bell"></i>
             </div>
             <div class="FBM user_Profile" onclick="openUserProfileMenu()">
-                <img src="Assets/UserProfile.png" alt="Profile">
+                <img src="<?php echo $_SESSION['profile_picture']; ?>" alt="Profile">
                 <div class="UP-drpdwn">
                     <i class="fa-solid fa-angle-down"></i>
                 </div>
@@ -112,7 +125,7 @@ if (!isset($_SESSION['email'])) {
         <div class="content-Left">
             <div class="CL" onclick="redirectToProfilePage()">
                 <div>
-                    <img src="Assets/UserProfile.png" alt="Profile">
+                    <img src="<?php echo $_SESSION['profile_picture'];?>" alt="Profile">
                 </div>
                 <p>Cy Gullem</p>
             </div>
@@ -191,7 +204,7 @@ if (!isset($_SESSION['email'])) {
         <div class="content-Center">
             <div class="users_Followers" id="users_Followers">
                 <div class="Uf_cont">
-                    <img src="Assets/UserProfile.png" alt="Profile">
+                    <img src="<?php echo $_SESSION['profile_picture']; ?>" alt="Profile">
                     <div class="ask_Post  _postTrigg" id="ask_Post">
                         What's on your mind Cy?
                     </div>

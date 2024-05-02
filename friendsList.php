@@ -8,6 +8,19 @@ if (!isset($_SESSION['email'])) {
     header('Location: index.php');
     exit();
 }
+
+include 'dbconnection.php';
+
+$email = $_SESSION['email'];
+$stmt = $pdo->prepare("SELECT profile_picture FROM login_table WHERE email = ?");
+$stmt->execute([$email]);
+$user = $stmt->fetch();
+
+if ($user && isset($user['profile_picture'])) {
+    $_SESSION['profile_picture'] = $user['profile_picture'];
+} else {
+    $_SESSION['profile_picture'] = "./Assets/default-profilepicture.png";
+}
 ?>
 
 
@@ -71,7 +84,7 @@ if (!isset($_SESSION['email'])) {
                 <i class="fa-solid fa-bell"></i>
             </div>
             <div class="FBM user_Profile" onclick="openUserProfileMenu()">
-                <img src="Assets/UserProfile.png" alt="Profile">
+                <img src="<?php echo $_SESSION['profile_picture']; ?>" alt="Profile">
                 <div class="UP-drpdwn">
                     <i class="fa-solid fa-angle-down"></i>
                 </div>
