@@ -352,6 +352,10 @@ nav {
   border-radius: 7px;
   font-weight: 500;
   cursor: pointer;
+  user-select: none;
+}
+.addCoverPhoto:active{
+  scale: .957;
 }
 .addCoverPhoto:hover{
   filter: brightness(.9);
