@@ -225,5 +225,5 @@ $(document).ready(function() {
                 alert('An error occurred while ' + (isFollowAction ? 'following' : 'unfollowing'));
             }
         });
-    });    
+    });
 });
