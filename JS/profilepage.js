@@ -1,3 +1,24 @@
+// USER PROFILE MENU
+function openUserProfileMenu() {
+    var modal = document.getElementById('UPmc');
+    if (modal.style.display === 'none' || modal.style.display === '') {
+        modal.style.display = 'block';
+    } else {
+        modal.style.display = 'none';
+    }
+}
+
+//LOGOUT
+$(function () {
+    $('a#logout').click(function () {
+        if (confirm('Are you sure to logout')) {
+            return true;
+        }
+
+        return false;
+    });
+});
+
 
 document.addEventListener("DOMTContentLoaded", function() {
     const fbcDiv = document.getElementById("FBC");
