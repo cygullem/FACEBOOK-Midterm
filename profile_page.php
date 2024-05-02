@@ -111,6 +111,10 @@ if (!isset($_SESSION['email'])) {
         <div class="section_header">
             <div class="SH sh_1">
                 <img src="./Assets/lanscapeCanada.png" alt="Cover Photo">
+                <div class="addCoverPhoto">
+                    <i class='bx bxs-camera'></i>
+                    Edit cover photo
+                </div>
             </div>
             <div class="SH sh_2"></div>
             <div class="SH sh_3"></div>

@@ -330,6 +330,7 @@ nav {
   border: 1px solid red;
 }
 .sh_1{
+  position: relative;
   height: 58vh;
   width: 100%;
   object-fit: cover;
@@ -337,6 +338,26 @@ nav {
   border-radius: 0 0 10px 10px;
   background: rgb(236,238,241);
   background: linear-gradient(180deg, rgba(236,238,241,1) 84%, rgba(111,112,113,1) 100%);
+}
+.addCoverPhoto{
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  gap: 10px;
+  border-radius: 7px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.addCoverPhoto:hover{
+  filter: brightness(.9);
+}
+.addCoverPhoto i{
+  font-size: 20px;
 }
 .sh_1 img{
   height: 100%;
