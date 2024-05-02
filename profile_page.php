@@ -118,7 +118,10 @@ if (!isset($_SESSION['email'])) {
             </div>
             <div class="SH sh_2">
                 <div class="sh_ProfileCont">
-                    <img src="./Assets/default-profilepicture.png" alt="">
+                    <img src="./Assets/default-profilepicture.png" alt="Profile Picture">
+                </div>
+                <div class="sh2_camera">
+                    <i class='bx bxs-camera'></i>
                 </div>
                 <div class="sh2_cont">
                     <div class="sh2a"></div>
