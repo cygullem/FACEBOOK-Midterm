@@ -40,7 +40,7 @@ if (!isset($_SESSION['email'])) {
         <div class="fb-content">
             <a href="mainpage.php">
                 <div class="FBC fbchome">
-                    <i class='bx bx-home-alt' id="homeIcon"></i>
+                    <i class="fa-solid fa-house" id="homeIcon"></i>
                     <div class="underline"></div>
                 </div>
             </a>

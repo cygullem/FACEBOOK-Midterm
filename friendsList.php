@@ -46,7 +46,7 @@ if (!isset($_SESSION['email'])) {
             </a>
             <a href="friendsList.php">
                 <div class="FBC friends">
-                    <i class='bx bx-group' id="friendsIcon"></i>
+                    <i class="fa-solid fa-user-group" id="friendsIcon"></i>
                     <div class="underline"></div>
                 </div>
             </a>
