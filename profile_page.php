@@ -107,8 +107,15 @@ if (!isset($_SESSION['email'])) {
         </div>
     </nav>
 
-    <section>
-
+    <section class="junalisa">
+        <div class="section_header">
+            <div class="SH sh_1">
+                <img src="./Assets/lanscapeCanada.png" alt="Cover Photo">
+            </div>
+            <div class="SH sh_2"></div>
+            <div class="SH sh_3"></div>
+        </div>
+        <div class="section_body"></div>
     </section>
 
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
