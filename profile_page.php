@@ -116,8 +116,18 @@ if (!isset($_SESSION['email'])) {
                     Edit cover photo
                 </div>
             </div>
-            <div class="SH sh_2"></div>
-            <div class="SH sh_3"></div>
+            <div class="SH sh_2">
+                <div class="sh_ProfileCont">
+                    <img src="./Assets/default-profilepicture.png" alt="">
+                </div>
+                <div class="sh2_cont">
+                    <div class="sh2a"></div>
+                    <div class="sh2b"></div>
+                </div>
+            </div>
+            <div class="SH sh_3">
+                <div class="sh3_Cont"></div>
+            </div>
         </div>
         <div class="section_body"></div>
     </section>

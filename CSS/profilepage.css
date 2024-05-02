@@ -314,7 +314,7 @@ nav {
     flex-direction: column;
     align-items: center;
     overflow-y: auto;
-    background-color: rgb(196, 249, 196);
+    background-color:#d6d7da;
 }
 .section_header{
   height: 85vh;
@@ -369,10 +369,50 @@ nav {
   object-fit: cover;
 }
 .sh_2{
+  position: relative;
   height: 20vh;
   width: 100%;
+  display: flex;
+  padding: 20px 20px 20px 220px;
 }
+.sh_ProfileCont{
+  position: absolute;
+  top: -30px;
+  left: 25px;
+  height: 180px;
+  width: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  overflow: hidden;
+  background-color: #0866ff;
+  border: 4px solid #ffffff;
+}
+.sh_ProfileCont img{
+  height: 100%;
+  width: 100%;
+}
+.sh2_cont{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border: 1px solid red;
+}
+.sh2a,
+.sh2b{
+  height: 100%;
+  width: 100%;
+  border: 1px solid blue;
+}
+
+
 .sh_3{
   height: 6.8vh;
   width: 100%;
+  padding: 0px 20px 0 20px;
+}
+.sh3_Cont{
+  height: 100%;
+  width: 100%;
+  border: 1px solid blue;
 }
