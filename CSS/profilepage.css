@@ -21,6 +21,7 @@ i{
 }
 
 nav {
+  z-index: 1;
   padding: 5px 30px 5px 30px;
   width: 100vw;
   height: 8vh;
