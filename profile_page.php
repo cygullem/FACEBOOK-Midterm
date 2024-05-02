@@ -8,7 +8,25 @@ if (!isset($_SESSION['email'])) {
     header('Location: index.php');
     exit();
 }
+
+include 'dbconnection.php'; // Include your database connection file
+
+// Fetch profile picture path from the database based on the user's email
+$email = $_SESSION['email'];
+$stmt = $pdo->prepare("SELECT profile_picture FROM login_table WHERE email = ?");
+$stmt->execute([$email]);
+$user = $stmt->fetch();
+
+// Check if the user profile picture is set
+if ($user && isset($user['profile_picture'])) {
+    // Set the profile picture path in the session
+    $_SESSION['profile_picture'] = $user['profile_picture'];
+} else {
+    // Set a default profile picture path if the user profile picture is not set
+    $_SESSION['profile_picture'] = "./Assets/default-profilepicture.png";
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -118,7 +136,7 @@ if (!isset($_SESSION['email'])) {
             </div>
             <div class="SH sh_2">
                 <div class="sh_ProfileCont">
-                    <img id="profilePicture" src="./Assets/default-profilepicture.png" alt="Profile Picture">
+                    <img id="profilePicture" src="<?php echo $_SESSION['profile_picture']; ?>" alt="Profile Picture">
                 </div>
                 <div class="sh2_camera" id="cameraIcon">
                     <i class='bx bxs-camera'></i>
