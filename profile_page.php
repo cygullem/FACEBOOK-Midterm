@@ -139,8 +139,17 @@ if ($user && isset($user['profile_picture'])) {
                     <input type="file" id="profilePictureInput" style="display: none;">
                 </div>
                 <div class="sh2_cont">
-                    <div class="sh2a"></div>
-                    <div class="sh2b"></div>
+                    <div class="sh2a">
+                        <p class="sh2a_Username">Cy Gullem</p>
+                        <p class="follow_count">184 friends</p>
+                    </div>
+                    <div class="sh2b">
+                        <div class="sh2b_options">
+                            <div class="sh2bo_1"></div>
+                            <div class="sh2bo_1"></div>
+                            <div class="sh2bo_2"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="SH sh_3">

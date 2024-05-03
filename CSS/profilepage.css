@@ -325,10 +325,6 @@ nav {
   align-items: flex-start;
   padding: 0 138px 0 138px;
   background-color: #ffffff;
-  border: 1px solid red;
-}
-.SH{
-  border: 1px solid red;
 }
 .sh_1{
   position: relative;
@@ -375,7 +371,7 @@ nav {
   height: 20vh;
   width: 100%;
   display: flex;
-  padding: 20px 20px 20px 220px;
+  padding: 20px 20px 20px 230px;
 }
 .sh_ProfileCont{
   position: absolute;
@@ -414,13 +410,81 @@ nav {
   width: 100%;
   display: flex;
   align-items: center;
-  border: 1px solid red;
 }
-.sh2a,
+.sh2a{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+.sh2a_Username{
+  font-family: 'Roboto', sans-serif;
+  word-break: break-all;
+  font-size: 35px;
+  font-weight: 600;
+}
+.follow_count{
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+}
+.followersPicture{
+  height: 38px;
+  max-width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow-x: hidden;
+}
+.fPcont{
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+  overflow: hidden;
+  border: 2px solid #ffffff;
+}
+.fPcont img{
+  height: 100%;
+  width: 100%;
+}
+
 .sh2b{
   height: 100%;
   width: 100%;
-  border: 1px solid blue;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 8px;
+}
+.sh2b_options{
+  height: 38px; 
+  width: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.sh2b_options > div{
+  cursor: pointer;
+}
+.sh2bo_1:nth-child(2){
+  background-color: #e4e6eb;
+}
+.sh2bo_1{
+  height: 100%;
+  width: 120px;
+  border-radius: 6px;
+  background-color: #0866ff;
+}
+.sh2bo_2{
+  height: 100%;
+  width: 60px;
+  border-radius: 6px;
+  background-color: #e4e6eb;
 }
 
 
