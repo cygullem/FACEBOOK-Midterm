@@ -472,19 +472,34 @@ nav {
   cursor: pointer;
 }
 .sh2bo_1:nth-child(2){
+  color: #050505;
   background-color: #e4e6eb;
 }
 .sh2bo_1{
+  gap: 8px;
+  padding: 0 8px 0 8px;
   height: 100%;
-  width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 6px;
+  color: #ffffff;
   background-color: #0866ff;
 }
 .sh2bo_2{
+  gap: 8px;
+  padding: 0 20px 0 20px;
   height: 100%;
-  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 6px;
+  color: #050505;
   background-color: #e4e6eb;
+}
+.sh2bo_1:active,
+.sh2bo_2:active{
+  scale: .957;
 }
 
 

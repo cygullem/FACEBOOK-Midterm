@@ -145,9 +145,17 @@ if ($user && isset($user['profile_picture'])) {
                     </div>
                     <div class="sh2b">
                         <div class="sh2b_options">
-                            <div class="sh2bo_1"></div>
-                            <div class="sh2bo_1"></div>
-                            <div class="sh2bo_2"></div>
+                            <div class="sh2bo_1">
+                                <i class="fa-solid fa-plus"></i>
+                                Add to story
+                            </div>
+                            <div class="sh2bo_1">
+                                <i class="fa-solid fa-pen"></i>
+                                Edit profile
+                            </div>
+                            <div class="sh2bo_2">
+                                <i class="fa-solid fa-angle-down"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
