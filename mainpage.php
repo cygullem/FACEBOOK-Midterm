@@ -9,16 +9,20 @@ if (!isset($_SESSION['email'])) {
     exit();
 }
 
-include 'dbconnection.php';
+include 'dbconnection.php'; 
 
 $email = $_SESSION['email'];
-$stmt = $pdo->prepare("SELECT profile_picture FROM login_table WHERE email = ?");
+$stmt = $pdo->prepare("SELECT firstname, lastname, profile_picture FROM login_table WHERE email = ?");
 $stmt->execute([$email]);
 $user = $stmt->fetch();
 
-if ($user && isset($user['profile_picture'])) {
-    $_SESSION['profile_picture'] = $user['profile_picture'];
+if ($user) {
+    $_SESSION['firstname'] = $user['firstname'];
+    $_SESSION['lastname'] = $user['lastname'];
+    $_SESSION['profile_picture'] = isset($user['profile_picture']) ? $user['profile_picture'] : "./Assets/default-profilepicture.png";
 } else {
+    $_SESSION['firstname'] = "Guest";
+    $_SESSION['lastname'] = "";
     $_SESSION['profile_picture'] = "./Assets/default-profilepicture.png";
 }
 ?>
@@ -127,7 +131,7 @@ if ($user && isset($user['profile_picture'])) {
                 <div>
                     <img src="<?php echo $_SESSION['profile_picture'];?>" alt="Profile">
                 </div>
-                <p>Cy Gullem</p>
+                <p><?php echo $_SESSION['firstname'] . ' ' . $_SESSION['lastname']; ?></p>
             </div>
             <div class="CL">
                 <div>
@@ -206,7 +210,7 @@ if ($user && isset($user['profile_picture'])) {
                 <div class="Uf_cont">
                     <img src="<?php echo $_SESSION['profile_picture']; ?>" alt="Profile">
                     <div class="ask_Post  _postTrigg" id="ask_Post">
-                        What's on your mind Cy?
+                        What's on your mind <?php echo $_SESSION['firstname']?>?
                     </div>
                 </div>
                 <div class="Uf_activity">
@@ -288,9 +292,9 @@ if ($user && isset($user['profile_picture'])) {
 
                         <form class="scroll" action="post.php" method="post" enctype="multipart/form-data">
                             <div class="content">
-                                <img src="Assets/UserProfile.png" alt="logo">
+                                <img src="<?php echo $_SESSION['profile_picture']; ?>" alt="logo">
                                 <div class="details">
-                                    <p>Cy Gullem</p>
+                                    <p><?php echo $_SESSION['firstname'] . ' ' . $_SESSION['lastname']; ?></p>
                                     <div class="privacy">
                                         <i class="fas fa-user-friends"></i>
                                         <span>Friends</span>

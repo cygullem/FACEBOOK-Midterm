@@ -9,19 +9,24 @@ if (!isset($_SESSION['email'])) {
     exit();
 }
 
-include 'dbconnection.php';
+include 'dbconnection.php'; 
 
 $email = $_SESSION['email'];
-$stmt = $pdo->prepare("SELECT profile_picture FROM login_table WHERE email = ?");
+$stmt = $pdo->prepare("SELECT firstname, lastname, profile_picture FROM login_table WHERE email = ?");
 $stmt->execute([$email]);
 $user = $stmt->fetch();
 
-if ($user && isset($user['profile_picture'])) {
-    $_SESSION['profile_picture'] = $user['profile_picture'];
+if ($user) {
+    $_SESSION['firstname'] = $user['firstname'];
+    $_SESSION['lastname'] = $user['lastname'];
+    $_SESSION['profile_picture'] = isset($user['profile_picture']) ? $user['profile_picture'] : "./Assets/default-profilepicture.png";
 } else {
+    $_SESSION['firstname'] = "Guest";
+    $_SESSION['lastname'] = "";
     $_SESSION['profile_picture'] = "./Assets/default-profilepicture.png";
 }
 ?>
+
 
 
 <!DOCTYPE html>
@@ -140,7 +145,7 @@ if ($user && isset($user['profile_picture'])) {
                 </div>
                 <div class="sh2_cont">
                     <div class="sh2a">
-                        <p class="sh2a_Username">Cy Gullem</p>
+                        <p class="sh2a_Username"><?php echo $_SESSION['firstname'] . ' ' . $_SESSION['lastname']; ?></p>
                         <p class="follow_count">184 friends</p>
                     </div>
                     <div class="sh2b">
