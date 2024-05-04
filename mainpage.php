@@ -274,11 +274,11 @@ if ($user) {
 
                 <div class="usrsP_comment">
                     <div class="usrspcomL">
-                        <img src="./Assets/UserProfile.png" alt="Profile Image">
+                        <img src="<?php echo $_SESSION['profile_picture']; ?>" alt="Profile Image">
                     </div>
                     <div class="usrspcomR">
                         <form action="">
-                            <input type="text" placeholder="Comment as <?php echo $_SESSION['firstname'] . '' . $_SESSION['lastname'];?>">
+                            <input type="text" placeholder="Comment as <?php echo $_SESSION['firstname'] . ' ' . $_SESSION['lastname'];?>">
                         </form>
                     </div>
                 </div>
