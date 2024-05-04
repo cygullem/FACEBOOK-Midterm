@@ -228,12 +228,13 @@ if ($user) {
                     </div>
                 </div>
             </div>
-            <div class="users_Posts"></div>
-            <div class="users_Posts"></div>
-            <div class="users_Posts"></div>
-            <div class="users_Posts"></div>
-            <div class="users_Posts"></div>
-            <div class="users_Posts"></div>
+            <div class="users_Posts">
+                <div class="usrsP_1"></div>
+                <div class="usrsP_2"></div>
+                <div class="usrsP_3"></div>
+                <div class="usrsP_4"></div>
+                <div class="usrsP_5"></div>
+            </div>
         </div>
 
         <div class="content-Right">
