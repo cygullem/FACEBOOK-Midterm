@@ -756,7 +756,6 @@ section{
   object-fit: cover;
   overflow: hidden;
   border-radius: 50%;
-  border: 1px solid blue;
 }
 .usrspcomL img{
   height: 100%;
