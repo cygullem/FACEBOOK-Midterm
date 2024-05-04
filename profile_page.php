@@ -9,7 +9,7 @@ if (!isset($_SESSION['email'])) {
     exit();
 }
 
-include 'dbconnection.php'; 
+include 'dbconnection.php';
 
 $email = $_SESSION['email'];
 $stmt = $pdo->prepare("SELECT firstname, lastname, profile_picture FROM login_table WHERE email = ?");
@@ -38,7 +38,7 @@ if ($userId) {
     $stmt->execute([$userId]);
     $followerCount = $stmt->fetchColumn();
 } else {
-    $followerCount = 0; 
+    $followerCount = 0;
 }
 
 $followCountHTML = '<p class="follow_count">' . $followerCount . ' followers</p>';
@@ -171,11 +171,11 @@ $followCountHTML = '<p class="follow_count">' . $followerCount . ' followers</p>
                                 <i class="fa-solid fa-plus"></i>
                                 Add to story
                             </div>
-                            <div class="sh2bo_1">
+                            <div class="sh2bo_1 sh2boH">
                                 <i class="fa-solid fa-pen"></i>
                                 Edit profile
                             </div>
-                            <div class="sh2bo_2">
+                            <div class="sh2bo_2 sh2boH">
                                 <i class="fa-solid fa-angle-down"></i>
                             </div>
                         </div>
@@ -183,7 +183,25 @@ $followCountHTML = '<p class="follow_count">' . $followerCount . ' followers</p>
                 </div>
             </div>
             <div class="SH sh_3">
-                <div class="sh3_Cont"></div>
+                <div class="sh3_Cont">
+                    <div class="sh3C_left">
+                        <div class="sch3CL">Posts</div>
+                        <div class="sch3CL">About</div>
+                        <div class="sch3CL">Friends</div>
+                        <div class="sch3CL">Photos</div>
+                        <div class="sch3CL">Videos</div>
+                        <div class="sch3CL">Reels</div>
+                        <div class="sch3CL">
+                            More
+                            <i class="fa-solid fa-caret-down"></i>
+                        </div>
+                    </div>
+                    <div class="sh3C_right">
+                        <div class="sch3CR">
+                            <i class="fa-solid fa-ellipsis"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="section_body"></div>

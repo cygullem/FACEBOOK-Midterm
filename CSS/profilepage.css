@@ -5,6 +5,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
+  user-select: none;
 }
 
 body {
@@ -470,6 +471,7 @@ nav {
 }
 .sh2b_options > div{
   cursor: pointer;
+  user-select: none;
 }
 .sh2bo_1:nth-child(2){
   color: #050505;
@@ -497,6 +499,9 @@ nav {
   color: #050505;
   background-color: #e4e6eb;
 }
+.sh2boH:hover{
+  filter: brightness(.9);
+}
 .sh2bo_1:active,
 .sh2bo_2:active{
   scale: .957;
@@ -511,5 +516,59 @@ nav {
 .sh3_Cont{
   height: 100%;
   width: 100%;
-  border: 1px solid blue;
+  padding: 3px;
+  display: flex;
+  align-items: center;
+}
+.sh3C_left,
+.sh3C_right{
+  height: 100%;
+  width: 50%;
+}
+.sh3C_left{
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+}
+.sch3CL{
+  color: #717377;
+  font-weight: 500;
+  height: 100%;
+  width: 75px;
+  gap: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  cursor: pointer;
+  user-select: none;
+}
+.sch3CL:hover{
+  background-color: #e4e6e8;
+}
+.sch3CL:active,
+.sch3CR:active{
+  scale: .957;
+}
+
+.sh3C_right{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5px;
+}
+.sch3CR{
+  height: 40px;
+  width: 50px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e4e6eb;
+}
+.sch3CR i{
+  font-size: 20px;
+}
+.sch3CR:hover{
+  filter: brightness(.9);
 }
