@@ -25,6 +25,23 @@ if ($user) {
     $_SESSION['lastname'] = "";
     $_SESSION['profile_picture'] = "./Assets/default-profilepicture.png";
 }
+
+
+$userEmail = $_SESSION['email'];
+
+$stmt = $pdo->prepare("SELECT id FROM login_table WHERE email = ?");
+$stmt->execute([$userEmail]);
+$userId = $stmt->fetchColumn();
+
+if ($userId) {
+    $stmt = $pdo->prepare("SELECT COUNT(*) AS follower_count FROM user_following WHERE followed_id = ?");
+    $stmt->execute([$userId]);
+    $followerCount = $stmt->fetchColumn();
+} else {
+    $followerCount = 0; 
+}
+
+$followCountHTML = '<p class="follow_count">' . $followerCount . ' followers</p>';
 ?>
 
 
@@ -146,7 +163,7 @@ if ($user) {
                 <div class="sh2_cont">
                     <div class="sh2a">
                         <p class="sh2a_Username"><?php echo $_SESSION['firstname'] . ' ' . $_SESSION['lastname']; ?></p>
-                        <p class="follow_count">184 friends</p>
+                        <p class="follow_count"><?php echo $followCountHTML ?></p>
                     </div>
                     <div class="sh2b">
                         <div class="sh2b_options">
