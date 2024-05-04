@@ -409,7 +409,7 @@ if ($user) {
                                     </div>
                                 </div>
                             </div>
-                            <textarea name="post_text" placeholder="What's on your mind Cy?" spellcheck="false"></textarea>
+                            <textarea name="post_text" placeholder="What's on your mind <?php echo $_SESSION['firstname']?>?" spellcheck="false"></textarea>
                             <div class="post-scroll-effect">
                                 <input type="file" name="image" id="imageInput" style="display: none;">
                                 <div class="post-image">
