@@ -257,7 +257,7 @@ $(document).ready(function() {
                                     <i class="fa-solid fa-ellipsis"></i>
                                     <div class="usrsp_options">
                                         <p>Edit</p>
-                                        <p>Delete</p>
+                                        <p class="delete-btn" data-post-id="${post.id}">Delete</p>
                                     </div>
                                     <div class="triangle"></div>  
                                 </div>
@@ -302,4 +302,30 @@ $(document).ready(function() {
             console.error("An error occurred while fetching user's posts.");
         }
     });
+
+
+    $(document).on("click", ".delete-btn", function() {
+        var postId = $(this).data("post-id");
+        
+        if (confirm("Are you sure you want to delete this post?")) {
+            $.ajax({
+                type: "POST",
+                url: "delete_post.php",
+                data: { post_id: postId },
+                dataType: "json",
+                success: function(response) {
+                    console.log("Post deleted successfully");
+                    $(this).closest('.users_Posts').remove();
+                    window.location.reload();
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error deleting post");
+                }
+            });
+        } else {
+            console.log("Deletion canceled");
+        }
+    });
+    
+    
 });
