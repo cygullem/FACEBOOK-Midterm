@@ -12,16 +12,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['username'];
     $password = $_POST['password'];
 
-    // Generate a random salt
     $salt = random_bytes(16);
 
-    // Convert salt to hexadecimal string for storage in the database
     $hexSalt = bin2hex($salt);
 
-    // Append the salt to the password
     $saltedPassword = $password . $salt;
 
-    // Hash the salted password
     $hashedPassword = password_hash($saltedPassword, PASSWORD_DEFAULT);
 
     $defaultProfilePicture = './Assets/default-profilepicture.png';
