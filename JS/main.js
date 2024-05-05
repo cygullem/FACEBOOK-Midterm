@@ -384,4 +384,69 @@ $(document).ready(function() {
         });
     });
 
+
+
+
+
+    // Fetching the posts of every followed accounts
+    $.ajax({
+        type: 'POST',
+        url: 'fetch_following_posts.php',
+        dataType: 'json',
+        success: function(response) {
+            response.forEach(function(post) {
+                var postHtml = `
+                    <div class="users_Posts">
+                        <div class="usrsP_1">
+                            <div class="usrsp1left">
+                                <div class="usrsp1left_01">
+                                    <img src="${post.profile_picture}" alt="Profile">
+                                </div>
+                                <div class="usrsp1left_02">
+                                    <p>${post.firstname} ${post.lastname}</p>
+                                    <span>${post.created_at} &#183; <i class='fa-solid fa-user-group'></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="usrsP_caption">
+                            <p>${post.caption}</p>
+                        </div>
+                        <div class="usrsP_imagePosted">
+                            ${post.imagePost ? `<img src="${post.imagePost}" alt="Posted Image">` : ''}
+                        </div>
+                        <div class="usrsP_activities">
+                            <div class="usrsP_ like">
+                                <i class='bx bx-like'></i>
+                                <p>Like</p>
+                            </div>
+                            <div class="usrsP_ comment">
+                                <i class="fa-regular fa-comment"></i>
+                                <p>Comment</p>
+                            </div>
+                            <div class="usrsP_ share">
+                                <i class='bx bx-share'></i>
+                                <p>Share</p>
+                            </div>
+                        </div>
+                        <div class="usrsP_comment">
+                            <div class="usrspcomL">
+                                <img src="${post.profile_picture}" alt="Profile Image">
+                            </div>
+                            <div class="usrspcomR">
+                                <form action="">
+                                    <input type="text" placeholder="Comment as ${post.firstname} ${post.lastname}">
+                                </form>
+                            </div>
+                        </div>
+                    </div>`;
+                $(".users_Followers").after(postHtml);
+            });
+        },
+        error: function(xhr, status, error) {
+            console.error("An error occurred while fetching user's posts.");
+        }
+    });
+        
+    
+      
 });
