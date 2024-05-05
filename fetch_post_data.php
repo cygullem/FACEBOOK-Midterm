@@ -15,8 +15,8 @@ if (!isset($_POST['postId'])) {
 $postId = $_POST['postId'];
 $email = $_SESSION['email'];
 
-$stmt = $pdo->prepare("SELECT * FROM post_table WHERE id = ? AND email = ?");
-$stmt->execute([$postId, $email]);
+$stmt = $pdo->prepare("SELECT * FROM post_table WHERE id = ?");
+$stmt->execute([$postId]);
 $post = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$post) {
