@@ -653,6 +653,7 @@ section{
   justify-content: flex-end;
 }
 .usrsp1right_icon{
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -660,6 +661,43 @@ section{
   width: 40px;
   border-radius: 50%;
 }
+.usrsp_options{
+  cursor: pointer;
+  user-select: none;
+  z-index: 123;
+  position: absolute;
+  top: 60px;
+  right: 17px;
+  background-color: rgb(195, 195, 195);
+  border-radius: 5px 0 5px 5px;
+  display: none;
+  flex-direction: column;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+.usrsp_options p{
+  padding: 5px 20px 5px 20px;
+  border-bottom: 1px solid gray;
+  font-size: 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.usrsp_options p:hover{
+  background-color: #bcbcbc;
+  border-radius: 5px;
+}
+.triangle{
+  display: none;
+  position: absolute;
+  top: 42px;
+  right: 17px;
+  border-bottom: 30px solid rgb(195, 195, 195);
+  border-left: 15px solid transparent;
+}
+
+
+
 .usrsp1right_icon i{
   font-size: 23px;
   color: #646b74;

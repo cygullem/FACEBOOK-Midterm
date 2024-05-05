@@ -301,3 +301,17 @@ function toggleRefresh() {
 function redirectToProfilePage() {
     window.location.href = "profile_page.php";
 }
+
+
+function usrspEditDelete() {
+    var optionsDiv = document.querySelector('.usrsp_options');
+    var triangleDiv = document.querySelector('.triangle');
+
+    if (optionsDiv.style.display === 'block') {
+        optionsDiv.style.display = 'none';
+        triangleDiv.style.display = 'none';
+    } else {
+        optionsDiv.style.display = 'block';
+        triangleDiv.style.display = 'block';
+    }
+}
