@@ -718,6 +718,7 @@ section{
   align-items: center;
   justify-content: flex-start;
   text-wrap: wrap;
+  border-bottom: 1px solid #c6c6c6;
 }
 
 
@@ -742,7 +743,7 @@ section{
   display: flex;
   align-items: center;
   text-wrap: wrap;
-  border-bottom: 1px solid #6d6d6d;
+  border-bottom: 1px solid #c6c6c6;
 }
 .usrsP_{
   cursor: pointer;
