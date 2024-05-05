@@ -233,8 +233,24 @@ if ($user) {
                     </div>
                 </div>
             </div>
+
             
-            <div class="users_Posts"></div>
+            <!-- Edit Post Modal -->
+            <div id="editPostModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Edit Post</h2>
+                    <form id="editPostForm">
+                        <input type="hidden" id="postId">
+                        <label for="editCaption">Caption:</label>
+                        <textarea id="editCaption" name="editCaption" rows="4" cols="50"></textarea>
+                        <label for="editImage">Image:</label>
+                        <input type="file" id="editImage" name="editImage">
+                        <button type="submit">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+
         </div>
 
         <div class="content-Right">
@@ -401,7 +417,6 @@ if ($user) {
     <script src="./JS/main.js"></script>
     <script src="./JS/script.js"></script>
     <script src="./JS/openInputFile.js"></script>
-    <script src="postTimeFormatter.js"></script>    
 </body>
 
 </html>

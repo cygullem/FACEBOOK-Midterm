@@ -236,8 +236,7 @@ $(document).ready(function() {
         data: { user_email: "<?php echo $_SESSION['email']; ?>" },
         dataType: 'json',
         success: function(response) {
-            // Clear previous posts
-            $(".users_Posts").empty();
+            // $(".users_Posts").empty();
             
             response.forEach(function(post) {
                 var postHtml = `
@@ -253,13 +252,14 @@ $(document).ready(function() {
                                 </div>
                             </div>
                             <div class="usrsp1right">
-                                <div class="usrsp1right_icon" onclick="usrspEditDelete()">
+                                <div class="usrsp1right_icon">
                                     <i class="fa-solid fa-ellipsis"></i>
                                     <div class="usrsp_options">
-                                        <p>Edit</p>
+                                        <p class="edit-btn" data-post-id="${post.id}">Edit</p>
                                         <p class="delete-btn" data-post-id="${post.id}">Delete</p>
-                                    </div>
-                                    <div class="triangle"></div>  
+                                        </div>
+                                        <div class="triangle">
+                                    </div>  
                                 </div>
                             </div>
                         </div>
@@ -303,6 +303,13 @@ $(document).ready(function() {
         }
     });
 
+    // Attach event listener to handle edit/delete button clicks for dynamically generated posts
+    $(document).on('click', '.usrsp1right_icon', function() {
+        $(this).find('.usrsp_options').toggle();
+    });
+
+
+    
 
     $(document).on("click", ".delete-btn", function() {
         var postId = $(this).data("post-id");
