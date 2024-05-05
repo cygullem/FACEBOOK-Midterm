@@ -105,7 +105,7 @@ $followCountHTML = '<p class="follow_count">' . $followerCount . ' followers</p>
                 <i class="fa-solid fa-bell"></i>
             </div>
             <div class="FBM user_Profile" onclick="openUserProfileMenu()">
-                <img src="Assets/UserProfile.png" alt="Profile">
+                <img src="<?php echo $_SESSION['profile_picture']; ?>" alt="Profile">
                 <div class="UP-drpdwn">
                     <i class="fa-solid fa-angle-down"></i>
                 </div>

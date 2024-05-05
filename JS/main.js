@@ -309,22 +309,17 @@ $(document).ready(function() {
     });
 
 
-    // Delegate the click event to a parent element that exists in the DOM
     $(document).on('click', '.edit-btn', function() {
-        // Get the post ID
         var postId = $(this).data('post-id');
         
-        // Fetch the post data using AJAX
         $.ajax({
             type: 'POST',
             url: 'fetch_post_data.php',
             data: { postId: postId },
             dataType: 'json',
             success: function(post) {
-                // Populate the edit modal with the post data
                 $('#postId').val(post.id);
                 $('#editCaption').val(post.caption);
-                // Show the edit modal
                 $('#editPostModal').show();
             },
             error: function(xhr, status, error) {
