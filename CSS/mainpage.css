@@ -884,7 +884,7 @@ section{
 
 
 .comment_Modal{
-  display: none;
+  display: block;
   position: fixed;
   top: 0;
   left: 0;
@@ -892,15 +892,80 @@ section{
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1000;
+  border: 1px solid red;
 }
 .comment_ModalContent{
+  max-height: 600px;
   background-color: #fefefe;
   margin: 10% auto;
-  padding: 20px;
   border: 1px solid #888;
-  width: 80%;
-  max-width: 600px;
+  width: 50%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  max-width: 700px;
 }
+.titleContainer{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  padding: 20px;
+}
+.TCclose{
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e4e6eb;
+}
+.TCclose:hover{
+  filter: brightness(.9);
+}
+.TCclose:active{
+  scale: .923;
+}
+.commentContainer{
+  max-height: 600px;
+  width: 100%;
+  display: grid;
+  align-content: flex-start;
+  padding: 20px;
+  gap: 10px;
+  overflow-y: auto;
+}
+.userComment{
+  height: 100px;
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  background-color: #45bd62;
+}
+.userprofilecomment{
+  height: 100%;
+  width: 80px;
+  border: 1px solid red;
+}
+.users_comment{
+  height: 100%;
+  flex-grow: 1;
+  border: 1px solid red;
+}
+
+
+
+
+
+
+
+
+
 
 
 

@@ -234,7 +234,7 @@ if ($user) {
                 </div>
             </div>
 
-            
+
             <!-- Edit Post Modal -->
             <div id="editPostModal" class="modal">
                 <div class="modal-content">
@@ -254,7 +254,18 @@ if ($user) {
             <!-- Comment Modal -->
             <div id="commentPostModal" class="comment_Modal">
                 <div class="comment_ModalContent">
-
+                    <div class="titleContainer">
+                        <h1>Cy Gullem's post</h1>
+                        <div class="TCclose">
+                            <i class="fa-solid fa-xmark"></i>
+                        </div>
+                    </div>
+                    <div class="commentContainer">
+                        <div class="userComment">
+                            <div class="userprofilecomment"></div>
+                            <div class="users_comment"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
