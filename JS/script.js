@@ -315,3 +315,15 @@ function usrspEditDelete() {
         triangleDiv.style.display = 'block';
     }
 }
+
+
+function popupCommentModal() {
+    var popupComment = document.getElementById("commentPostModal");
+
+    if (popupComment.style.display == "none" || popupComment.style.display == "") {
+        popupComment.style.display == "block";
+        console.log("Clicked!");
+    } else {
+        popupComment.style.display == "none";
+    }
+}

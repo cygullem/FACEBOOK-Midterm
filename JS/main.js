@@ -274,7 +274,7 @@ $(document).ready(function() {
                                 <i class='bx bx-like'></i>
                                 <p>Like</p>
                             </div>
-                            <div class="usrsP_ comment">
+                            <div class="usrsP_ comment" onclick="popupCommentModal()">
                                 <i class="fa-regular fa-comment"></i>
                                 <p>Comment</p>
                             </div>
@@ -400,10 +400,10 @@ $(document).ready(function() {
                         <div class="usrsP_1">
                             <div class="usrsp1left">
                                 <div class="usrsp1left_01">
-                                    <img src="${post.profile_picture}" alt="Profile">
+                                    <img src="${post.user_profile_picture}" alt="Profile">
                                 </div>
                                 <div class="usrsp1left_02">
-                                    <p>${post.firstname} ${post.lastname}</p>
+                                    <p>${post.user_firstname} ${post.user_lastname}</p>
                                     <span>${post.created_at} &#183; <i class='fa-solid fa-user-group'></i></span>
                                 </div>
                             </div>
@@ -419,7 +419,7 @@ $(document).ready(function() {
                                 <i class='bx bx-like'></i>
                                 <p>Like</p>
                             </div>
-                            <div class="usrsP_ comment">
+                            <div class="usrsP_ comment" onclick="popupCommentModal()">
                                 <i class="fa-regular fa-comment"></i>
                                 <p>Comment</p>
                             </div>
@@ -430,11 +430,11 @@ $(document).ready(function() {
                         </div>
                         <div class="usrsP_comment">
                             <div class="usrspcomL">
-                                <img src="${post.profile_picture}" alt="Profile Image">
+                                <img src="${post.session_profile_picture}" alt="Profile Image">
                             </div>
                             <div class="usrspcomR">
                                 <form action="">
-                                    <input type="text" placeholder="Comment as ${post.firstname} ${post.lastname}">
+                                    <input type="text" placeholder="Comment as ${post.session_firstname} ${post.session_lastname}">
                                 </form>
                             </div>
                         </div>

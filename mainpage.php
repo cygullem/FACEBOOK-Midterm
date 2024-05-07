@@ -251,6 +251,13 @@ if ($user) {
                 </div>
             </div>
 
+            <!-- Comment Modal -->
+            <div id="commentPostModal" class="comment_Modal">
+                <div class="comment_ModalContent">
+
+                </div>
+            </div>
+
         </div>
 
         <div class="content-Right">
