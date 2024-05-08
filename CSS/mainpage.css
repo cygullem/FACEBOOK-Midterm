@@ -711,6 +711,7 @@ section{
 
 
 .usrsP_caption{
+  /* max-width: 765px; */
   color: #6d6d6d;
   width: 100%;
   padding: 0 10px 10px 10px;
@@ -718,7 +719,13 @@ section{
   align-items: center;
   justify-content: flex-start;
   text-wrap: wrap;
+  overflow: hidden;
   border-bottom: 1px solid #c6c6c6;
+}
+.usrsP_caption p{
+  text-wrap: wrap;
+  word-wrap: break-word; 
+  overflow-wrap: break-word;
 }
 
 
@@ -805,8 +812,22 @@ section{
   flex-grow: 1;
 }
 .usrspcomR form{
+  position: relative;
   height: 100%;
   width: 100%;
+}
+.commentBtn{
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  color: #007bff;
+  background-color: transparent !important;
+}
+.commentBtn:active{
+  scale: .923;
 }
 .usrspcomR form input{
   font-size: 17px;
@@ -882,9 +903,9 @@ section{
 
 
 
-
+/*-------------------------------------- Comment Container --------------------------------------*/
 .comment_Modal{
-  display: block;
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -892,7 +913,6 @@ section{
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1000;
-  border: 1px solid red;
 }
 .comment_ModalContent{
   max-height: 600px;
@@ -941,22 +961,61 @@ section{
   overflow-y: auto;
 }
 .userComment{
-  height: 100px;
   width: 100%;
   display: flex;
   gap: 10px;
-  background-color: #45bd62;
 }
 .userprofilecomment{
-  height: 100%;
   width: 80px;
-  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+}
+.upc_profile{
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  object-fit: cover;
+}
+.upc_profile img{
+  height: 100%;
+  width: 100%;
 }
 .users_comment{
-  height: 100%;
   flex-grow: 1;
-  border: 1px solid red;
+  gap: 5px;
+  display: grid;
+  align-content: flex-start;
 }
+.graycontainer{
+  background-color: #f0f2f5;
+  border-radius: 15px;
+  padding: 10px;
+}
+.usernamecomment p{
+  font-size: 18px;
+  font-weight: 500;
+  color: #111111;
+}
+.user_comment_area{
+  margin-top: 10px;
+}
+.edit_delete_comment{
+  padding-left: 15px;
+  cursor: pointer;
+  gap: 10px;
+  display: flex;
+  justify-content: flex-start;
+}
+.edit_delete_comment p{
+  font-size: 15px;
+  font-weight: 500;
+  color: #74767a;
+}
+.edit_delete_comment p:hover{
+  color: #108ae3;
+}
+
 
 
 

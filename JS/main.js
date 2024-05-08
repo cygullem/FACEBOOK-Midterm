@@ -227,39 +227,128 @@ $(document).ready(function() {
     });
 
 
-
-
     // AJAX code for fetching user's posts
+    $(document).ready(function() {
+        $.ajax({
+            type: 'POST',
+            url: 'fetch_user_posts.php',
+            data: { user_email: "<?php echo $_SESSION['email']; ?>" },
+            dataType: 'json',
+            success: function(response) {
+                
+                response.forEach(function(post) {
+                    var postHtml = `
+                        <div class="users_Posts">
+                            <div class="usrsP_1">
+                                <div class="usrsp1left">
+                                    <div class="usrsp1left_01">
+                                        <img src="${post.profile_picture}" alt="Profile">
+                                    </div>
+                                    <div class="usrsp1left_02">
+                                        <p>${post.firstname} ${post.lastname}</p>
+                                        <span>${post.created_at} &#183; <i class='fa-solid fa-user-group'></i></span>
+                                    </div>
+                                </div>
+                                <div class="usrsp1right">
+                                    <div class="usrsp1right_icon">
+                                        <i class="fa-solid fa-ellipsis"></i>
+                                        <div class="usrsp_options">
+                                            <p class="edit-btn" data-post-id="${post.id}">Edit</p>
+                                            <p class="delete-btn" data-post-id="${post.id}">Delete</p>
+                                            </div>
+                                            <div class="triangle">
+                                        </div>  
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="usrsP_caption">
+                                <p>${post.caption}</p>
+                            </div>
+                            <div class="usrsP_imagePosted">
+                                ${post.imagePost ? `<img src="${post.imagePost}" alt="Posted Image">` : ''}
+                            </div>
+                            <div class="usrsP_activities">
+                                <div class="usrsP_ like">
+                                    <i class='bx bx-like'></i>
+                                    <p>Like</p>
+                                </div>
+                                <div class="usrsP_ comment" onclick="popupCommentModal()">
+                                    <i class="fa-regular fa-comment"></i>
+                                    <p>Comment</p>
+                                </div>
+                                <div class="usrsP_ share">
+                                    <i class='bx bx-share'></i>
+                                    <p>Share</p>
+                                </div>
+                            </div>
+                            <div class="usrsP_comment">
+                                <div class="usrspcomL">
+                                    <img src="${post.profile_picture}" alt="Profile Image">
+                                </div>
+                                <div class="usrspcomR">
+                                <form action="add_comment.php" class="commentForm" method="post">
+                                    <input type="hidden" name="post_id" value="${post.id}">
+                                    <input type="text" name="comment" placeholder="Comment as ${post.firstname} ${post.lastname}">
+                                    <button type="submit" class="commentBtn"><i class="fa-regular fa-paper-plane"></i></button>
+                                </form>
+                                </div>
+                            </div>
+                        </div>`;
+                    
+                        $(".users_Followers").after(postHtml);
+                    });
+
+                    // Submit comment form
+                    $(".commentForm").submit(function(event) {
+                        event.preventDefault();
+                        var formData = $(this).serialize();
+                        var commentForm = $(this);
+                        $.ajax({
+                            type: 'POST',
+                            url: $(this).attr('action'),
+                            data: formData,
+                            dataType: 'json',
+                            success: function(response) {
+                                if (response.status === 'success') {
+                                    console.log('Comment added successfully');
+                                } else {
+                                    console.error('Failed to add comment');
+                                }
+                            },
+                            error: function(xhr, status, error) {
+                                console.error("An error occurred while adding comment.");
+                            },
+                            complete: function() {
+                                commentForm[0].reset();
+                            }
+                        });
+                    });
+                },
+            error: function(xhr, status, error) {
+                console.error("An error occurred while fetching user's posts.");
+            }
+        });
+    });
+
+
+
+    // Fetching the posts of every followed accounts
     $.ajax({
         type: 'POST',
-        url: 'fetch_user_posts.php',
-        data: { user_email: "<?php echo $_SESSION['email']; ?>" },
+        url: 'fetch_following_posts.php',
         dataType: 'json',
         success: function(response) {
-            // $(".users_Posts").empty();
-            
             response.forEach(function(post) {
                 var postHtml = `
                     <div class="users_Posts">
                         <div class="usrsP_1">
                             <div class="usrsp1left">
                                 <div class="usrsp1left_01">
-                                    <img src="${post.profile_picture}" alt="Profile">
+                                    <img src="${post.user_profile_picture}" alt="Profile">
                                 </div>
                                 <div class="usrsp1left_02">
-                                    <p>${post.firstname} ${post.lastname}</p>
+                                    <p>${post.user_firstname} ${post.user_lastname}</p>
                                     <span>${post.created_at} &#183; <i class='fa-solid fa-user-group'></i></span>
-                                </div>
-                            </div>
-                            <div class="usrsp1right">
-                                <div class="usrsp1right_icon">
-                                    <i class="fa-solid fa-ellipsis"></i>
-                                    <div class="usrsp_options">
-                                        <p class="edit-btn" data-post-id="${post.id}">Edit</p>
-                                        <p class="delete-btn" data-post-id="${post.id}">Delete</p>
-                                        </div>
-                                        <div class="triangle">
-                                    </div>  
                                 </div>
                             </div>
                         </div>
@@ -285,16 +374,16 @@ $(document).ready(function() {
                         </div>
                         <div class="usrsP_comment">
                             <div class="usrspcomL">
-                                <img src="${post.profile_picture}" alt="Profile Image">
+                                <img src="${post.session_profile_picture}" alt="Profile Image">
                             </div>
                             <div class="usrspcomR">
                                 <form action="">
-                                    <input type="text" placeholder="Comment as ${post.firstname} ${post.lastname}">
+                                    <input type="text" placeholder="Comment as ${post.session_firstname} ${post.session_lastname}">
+                                    <button type="submit" class="commentBtn"><i class="fa-regular fa-paper-plane"></i></button>
                                 </form>
                             </div>
                         </div>
                     </div>`;
-                
                 $(".users_Followers").after(postHtml);
             });
         },
@@ -302,6 +391,7 @@ $(document).ready(function() {
             console.error("An error occurred while fetching user's posts.");
         }
     });
+
 
     // Attach event listener to handle edit/delete button clicks for dynamically generated posts
     $(document).on('click', '.usrsp1right_icon', function() {
@@ -387,66 +477,4 @@ $(document).ready(function() {
 
 
 
-
-    // Fetching the posts of every followed accounts
-    $.ajax({
-        type: 'POST',
-        url: 'fetch_following_posts.php',
-        dataType: 'json',
-        success: function(response) {
-            response.forEach(function(post) {
-                var postHtml = `
-                    <div class="users_Posts">
-                        <div class="usrsP_1">
-                            <div class="usrsp1left">
-                                <div class="usrsp1left_01">
-                                    <img src="${post.user_profile_picture}" alt="Profile">
-                                </div>
-                                <div class="usrsp1left_02">
-                                    <p>${post.user_firstname} ${post.user_lastname}</p>
-                                    <span>${post.created_at} &#183; <i class='fa-solid fa-user-group'></i></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="usrsP_caption">
-                            <p>${post.caption}</p>
-                        </div>
-                        <div class="usrsP_imagePosted">
-                            ${post.imagePost ? `<img src="${post.imagePost}" alt="Posted Image">` : ''}
-                        </div>
-                        <div class="usrsP_activities">
-                            <div class="usrsP_ like">
-                                <i class='bx bx-like'></i>
-                                <p>Like</p>
-                            </div>
-                            <div class="usrsP_ comment" onclick="popupCommentModal()">
-                                <i class="fa-regular fa-comment"></i>
-                                <p>Comment</p>
-                            </div>
-                            <div class="usrsP_ share">
-                                <i class='bx bx-share'></i>
-                                <p>Share</p>
-                            </div>
-                        </div>
-                        <div class="usrsP_comment">
-                            <div class="usrspcomL">
-                                <img src="${post.session_profile_picture}" alt="Profile Image">
-                            </div>
-                            <div class="usrspcomR">
-                                <form action="">
-                                    <input type="text" placeholder="Comment as ${post.session_firstname} ${post.session_lastname}">
-                                </form>
-                            </div>
-                        </div>
-                    </div>`;
-                $(".users_Followers").after(postHtml);
-            });
-        },
-        error: function(xhr, status, error) {
-            console.error("An error occurred while fetching user's posts.");
-        }
-    });
-        
-    
-      
 });

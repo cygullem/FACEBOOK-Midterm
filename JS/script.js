@@ -318,12 +318,11 @@ function usrspEditDelete() {
 
 
 function popupCommentModal() {
-    var popupComment = document.getElementById("commentPostModal");
+    var modal = document.getElementById("commentPostModal");
+    modal.style.display = "block";
+}
 
-    if (popupComment.style.display == "none" || popupComment.style.display == "") {
-        popupComment.style.display == "block";
-        console.log("Clicked!");
-    } else {
-        popupComment.style.display == "none";
-    }
+function closeCommentModal() {
+    var modal = document.getElementById("commentPostModal");
+    modal.style.display = "none";
 }
