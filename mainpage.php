@@ -251,42 +251,6 @@ if ($user) {
                 </div>
             </div>
 
-            <!-- Comment Modal -->
-            <div id="commentPostModal" class="comment_Modal">
-                <div class="comment_ModalContent">
-                    <div class="titleContainer">
-                        <h1>Cy Gullem's Post</h1>
-                        <div class="TCclose" onclick="closeCommentModal()">
-                            <i class="fa-solid fa-xmark"></i>
-                        </div>
-                    </div>
-                    <div class="commentContainer">
-
-                        <div class="userComment">
-                            <div class="userprofilecomment">
-                                <div class="upc_profile">
-                                    <img src="./Assets/default-profilepicture.png" alt="">
-                                </div>
-                            </div>
-                            <div class="users_comment">
-                                <div class="graycontainer">
-                                    <div class="usernamecomment">
-                                        <p>Cy Gullem</p>
-                                    </div>
-                                    <div class="user_comment_area">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                        Laboriosam ipsa asperiores sapiente? Dolorum magnam cum in nisi atque at ea!
-                                    </div>
-                                </div>
-                                <div class="edit_delete_comment">
-                                    <p>Edit</p>
-                                    <p>Delete</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
         </div>
 

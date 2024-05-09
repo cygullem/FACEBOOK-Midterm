@@ -16,5 +16,11 @@ $stmt = $pdo->prepare("SELECT post_table.*, login_table.firstname, login_table.l
 $stmt->execute([$email]);
 $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-echo json_encode($posts);
+// Modify the posts array to include the post ID
+$postsWithId = array_map(function($post) {
+    $post['id'] = (int)$post['id']; // Convert id to integer
+    return $post;
+}, $posts);
+
+echo json_encode($postsWithId);
 ?>

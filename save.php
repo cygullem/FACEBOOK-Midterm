@@ -57,3 +57,49 @@
         </div>
     </div>
 </div>
+
+
+
+<!-- Comment Modal -->
+<div id="commentPostModal" class="comment_Modal">
+    <div class="comment_ModalContent">
+        <div class="titleContainer">
+            <!-- Display here the firstname lastname of the owner of the post -->
+            <h1>Cy Gullem's Post</h1>
+            <div class="TCclose" onclick="closeCommentModal()">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+        </div>
+        <div class="commentContainer">
+
+            <div class="userComment">
+                <div class="userprofilecomment">
+                    <div class="upc_profile">
+                        <!-- Display here the profile picture of the user who commented in this post -->
+                        <img src="./Assets/default-profilepicture.png" alt="">
+                    </div>
+                </div>
+                <div class="users_comment">
+                    <div class="graycontainer">
+                        <div class="usernamecomment">
+                            <!-- Display here the firstname lastname of the user who commented in this post -->
+                            <p>Cy Gullem</p>
+                        </div>
+                        <div class="user_comment_area">
+                            <!-- Display here the user's comment in this post -->
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Laboriosam ipsa asperiores sapiente? Dolorum magnam cum in nisi atque at ea!
+                        </div>
+                    </div>
+                    <!-- This div is optional. 
+                                If the user who commented is the logged in user add this div if not don't add this div-->
+                    <div class="edit_delete_comment">
+                        <p>Edit</p>
+                        <p>Delete</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
