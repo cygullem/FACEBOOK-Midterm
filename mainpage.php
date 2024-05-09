@@ -234,6 +234,7 @@ if ($user) {
                 </div>
             </div>
 
+            <!-- Posts will be generated here using the ajax -->
 
             <!-- Edit Post Modal -->
             <div id="editPostModal" class="modal">
@@ -251,6 +252,21 @@ if ($user) {
                 </div>
             </div>
 
+            <!-- Comment Modal -->
+            <div id="commentPostModal" class="comment_Modal">
+                <div class="comment_ModalContent">
+                    <div class="titleContainer">
+                        <!-- Display here the firstname lastname of the owner of the post -->
+                        <h1></h1>
+                        <div class="TCclose" onclick="closeCommentModal()">
+                            <i class="fa-solid fa-xmark"></i>
+                        </div>
+                    </div>
+                    <div class="commentContainer">
+
+                    </div>
+                </div>
+            </div>
 
         </div>
 

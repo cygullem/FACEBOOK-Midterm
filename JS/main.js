@@ -387,32 +387,6 @@ $(document).ready(function() {
                         </div>`;
                     $(".users_Followers").after(postHtml);
                 });
-                
-                // // Submit comment form
-                // $(document).on('submit', '.commentForm', function(event) {
-                //     event.preventDefault(); 
-                //     var formData = $(this).serialize();
-                //     var commentForm = $(this);
-                //     $.ajax({
-                //         type: 'POST',
-                //         url: $(this).attr('action'),
-                //         data: formData,
-                //         dataType: 'json',
-                //         success: function(response) {
-                //             if (response.status === 'success') {
-                //                 console.log('Comment added successfully');
-                //             } else {
-                //                 console.error('Failed to add comment');
-                //             }
-                //         },
-                //         error: function(xhr, status, error) {
-                //             console.error("An error occurred while adding comment.");
-                //         },
-                //         complete: function() {
-                //             commentForm[0].reset();
-                //         }
-                //     });
-                // });
             },
             error: function(xhr, status, error) {
                 console.error("An error occurred while fetching user's posts.");
@@ -503,69 +477,76 @@ $(document).ready(function() {
 
 
 
+    // Function to handle click on comment icon
+    $(document).ready(function() {
+        function popupCommentModal(postId) {
+            $('#commentPostModal').show();
 
-// Function to handle click on comment icon
-$(document).ready(function() {
-    function popupCommentModal(postId) {
-        // Show the comment modal
-        $('#commentPostModal').show();
+            $.ajax({
+                type: 'POST',
+                url: 'fetch_comments.php', 
+                data: { post_id: postId }, 
+                dataType: 'json',
+                success: function(response) {
+                    $('.userComment').remove();
 
-        // Fetch comments for the post via AJAX
-        $.ajax({
-            type: 'POST',
-            url: 'fetch_comments.php', 
-            data: { post_id: postId }, 
-            dataType: 'json',
-            success: function(response) {
-                // Clear existing comments
-                $('.userComment').remove();
+                    $('.titleContainer h1').text(response.ownerName + "'s Post");
 
-                // Iterate through the fetched comments and append them to the comment container
-                response.forEach(function(comment) {
-                    var commentHtml = `
-                        <div class="userComment">
-                            <div class="userprofilecomment">
-                                <div class="upc_profile">
-                                    <img src="${comment.profile_picture}" alt="">
-                                </div>
-                            </div>
-                            <div class="users_comment">
-                                <div class="graycontainer">
-                                    <div class="usernamecomment">
-                                        <p>${comment.firstname} ${comment.lastname}</p>
-                                    </div>
-                                    <div class="user_comment_area">
-                                        ${comment.comment}
+                    response.comments.forEach(function(comment) {
+                        var commentHtml = `
+                            <div class="userComment">
+                                <div class="userprofilecomment">
+                                    <div class="upc_profile">
+                                        <img src="${comment.profile_picture}" alt="">
                                     </div>
                                 </div>
-                                <!-- Add edit and delete options if the comment belongs to the logged-in user -->
-                                ${comment.user_id === loggedInUserId ? `
-                                <div class="edit_delete_comment">
-                                    <p>Edit</p>
-                                    <p>Delete</p>
-                                </div>` : ''}
-                            </div>
-                        </div>`;
-                    $(".commentContainer").append(commentHtml);
-                });
-            },
-            error: function(xhr, status, error) {
-                console.error("An error occurred while fetching comments.");
-            }
-        });
-    }
+                                <div class="users_comment">
+                                    <div class="graycontainer">
+                                        <div class="usernamecomment">
+                                            <p>${comment.firstname} ${comment.lastname}</p>
+                                        </div>
+                                        <div class="user_comment_area">
+                                            ${comment.comment}
+                                        </div>
+                                    </div>
+                                    <!-- Add edit and delete options if the comment belongs to the logged-in user -->
+                                    ${comment.user_id === loggedInUserId ? `
+                                    <div class="edit_delete_comment">
+                                        <p>Edit</p>
+                                        <p>Delete</p>
+                                    </div>` : ''}
+                                </div>
+                            </div>`;
+                        $(".commentContainer").append(commentHtml);
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.error("An error occurred while fetching comments.");
+                }
+            });
+        }
 
-});
+        // Assuming you have a variable `postId` available when the comment icon is clicked
+        var postId = 123; // Replace 123 with the actual post ID
+        popupCommentModal(postId);
+    });
+
+    // Attach click event listener to comment icon
+    $('.comment').on('click', function() {
+        var postId = $(this).data('post-id'); // Get the post ID from the clicked comment icon
+        popupCommentModal(postId); // Call popupCommentModal function with the appropriate postId
+    });
 
 
 
-// Function to handle click on comment icon
-$(document).on('click', '.usrsP_comment', function() {
-    // Get the post ID associated with this comment
-    var postId = $(this).closest('.users_Posts').data('post-id');
-    
-    // Call popupCommentModal function with the postId
-    popupCommentModal(postId);
-});
+
+    // Function to handle click on comment icon
+    $(document).on('click', '.usrsP_comment', function() {
+        // Get the post ID associated with this comment
+        var postId = $(this).closest('.users_Posts').data('post-id');
+        
+        // Call popupCommentModal function with the postId
+        popupCommentModal(postId);
+    });
 
 });

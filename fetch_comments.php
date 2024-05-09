@@ -17,6 +17,14 @@ if ($post_id === null) {
     exit();
 }
 
+// Fetch the owner's name for the specified post from the database
+$stmt = $pdo->prepare("SELECT login_table.firstname, login_table.lastname
+                       FROM login_table
+                       INNER JOIN post_table ON login_table.id = post_table.user_id
+                       WHERE post_table.id = ?");
+$stmt->execute([$post_id]);
+$owner = $stmt->fetch(PDO::FETCH_ASSOC);
+
 // Fetch comments for the specified post from the database
 $stmt = $pdo->prepare("SELECT comment_table.*, login_table.firstname, login_table.lastname, login_table.profile_picture
                        FROM comment_table
@@ -31,6 +39,6 @@ if (empty($comments)) {
     exit();
 }
 
-// Return the fetched comments along with the post ID as JSON response
-echo json_encode(['status' => 'success', 'post_id' => $post_id, 'comments' => $comments]);
+// Return the fetched comments along with the owner's name and post ID as JSON response
+echo json_encode(['status' => 'success', 'ownerName' => $owner['firstname'] . ' ' . $owner['lastname'], 'comments' => $comments]);
 ?>
