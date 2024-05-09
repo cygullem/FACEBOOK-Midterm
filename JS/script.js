@@ -358,7 +358,7 @@ function popupCommentModal(postId) {
                             </div>` : ''}
                         </div>
                     </div>`;
-                $(".commentContainer").append(commentHtml);
+                $(".commentContainer").prepend(commentHtml);
             });
         },
         error: function(xhr, status, error) {
