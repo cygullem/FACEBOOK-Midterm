@@ -256,7 +256,6 @@ if ($user) {
             <div id="commentPostModal" class="comment_Modal">
                 <div class="comment_ModalContent">
                     <div class="titleContainer">
-                        <!-- Display here the firstname lastname of the owner of the post -->
                         <h1></h1>
                         <div class="TCclose" onclick="closeCommentModal()">
                             <i class="fa-solid fa-xmark"></i>

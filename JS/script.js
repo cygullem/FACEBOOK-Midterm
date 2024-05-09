@@ -316,12 +316,63 @@ function usrspEditDelete() {
     }
 }
 
+// fetch comments for a specific post ID
+function popupCommentModal(postId) {
+    console.log("Post ID:", postId); // Debugger
 
-function popupCommentModal() {
     var modal = document.getElementById("commentPostModal");
     modal.style.display = "block";
+
+    $.ajax({
+        type: 'POST',
+        url: 'fetch_comments.php',
+        data: { post_id: postId },
+        dataType: 'json',
+        success: function(response) {
+            $('.commentContainer').empty();
+
+            $('.titleContainer h1').text(response.ownerName + "'s Post");
+
+            response.comments.forEach(function(comment) {
+                var commentHtml = `
+                    <div class="userComment">
+                        <div class="userprofilecomment">
+                            <div class="upc_profile">
+                                <img src="${comment.profile_picture}" alt="">
+                            </div>
+                        </div>
+                        <div class="users_comment">
+                            <div class="graycontainer">
+                                <div class="usernamecomment">
+                                    <p>${comment.firstname} ${comment.lastname}</p>
+                                </div>
+                                <div class="user_comment_area">
+                                    ${comment.comment}
+                                </div>
+                            </div>
+                            <!-- Add edit and delete options if the comment belongs to the logged-in user -->
+                            ${comment.user_id === response.loggedInUserId ? `
+                            <div class="edit_delete_comment">
+                                <p>Edit</p>
+                                <p>Delete</p>
+                            </div>` : ''}
+                        </div>
+                    </div>`;
+                $(".commentContainer").append(commentHtml);
+            });
+        },
+        error: function(xhr, status, error) {
+            console.error("An error occurred while fetching comments:", error);
+            console.log("Response text:", xhr.responseText);
+            console.log("Status code:", xhr.status);
+        }        
+    });
 }
 
+
+
+
+// Function to close the comment modal
 function closeCommentModal() {
     var modal = document.getElementById("commentPostModal");
     modal.style.display = "none";
