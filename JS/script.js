@@ -427,7 +427,7 @@ function submitEditedComment() {
 
 // fetch comments for a specific post ID
 function popupCommentModal(postId) {
-    console.log("Post ID:", postId); // Debugger
+    console.log("Post ID:", postId); 
 
     var modal = document.getElementById("commentPostModal");
     modal.style.display = "block";
@@ -489,6 +489,38 @@ function closeEditCommentModal() {
     var modal = document.getElementById("editCommentModal");
     modal.style.display = "none";
 }
+
+
+
+// Function to handle deleting a comment via AJAX
+function deleteComment(commentId) {
+    $.ajax({
+        type: 'POST',
+        url: 'delete_comment.php',
+        data: { comment_id: commentId },
+        dataType: 'json',
+        success: function(response) {
+            if (response.status === 'success') {
+                alert('Comment deleted successfully');
+                window.location.reload();
+            } else {
+                console.error("Error deleting comment:", response.message);
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error("An error occurred while deleting comment:", error);
+        }
+    });
+}
+
+// Event listener for delete comment button
+$(document).on('click', '.delete-comment-btn', function() {
+    var commentId = $(this).data('comment-id');
+    if (confirm('Are you sure you want to delete this comment?')) {
+        deleteComment(commentId);
+    }
+});
+
 
 
 
