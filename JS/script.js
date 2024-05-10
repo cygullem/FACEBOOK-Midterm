@@ -301,8 +301,6 @@ function toggleRefresh() {
 function redirectToProfilePage() {
     window.location.href = "profile_page.php";
 }
-
-
 function usrspEditDelete() {
     var optionsDiv = document.querySelector('.usrsp_options');
     var triangleDiv = document.querySelector('.triangle');
@@ -315,6 +313,8 @@ function usrspEditDelete() {
         triangleDiv.style.display = 'block';
     }
 }
+
+
 
 // fetch comments for a specific post ID
 function popupCommentModal(postId) {
@@ -350,10 +350,10 @@ function popupCommentModal(postId) {
                                     ${comment.comment}
                                 </div>
                             </div>
-                            <!-- Add edit and delete options if the comment belongs to the logged-in user -->
+
                             ${comment.user_id === response.loggedInUserId ? `
                             <div class="edit_delete_comment">
-                                <p>Edit</p>
+                                <p class="edit-comment-btn" data-comment-id="${comment.id}">Edit</p>
                                 <p>Delete</p>
                             </div>` : ''}
                         </div>
@@ -369,11 +369,164 @@ function popupCommentModal(postId) {
     });
 }
 
-
-
-
 // Function to close the comment modal
 function closeCommentModal() {
     var modal = document.getElementById("commentPostModal");
     modal.style.display = "none";
 }
+
+
+
+// Function to open the edit comment modal
+function openEditCommentModal(commentId, currentComment) {
+    var modal = document.getElementById("editCommentModal");
+    var textarea = document.getElementById("editCommentTextarea");
+    var commentIdField = document.getElementById("editCommentId");
+
+    textarea.value = currentComment;
+    commentIdField.value = commentId;
+
+    modal.style.display = "block";
+}
+
+// Event listener for the edit comment button
+$(document).on('click', '.edit-comment-btn', function() {
+    var commentId = $(this).data('comment-id');
+    var currentComment = $(this).closest('.userComment').find('.user_comment_area').text().trim();
+    openEditCommentModal(commentId, currentComment);
+});
+
+
+
+// Function to submit the edited comment via AJAX
+function submitEditedComment() {
+    var formData = $('#editCommentForm').serialize();
+    formData += '&user_id=' + loggedInUserId;
+
+    $.ajax({
+        type: 'POST',
+        url: 'edit_comment.php',
+        data: formData,
+        dataType: 'json',
+        success: function(response) {
+            if (response.status === 'success') {
+                alert('Comment edited successfully!');
+                closeEditCommentModal();
+                window.location.reload();
+            } else {
+                console.error("Error editing comment:", response.message);
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error("An error occurred while editing comment:", error);
+        }
+    });
+}
+
+
+
+// fetch comments for a specific post ID
+function popupCommentModal(postId) {
+    console.log("Post ID:", postId); // Debugger
+
+    var modal = document.getElementById("commentPostModal");
+    modal.style.display = "block";
+
+    $.ajax({
+        type: 'POST',
+        url: 'fetch_comments.php',
+        data: { post_id: postId },
+        dataType: 'json',
+        success: function(response) {
+            $('.commentContainer').empty();
+
+            $('.titleContainer h1').text(response.ownerName + "'s Post");
+
+            response.comments.forEach(function(comment) {
+                var editDeleteHtml = '';
+                if (comment.user_id === response.loggedInUserId) {
+                    editDeleteHtml = `
+                        <div class="edit_delete_comment">
+                            <p class="edit-comment-btn" data-comment-id="${comment.id}">Edit</p>
+                            <p class="delete-comment-btn" data-comment-id="${comment.id}">Delete</p>
+                        </div>`;
+                }
+
+                var commentHtml = `
+                    <div class="userComment">
+                        <div class="userprofilecomment">
+                            <div class="upc_profile">
+                                <img src="${comment.profile_picture}" alt="">
+                            </div>
+                        </div>
+                        <div class="users_comment">
+                            <div class="graycontainer">
+                                <div class="usernamecomment">
+                                    <p>${comment.firstname} ${comment.lastname}</p>
+                                </div>
+                                <div class="user_comment_area">
+                                    ${comment.comment}
+                                </div>
+                            </div>
+                            ${editDeleteHtml}
+                        </div>
+                    </div>`;
+                $(".commentContainer").prepend(commentHtml);
+            });
+        },
+        error: function(xhr, status, error) {
+            console.error("An error occurred while fetching comments:", error);
+            console.log("Response text:", xhr.responseText);
+            console.log("Status code:", xhr.status);
+        }        
+    });
+}
+
+
+
+// Function to close the edit comment modal
+function closeEditCommentModal() {
+    var modal = document.getElementById("editCommentModal");
+    modal.style.display = "none";
+}
+
+
+
+//loggedInUserId variable 
+var loggedInUserId = document.currentScript.getAttribute('data-userid');
+
+$('#login-form').submit(function(e) {
+    e.preventDefault(); 
+
+    var email = $('#login-form input[name="userEmail"]').val();
+    var password = $('#login-form input[name="userPassword"]').val();
+
+    if (email === '' || password === '') {
+        alert('Please fill in all fields');
+        return; 
+    }
+
+    var formData = $(this).serialize();
+
+    formData += '&user_id=' + loggedInUserId;
+
+    $.ajax({
+        type: 'POST',
+        url: 'login.php',
+        data: formData,
+        success: function(response) {
+            var jsonData = JSON.parse(response);
+
+            if (jsonData.status === 'success') {
+                alert(jsonData.message); 
+                window.location.href = 'mainpage.php'; 
+            } else {
+                alert(jsonData.message); 
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error(xhr.responseText); 
+            alert('An error occurred. Please try again later.');
+        }
+    });
+});

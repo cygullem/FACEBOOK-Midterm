@@ -108,43 +108,6 @@ $(document).ready(function() {
 
 
 
-    // Login AJAX Request
-    $('#login-form').submit(function(e) {
-        e.preventDefault(); 
-
-        var email = $('#login-form input[name="userEmail"]').val();
-        var password = $('#login-form input[name="userPassword"]').val();
-
-        if (email === '' || password === '') {
-            alert('Please fill in all fields');
-            return; 
-        }
-
-        var formData = $(this).serialize();
-
-        $.ajax({
-            type: 'POST',
-            url: 'login.php',
-            data: formData,
-            success: function(response) {
-                var jsonData = JSON.parse(response);
-
-                if (jsonData.status === 'success') {
-                    alert(jsonData.message); 
-                    window.location.href = 'mainpage.php'; 
-                } else {
-                    alert(jsonData.message); 
-                }
-            },
-            error: function(xhr, status, error) {
-                console.error(xhr.responseText); 
-                alert('An error occurred. Please try again later.');
-            }
-        });
-    });
-
-
-
     // Logout AJAX Request
     $('#logout-form').submit(function(e) {
         e.preventDefault();

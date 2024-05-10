@@ -904,7 +904,8 @@ section{
 
 
 /*-------------------------------------- Comment Container --------------------------------------*/
-.comment_Modal{
+.comment_Modal,
+.editCommentModal{
   display: none;
   position: fixed;
   top: 0;
@@ -914,7 +915,8 @@ section{
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1000;
 }
-.comment_ModalContent{
+.comment_ModalContent,
+.editcomment_modalContent{
   max-height: 600px;
   background-color: #fefefe;
   margin: 10% auto;
@@ -963,7 +965,7 @@ section{
 .userComment{
   width: 100%;
   display: flex;
-  gap: 10px;
+  gap: 5px;
 }
 .userprofilecomment{
   width: 80px;
@@ -971,8 +973,8 @@ section{
   justify-content: center;
 }
 .upc_profile{
-  height: 60px;
-  width: 60px;
+  height: 43px;
+  width: 43px;
   border-radius: 50%;
   overflow: hidden;
   object-fit: cover;

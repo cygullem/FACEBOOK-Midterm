@@ -29,6 +29,9 @@ if ($user) {
     $_SESSION['lastname'] = "";
     $_SESSION['profile_picture'] = "./Assets/default-profilepicture.png";
 }
+
+// Fetch the user ID from the session if it exists
+$loggedInUserId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 ?>
 
 
@@ -267,6 +270,19 @@ if ($user) {
                 </div>
             </div>
 
+            <!-- Edit Comment Modal -->
+            <div id="editCommentModal" class="editCommentModal">
+                <div class="editcomment_modalContent">
+                    <span class="close" onclick="closeEditCommentModal()">&times;</span>
+                    <h2>Edit Comment</h2>
+                    <form id="editCommentForm">
+                        <textarea id="editCommentTextarea" name="editComment" placeholder="Enter your edited comment"></textarea>
+                        <input type="hidden" id="editCommentId" name="editCommentId">
+                        <button type="button" onclick="submitEditedComment()">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+
         </div>
 
         <div class="content-Right">
@@ -431,7 +447,7 @@ if ($user) {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="./JS/main.js"></script>
-    <script src="./JS/script.js"></script>
+    <script src="./JS/script.js" data-userid="<?php echo json_encode($loggedInUserId); ?>"></script>
     <script src="./JS/openInputFile.js"></script>
 </body>
 
