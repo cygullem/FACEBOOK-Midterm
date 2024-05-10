@@ -858,12 +858,26 @@ section{
 }
 
 .modal-content {
+  position: relative;
   background-color: #fefefe;
   margin: 10% auto;
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
+  gap: 10px;
+  border-radius: 10px;
   max-width: 600px;
+}
+
+.closeEditPostModal{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+}
+
+.saveChangesBtn{
+  margin-top: 15px;
 }
 
 .modal-header {
@@ -917,7 +931,9 @@ section{
 }
 .comment_ModalContent,
 .editcomment_modalContent{
+  position: relative;
   max-height: 600px;
+  padding: 10px;
   background-color: #fefefe;
   margin: 10% auto;
   border: 1px solid #888;
@@ -925,8 +941,17 @@ section{
   border-radius: 10px;
   display: flex;
   flex-direction: column;
+  border-radius: 8px;
   max-width: 700px;
 }
+
+.closeEditCommentModal{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+}
+
 .titleContainer{
   position: relative;
   display: flex;
@@ -1017,15 +1042,6 @@ section{
 .edit_delete_comment p:hover{
   color: #108ae3;
 }
-
-
-
-
-
-
-
-
-
 
 
 

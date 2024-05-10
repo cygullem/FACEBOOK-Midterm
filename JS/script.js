@@ -376,6 +376,13 @@ function closeCommentModal() {
 }
 
 
+// Function to close the post modal
+function closeEditPostModal() {
+    var modal = document.getElementById("editPostModal");
+    modal.style.display = "none";
+}
+
+
 
 // Function to open the edit comment modal
 function openEditCommentModal(commentId, currentComment) {

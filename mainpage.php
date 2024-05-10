@@ -242,7 +242,7 @@ $loggedInUserId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
             <!-- Edit Post Modal -->
             <div id="editPostModal" class="modal">
                 <div class="modal-content">
-                    <span class="close">&times;</span>
+                    <span class="close closeEditPostModal" onclick="closeEditPostModal()"><i class="fa-solid fa-xmark"></i></span>
                     <h2>Edit Post</h2>
                     <form id="editPostForm">
                         <input type="hidden" id="postId">
@@ -250,7 +250,7 @@ $loggedInUserId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
                         <textarea id="editCaption" name="editCaption" rows="4" cols="50"></textarea>
                         <label for="editImage">Image:</label>
                         <input type="file" id="editImage" name="editImage">
-                        <button type="submit">Save Changes</button>
+                        <button class="saveChangesBtn" type="submit">Save Changes</button>
                     </form>
                 </div>
             </div>
@@ -265,7 +265,7 @@ $loggedInUserId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
                         </div>
                     </div>
                     <div class="commentContainer">
-
+                        <!-- user comments will be generated here -->
                     </div>
                 </div>
             </div>
@@ -273,12 +273,12 @@ $loggedInUserId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
             <!-- Edit Comment Modal -->
             <div id="editCommentModal" class="editCommentModal">
                 <div class="editcomment_modalContent">
-                    <span class="close" onclick="closeEditCommentModal()">&times;</span>
+                    <span class="close closeEditCommentModal" onclick="closeEditCommentModal()"><i class="fa-solid fa-xmark"></i></span>
                     <h2>Edit Comment</h2>
                     <form id="editCommentForm">
                         <textarea id="editCommentTextarea" name="editComment" placeholder="Enter your edited comment"></textarea>
                         <input type="hidden" id="editCommentId" name="editCommentId">
-                        <button type="button" onclick="submitEditedComment()">Save Changes</button>
+                        <button class="saveChangesBtn" type="button" onclick="submitEditedComment()">Save Changes</button>
                     </form>
                 </div>
             </div>
