@@ -238,6 +238,16 @@ function closePostPopup() {
 
 
 
+function openNotifCont(){
+    var modal = document.getElementById('rNC');
+
+    if(modal.style.display  == "none" || modal.style.display == ""){
+        modal.style.display = 'block';
+    } else{
+        modal.style.display = 'none';
+    }
+}
+
 
 // USER PROFILE MENU
 function openUserProfileMenu() {

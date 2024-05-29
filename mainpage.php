@@ -91,16 +91,19 @@ $loggedInUserId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
             <div class="FBM">
                 <i class="fa-brands fa-facebook-messenger"></i>
             </div>
-            <div class="FBM">
+            <div class="FBM realtime_Notifs" onclick="openNotifCont()">
                 <i class="fa-solid fa-bell"></i>
             </div>
+            <div class="realtime_Notif_Container" id="rNC"> 
+
+            </div>
+            
             <div class="FBM user_Profile" onclick="openUserProfileMenu()">
                 <img src="<?php echo $_SESSION['profile_picture']; ?>" alt="Profile">
                 <div class="UP-drpdwn">
                     <i class="fa-solid fa-angle-down"></i>
                 </div>
             </div>
-            
             <div class="UP-menu_container" id="UPmc">
                 <div class="upmc">
                     <div class="upmc_Upper">
@@ -131,7 +134,7 @@ $loggedInUserId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </nav>
 
