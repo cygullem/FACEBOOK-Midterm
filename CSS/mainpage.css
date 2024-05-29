@@ -958,11 +958,11 @@ section{
   justify-content: center;
   align-items: center;
   border-bottom: 1px solid #ccc;
-  padding: 20px;
+  padding: 10px;
 }
 .TCclose{
   position: absolute;
-  top: 18px;
+  top: 2px;
   right: 20px;
   height: 35px;
   width: 35px;

@@ -100,6 +100,7 @@ $loggedInUserId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
                     <i class="fa-solid fa-angle-down"></i>
                 </div>
             </div>
+            
             <div class="UP-menu_container" id="UPmc">
                 <div class="upmc">
                     <div class="upmc_Upper">
@@ -130,6 +131,7 @@ $loggedInUserId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
                     </div>
                 </div>
             </div>
+            
         </div>
     </nav>
 
