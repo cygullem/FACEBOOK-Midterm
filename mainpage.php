@@ -336,7 +336,7 @@ $loggedInUserId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 
     <div class="popup-container" id="popupContainer">
         <div class="popup">
-            <div class="container">
+            <div class="container_Post">
                 <div class="wrapper">
                     <section class="post">
                         <header>
