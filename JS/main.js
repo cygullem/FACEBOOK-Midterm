@@ -188,7 +188,7 @@ $(document).ready(function() {
     });
 
 
-    // AJAX code for fetching user's posts
+    // Fetching user's posts
     $(document).ready(function() {
         $.ajax({
             type: 'POST',
@@ -227,8 +227,16 @@ $(document).ready(function() {
                             <div class="usrsP_imagePosted">
                                 ${post.imagePost ? `<img src="${post.imagePost}" alt="Posted Image">` : ''}
                             </div>
+                            <div class="ComLikeCount">
+                                <p>
+                                    100 Likes
+                                </p>
+                                <p onclick="popupCommentModal(${post.id})">
+                                    100 Comments
+                                </p>
+                            </div>
                             <div class="usrsP_activities">
-                                <div class="usrsP_ like">
+                                <div class="usrsP_ like" id="likeIcon${post.id}">
                                     <i class='bx bx-like'></i>
                                     <p>Like</p>
                                 </div>
@@ -255,35 +263,42 @@ $(document).ready(function() {
                             </div>
                         </div>`;
                     
-                        $(".users_Followers").after(postHtml);
+                    $(".users_Followers").after(postHtml);
+                    
+                    // Add event listener to like icon
+                    $(`#likeIcon${post.id}`).on('click', function() {
+                        const icon = $(this).find('i');
+                        icon.toggleClass('bx-like bxs-like liked');
                     });
-                    // Submit comment form
-                    $(document).on('submit', '.commentForm', function(event) {
-                        event.preventDefault(); 
-                        var formData = $(this).serialize();
-                        var commentForm = $(this);
-                        $.ajax({
-                            type: 'POST',
-                            url: $(this).attr('action'),
-                            data: formData,
-                            dataType: 'json',
-                            success: function(response) {
-                                if (response.status === 'success') {
-                                    alert("Comment posted successfully");
-                                    console.log('Comment added successfully');
-                                } else {
-                                    console.error('Failed to add comment');
-                                }
-                            },
-                            error: function(xhr, status, error) {
-                                console.error("An error occurred while adding comment.");
-                            },
-                            complete: function() {
-                                commentForm[0].reset();
+                });
+
+                // Submit comment form
+                $(document).on('submit', '.commentForm', function(event) {
+                    event.preventDefault(); 
+                    var formData = $(this).serialize();
+                    var commentForm = $(this);
+                    $.ajax({
+                        type: 'POST',
+                        url: $(this).attr('action'),
+                        data: formData,
+                        dataType: 'json',
+                        success: function(response) {
+                            if (response.status === 'success') {
+                                alert("Comment posted successfully");
+                                console.log('Comment added successfully');
+                            } else {
+                                console.error('Failed to add comment');
                             }
-                        });
-                    });                                        
-                },
+                        },
+                        error: function(xhr, status, error) {
+                            console.error("An error occurred while adding comment.");
+                        },
+                        complete: function() {
+                            commentForm[0].reset();
+                        }
+                    });
+                });                                        
+            },
             error: function(xhr, status, error) {
                 console.error("An error occurred while fetching user's posts.");
             }
@@ -319,8 +334,16 @@ $(document).ready(function() {
                             <div class="usrsP_imagePosted">
                                 ${post.imagePost ? `<img src="${post.imagePost}" alt="Posted Image">` : ''}
                             </div>
+                            <div class="ComLikeCount">
+                                <p>
+                                    100 likes
+                                </p>
+                                <p onclick="popupCommentModal(${post.id})">
+                                    100 comments
+                                </p>
+                            </div>
                             <div class="usrsP_activities">
-                                <div class="usrsP_ like">
+                                <div class="usrsP_ like" id="likeIcon${post.id}">
                                     <i class='bx bx-like'></i>
                                     <p>Like</p>
                                 </div>
@@ -347,6 +370,12 @@ $(document).ready(function() {
                             </div>
                         </div>`;
                     $(".users_Followers").after(postHtml);
+
+                    // Add event listener to like icon
+                    $(`#likeIcon${post.id}`).on('click', function() {
+                        const icon = $(this).find('i');
+                        icon.toggleClass('bx-like bxs-like liked');
+                    });
                 });
             },
             error: function(xhr, status, error) {

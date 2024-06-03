@@ -1,3 +1,18 @@
+// Like icon turns blue when clicked
+document.addEventListener('DOMContentLoaded', () => {
+    console.log("DOM fully loaded and parsed");
+    const likeDiv = document.getElementById('likeIcon');
+    if (likeDiv) {
+        likeDiv.addEventListener('click', () => {
+            const icon = likeDiv.querySelector('i');
+            icon.classList.toggle('bx-like');
+            icon.classList.toggle('bxs-like');
+        });
+    } else {
+        console.error("Element with ID 'likeIcon' not found");
+    }
+});
+
 document.addEventListener("DOMContentLoaded", function () {
     const postContent = document.getElementById("postContent");
     const popupContainer = document.getElementById("popupContainer");
@@ -7,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
         popupContainer.style.display = "block";
     });
 
-    if (closePopupBtn) { // Check if closePopupBtn exists
+    if (closePopupBtn) { 
         closePopupBtn.addEventListener("click", function () {
             popupContainer.style.display = "none";
         });
@@ -28,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    if (closePopupBtn) { // Check if closePopupBtn exists
+    if (closePopupBtn) {
         closePopupBtn.addEventListener("click", function () {
             popupContainer1.style.display = "none";
         });
@@ -214,7 +229,6 @@ if (container) {
 
 
 
-
 // POST CONTAINER POPUP
 document.addEventListener("DOMContentLoaded", function () {
     const postContent = document.getElementById("postContent");
@@ -236,17 +250,6 @@ function closePostPopup() {
     popupContainer.style.display = "none";
 }
 
-
-
-function openNotifCont(){
-    var modal = document.getElementById('rNC');
-
-    if(modal.style.display  == "none" || modal.style.display == ""){
-        modal.style.display = 'block';
-    } else{
-        modal.style.display = 'none';
-    }
-}
 
 
 // USER PROFILE MENU
@@ -579,3 +582,18 @@ $('#login-form').submit(function(e) {
         }
     });
 });
+
+
+
+function openNotifCont(){
+    var modal = document.getElementById('rNC');
+
+    if(modal.style.display  == "none" || modal.style.display == ""){
+        modal.style.display = 'block';
+    } else{
+        modal.style.display = 'none';
+    }
+}
+
+
+
