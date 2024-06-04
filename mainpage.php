@@ -100,7 +100,22 @@ $loggedInUserId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
                 </div>
             </div>
             <div class="realtime_Notif_Container" id="rNC">
+                <div class="rnc_container">
+                    <div class="rnc_top">
+                        <div class="rnct_title">
+                            <h2>Notifications</h2>
+                            <div>
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </div>
+                        </div>
+                        <div class="rnct_au">
+                            <div class="rnctau_all">All</div>
+                            <div class="rnctau_unread">Unread</div>
+                        </div>
+                    </div>
+                </div>
 
+                
             </div>
 
             <div class="FBM user_Profile" onclick="openUserProfileMenu()">
