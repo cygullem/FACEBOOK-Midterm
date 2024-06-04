@@ -95,11 +95,14 @@ $loggedInUserId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
             </div>
             <div class="FBM realtime_Notifs" onclick="openNotifCont()">
                 <i class="fa-solid fa-bell"></i>
+                <div class="realtime_Notifs_Count">
+                    <p>10</p>
+                </div>
             </div>
-            <div class="realtime_Notif_Container" id="rNC"> 
+            <div class="realtime_Notif_Container" id="rNC">
 
             </div>
-            
+
             <div class="FBM user_Profile" onclick="openUserProfileMenu()">
                 <img src="<?php echo $_SESSION['profile_picture']; ?>" alt="Profile">
                 <div class="UP-drpdwn">

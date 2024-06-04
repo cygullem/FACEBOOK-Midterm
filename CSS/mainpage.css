@@ -249,6 +249,26 @@ section{
 .realtime_Notifs{
   position: relative;
 }
+.realtime_Notifs_Count{
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 19px;
+  width: 19px;
+  border-radius: 50%;
+  background-color: #e41e3f;
+}
+.realtime_Notifs_Count p{
+  margin: 0;
+  padding: 2;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  color: #ffffff;
+}
 .realtime_Notif_Container{
   z-index: 2;
   display: none;
