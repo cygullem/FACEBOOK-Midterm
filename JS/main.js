@@ -256,7 +256,7 @@ $(document).ready(function() {
                                 <div class="usrspcomR">
                                 <form action="add_comment.php" class="commentForm" method="post">
                                     <input type="hidden" name="post_id" value="${post.id}">
-                                    <input type="text" name="comment" placeholder="Comment as ${post.firstname} ${post.lastname}">
+                                    <input type="text" name="comment" placeholder="Comment as ${post.firstname} ${post.lastname}" required>
                                     <button type="submit" class="commentBtn"><i class="fa-regular fa-paper-plane"></i></button>
                                 </form>
                                 </div>
@@ -362,8 +362,8 @@ $(document).ready(function() {
                                 </div>
                                 <div class="usrspcomR">
                                     <form action="add_comment.php" class="commentForm" method="post">
-                                        <input type="hidden" name="post_id" value="${post.id}">
-                                        <input type="text" name="comment" placeholder="Comment as ${post.session_firstname} ${post.session_lastname}">
+                                        <input type="hidden" name="post_id" required value="${post.id}">
+                                        <input type="text" name="comment" placeholder="Comment as ${post.session_firstname} ${post.session_lastname}" required>
                                         <button type="submit" class="commentBtn"><i class="fa-regular fa-paper-plane"></i></button>
                                     </form>
                                 </div>
