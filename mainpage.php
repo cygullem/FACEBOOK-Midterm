@@ -96,7 +96,7 @@ $loggedInUserId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
             <div class="FBM realtime_Notifs" onclick="openNotifCont()">
                 <i class="fa-solid fa-bell"></i>
                 <div class="realtime_Notifs_Count">
-                    <p>10</p>
+                    <p>4</p>
                 </div>
             </div>
             <div class="realtime_Notif_Container" id="rNC">
@@ -113,9 +113,66 @@ $loggedInUserId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
                             <div class="rnctau_unread">Unread</div>
                         </div>
                     </div>
+
+                    <div class="user_Reaction_Comments">
+                        <div class="urc_right">
+                            <img src="Assets/Dhaniel.png" alt="DP">
+                        </div>
+                        <div class="urc_left">
+                            <div class="ul_up">
+                                <p><strong>Dhaniel Malinao</strong><br> liked your post "Birdland".</p>
+                            </div>
+                            <div class="ul_down">
+                                an hour ago
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="user_Reaction_Comments">
+                        <div class="urc_right">
+                            <img src="Assets/Lawrenz.png" alt="DP">
+                        </div>
+                        <div class="urc_left">
+                            <div class="ul_up">
+                                <p><strong>Lawrenz Xavier Carisusa</strong><br> commented on your post "Birdland".</p>
+                            </div>
+                            <div class="ul_down">
+                                a day ago
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="user_Reaction_Comments">
+                        <div class="urc_right">
+                            <img src="Assets/Nico.png" alt="DP">
+                        </div>
+                        <div class="urc_left">
+                            <div class="ul_up">
+                                <p><strong>John Nico Edisan</strong><br> posted a new content.</p>
+                            </div>
+                            <div class="ul_down">
+                                2 hours ago
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="user_Reaction_Comments">
+                        <div class="urc_right">
+                            <img src="Assets/Brent.png" alt="DP">
+                        </div>
+                        <div class="urc_left">
+                            <div class="ul_up">
+                                <p><strong>Brent Goden</strong><br> shared your content.</p>
+                            </div>
+                            <div class="ul_down">
+                                a day ago
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
-                
+
             </div>
 
             <div class="FBM user_Profile" onclick="openUserProfileMenu()">
