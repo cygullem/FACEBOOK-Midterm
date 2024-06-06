@@ -99,7 +99,8 @@ $loggedInUserId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
                     <p>4</p>
                 </div>
             </div>
-            <div class="realtime_Notif_Container" id="rNC">
+
+            <div class="realtime_Notif_Container" id="notificationArea">
                 <div class="rnc_container">
                     <div class="rnc_top">
                         <div class="rnct_title">
@@ -114,65 +115,24 @@ $loggedInUserId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
                         </div>
                     </div>
 
-                    <div class="user_Reaction_Comments">
+                    <div class="user_Reaction_Comments" id="notificationsList">
                         <div class="urc_right">
+                            <!-- profile picture goes here (someone who like, or comment in my content posted) -->
                             <img src="Assets/Dhaniel.png" alt="DP">
                         </div>
                         <div class="urc_left">
                             <div class="ul_up">
+                                <!-- user's firstname and lastname here together with the type (like or comment) -->
                                 <p><strong>Dhaniel Malinao</strong><br> liked your post "Birdland".</p>
                             </div>
                             <div class="ul_down">
+                                <!-- time here of the activity (like or comment)/an hour ago/ minutes ago/ a day ago/ a week ago -->
                                 an hour ago
                             </div>
                         </div>
                     </div>
 
-                    <div class="user_Reaction_Comments">
-                        <div class="urc_right">
-                            <img src="Assets/Lawrenz.png" alt="DP">
-                        </div>
-                        <div class="urc_left">
-                            <div class="ul_up">
-                                <p><strong>Lawrenz Xavier Carisusa</strong><br> commented on your post "Birdland".</p>
-                            </div>
-                            <div class="ul_down">
-                                a day ago
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="user_Reaction_Comments">
-                        <div class="urc_right">
-                            <img src="Assets/Nico.png" alt="DP">
-                        </div>
-                        <div class="urc_left">
-                            <div class="ul_up">
-                                <p><strong>John Nico Edisan</strong><br> posted a new content.</p>
-                            </div>
-                            <div class="ul_down">
-                                2 hours ago
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="user_Reaction_Comments">
-                        <div class="urc_right">
-                            <img src="Assets/Brent.png" alt="DP">
-                        </div>
-                        <div class="urc_left">
-                            <div class="ul_up">
-                                <p><strong>Brent Goden</strong><br> shared your content.</p>
-                            </div>
-                            <div class="ul_down">
-                                a day ago
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
-
-
             </div>
 
             <div class="FBM user_Profile" onclick="openUserProfileMenu()">
@@ -181,6 +141,7 @@ $loggedInUserId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
                     <i class="fa-solid fa-angle-down"></i>
                 </div>
             </div>
+
             <div class="UP-menu_container" id="UPmc">
                 <div class="upmc">
                     <div class="upmc_Upper">
@@ -435,7 +396,7 @@ $loggedInUserId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
                             </div>
                             <textarea name="post_text" placeholder="What's on your mind <?php echo $_SESSION['firstname'] ?>?" spellcheck="false"></textarea>
                             <div class="post-scroll-effect">
-                                <input type="file" name="image" id="imageInput" style="display: none;">
+                                <input type="file" name="image" id="imageInput" multiple style="display: none;">
                                 <div class="post-image">
                                     <img id="chosenImage" src="" alt=" ">
                                 </div>

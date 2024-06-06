@@ -14,13 +14,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->execute([$email]);
     $user = $stmt->fetch();
 
+    // Assuming this is part of your login script
     if ($user) {
         $storedSalt = hex2bin($user['salt']);
         $saltedPassword = $password . $storedSalt;
+        $hashedPassword = password_hash($saltedPassword, PASSWORD_DEFAULT);
 
         if (password_verify($saltedPassword, $user['password'])) {
-            $_SESSION['user_id'] = $user['id'];
             $_SESSION['email'] = $email;
+            $_SESSION['user_id'] = $user['id']; // Add this line to set the user ID in the session
             $response['status'] = 'success';
             $response['message'] = 'Login successful';
         } else {

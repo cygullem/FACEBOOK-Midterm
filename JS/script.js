@@ -13,6 +13,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+
+// document.addEventListener('DOMContentLoaded', () => {
+//     setTimeout(() => {
+//         console.log("DOM fully loaded and parsed");
+//         const likeDiv = document.getElementById('likeIcon');
+//         if (likeDiv) {
+//             // ... rest of your code
+//             likeDiv.addEventListener('click', () => {
+//                 const icon = likeDiv.querySelector('i');
+//                 icon.classList.toggle('bx-like');
+//                 icon.classList.toggle('bxs-like');
+//             });
+//         } else {
+//             console.error("Element with ID 'likeIcon' still not found");
+//         }
+//     }, 1000); // Wait for 1 second before trying to find the element
+// });
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
     const postContent = document.getElementById("postContent");
     const popupContainer = document.getElementById("popupContainer");
@@ -56,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener("DOMContentLoaded", function () {
     var showPopupButton = document.getElementById("showPopupButton");
 
-    if (showPopupButton) { // Check if showPopupButton exists
+    if (showPopupButton) { 
         var signupPopup = document.getElementById("signupPopup");
         var closePopupIcon = document.getElementById("closePopupIcon");
 
@@ -586,7 +606,7 @@ $('#login-form').submit(function(e) {
 
 
 function openNotifCont(){
-    var modal = document.getElementById('rNC');
+    var modal = document.getElementById('notificationArea');
 
     if(modal.style.display  == "none" || modal.style.display == ""){
         modal.style.display = 'block';
@@ -594,6 +614,3 @@ function openNotifCont(){
         modal.style.display = 'none';
     }
 }
-
-
-

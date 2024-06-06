@@ -251,7 +251,7 @@ section{
 }
 .realtime_Notifs_Count{
   position: absolute;
-  top: 0;
+  top: -3px;
   right: 0;
   display: flex;
   align-items: center;

@@ -1,4 +1,137 @@
 $(document).ready(function() {
+    $('.like-btn').on('click', function() {
+        var postId = $(this).data('post-id');
+        $.ajax({
+            type: 'POST',
+            url: 'like_post.php',
+            data: { post_id: postId },
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    alert(response.message); // Or update the like count on the page
+                } else {
+                    console.error("Error liking post:", response.message);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("An error occurred while liking the post:", error);
+            }
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        fetchNotifications();
+    
+        document.querySelector('.rnctau_all').addEventListener('click', function() {
+            document.querySelector('.rnctau_all').classList.add('active');
+            document.querySelector('.rnctau_unread').classList.remove('active');
+            fetchNotifications('all');
+        });
+    
+        document.querySelector('.rnctau_unread').addEventListener('click', function() {
+            document.querySelector('.rnctau_all').classList.remove('active');
+            document.querySelector('.rnctau_unread').classList.add('active');
+            fetchNotifications('unread');
+        });
+    });
+    
+    function fetchNotifications(filter = 'all') {
+        $.ajax({
+            type: 'GET',
+            url: 'notifications.php',
+            data: { filter: filter },
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    const notificationsList = document.getElementById('notificationsList');
+                    notificationsList.innerHTML = '';
+    
+                    response.notifications.forEach(function(notification) {
+                        const notificationItem = document.createElement('div');
+                        notificationItem.className = 'user_Reaction_Comments';
+    
+                        const profilePic = document.createElement('img');
+                        profilePic.src = notification.profile_picture;
+    
+                        const urcRight = document.createElement('div');
+                        urcRight.className = 'urc_right';
+                        urcRight.appendChild(profilePic);
+    
+                        const notificationText = document.createElement('div');
+                        notificationText.className = 'ul_up';
+                        notificationText.innerHTML = `<strong>${notification.firstname} ${notification.lastname}</strong> ${notification.message}`;
+    
+                        const notificationTime = document.createElement('div');
+                        notificationTime.className = 'ul_down';
+                        notificationTime.textContent = timeAgo(new Date(notification.notification_time));
+    
+                        const urcLeft = document.createElement('div');
+                        urcLeft.className = 'urc_left';
+                        urcLeft.appendChild(notificationText);
+                        urcLeft.appendChild(notificationTime);
+    
+                        notificationItem.appendChild(urcRight);
+                        notificationItem.appendChild(urcLeft);
+    
+                        notificationsList.appendChild(notificationItem);
+                    });
+                } else {
+                    console.error("Error fetching notifications:", response.message);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("An error occurred while fetching notifications:", error);
+            }
+        });
+    }
+    
+    function timeAgo(date) {
+        const now = new Date();
+        const secondsPast = (now.getTime() - date.getTime()) / 1000;
+    
+        if (secondsPast < 60) {
+            return `${Math.round(secondsPast)} seconds ago`;
+        }
+        if (secondsPast < 3600) {
+            return `${Math.round(secondsPast / 60)} minutes ago`;
+        }
+        if (secondsPast < 86400) {
+            return `${Math.round(secondsPast / 3600)} hours ago`;
+        }
+        if (secondsPast < 2592000) {
+            return `${Math.round(secondsPast / 86400)} days ago`;
+        }
+        if (secondsPast < 31104000) {
+            return `${Math.round(secondsPast / 2592000)} months ago`;
+        }
+        return `${Math.round(secondsPast / 31104000)} years ago`;
+    }
+
+
+
+    function likePost(postId) {
+        $.ajax({
+            type: 'POST',
+            url: 'like_post.php',
+            data: { post_id: postId },
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    alert('Post liked successfully');
+                    // Optionally update the like button or count here
+                } else {
+                    console.error("Error liking post:", response.message);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("An error occurred while liking the post:", error);
+            }
+        });
+    }
+    
+    
+
+
     function fetchFollowedAccounts() {
         var userEmail = "<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ''; ?>";
 
@@ -367,7 +500,7 @@ $(document).ready(function() {
                                 </div>
                             </div>
                             <div class="usrsP_activities">
-                                <div class="usrsP_ like" id="likeIcon${post.id}">
+                                <div class="usrsP_ like" id="likeIcon${post.id}" data-post-id="POST_ID">
                                     <i class='bx bx-like'></i>
                                     <p>Like</p>
                                 </div>
