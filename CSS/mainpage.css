@@ -400,7 +400,7 @@ section{
   justify-content: flex-start;
 }
 .ul_up{
-  height: 80%;
+  min-height: 80%;
   width: 100%;
   display: flex;
   justify-content: flex-start;
@@ -1227,10 +1227,33 @@ section{
   display: flex;
   flex-direction: row;
   align-items: flex-end;
-  justify-content: end;
+  justify-content: space-between;
   gap: 30px;
   padding: 8px;
   width: 100%;
+}
+.reaction_count{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.reaction_count > div{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 60px;
+}
+.reaction_count > div img{
+  height: 20px;
+  width: 20px;
+  object-fit: cover;
+  border: 1px solid #fff;
+  border-radius: 50%;
+}
+.comshare_container{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
 }
 .ComLikeCount p{
   cursor: pointer;

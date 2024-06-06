@@ -228,12 +228,24 @@ $(document).ready(function() {
                                 ${post.imagePost ? `<img src="${post.imagePost}" alt="Posted Image">` : ''}
                             </div>
                             <div class="ComLikeCount">
-                                <p>
-                                    100 Likes
-                                </p>
-                                <p onclick="popupCommentModal(${post.id})">
-                                    100 Comments
-                                </p>
+                                <div class="reaction_count">
+                                    <div>
+                                        <img src="Assets/fb-like.png" alt="DP">
+                                        <img src="Assets/fb-heart.png" alt="DP">
+                                        <img src="Assets/fb-wow.png" alt="DP">
+                                    </div>
+                                    <p>
+                                        100 Likes
+                                    </p>
+                                </div>
+                                <div class="comshare_container">
+                                    <p onclick="popupCommentModal(${post.id})">
+                                        100 Comments
+                                    </p>
+                                    <p>
+                                        1.3K shares
+                                    </p>
+                                </div>
                             </div>
                             <div class="usrsP_activities">
                                 <div class="usrsP_ like" id="likeIcon${post.id}">
@@ -335,12 +347,24 @@ $(document).ready(function() {
                                 ${post.imagePost ? `<img src="${post.imagePost}" alt="Posted Image">` : ''}
                             </div>
                             <div class="ComLikeCount">
-                                <p>
-                                    100 likes
-                                </p>
-                                <p onclick="popupCommentModal(${post.id})">
-                                    100 comments
-                                </p>
+                                <div class="reaction_count">
+                                    <div>
+                                        <img src="Assets/fb-like.png" alt="DP">
+                                        <img src="Assets/fb-heart.png" alt="DP">
+                                        <img src="Assets/fb-wow.png" alt="DP">
+                                    </div>
+                                    <p>
+                                        100 Likes
+                                    </p>
+                                </div>
+                                <div class="comshare_container">
+                                    <p onclick="popupCommentModal(${post.id})">
+                                        100 Comments
+                                    </p>
+                                    <p>
+                                        1.3K shares
+                                    </p>
+                                </div>
                             </div>
                             <div class="usrsP_activities">
                                 <div class="usrsP_ like" id="likeIcon${post.id}">
