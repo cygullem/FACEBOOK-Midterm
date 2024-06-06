@@ -381,7 +381,7 @@ $(document).ready(function() {
                                 </div>
                             </div>
                             <div class="usrsP_activities">
-                                <div class="usrsP_ like" id="likeIcon${post.id}">
+                                <div class="usrsP_ like" id="likeIcon${post.id}" data-post-id="${post.id}">
                                     <i class='bx bx-like'></i>
                                     <p>Like</p>
                                 </div>
@@ -412,8 +412,8 @@ $(document).ready(function() {
                     
                     // Add event listener to like icon
                     $(`#likeIcon${post.id}`).on('click', function() {
-                        const icon = $(this).find('i');
-                        icon.toggleClass('bx-like bxs-like liked');
+                        const postId = $(this).data('post-id');
+                        likePost(postId, $(this).find('i'));
                     });
                 });
 
@@ -500,7 +500,7 @@ $(document).ready(function() {
                                 </div>
                             </div>
                             <div class="usrsP_activities">
-                                <div class="usrsP_ like" id="likeIcon${post.id}" data-post-id="POST_ID">
+                                <div class="usrsP_ like" id="likeIcon${post.id}" data-post-id="${post.id}">
                                     <i class='bx bx-like'></i>
                                     <p>Like</p>
                                 </div>
@@ -530,10 +530,11 @@ $(document).ready(function() {
 
                     // Add event listener to like icon
                     $(`#likeIcon${post.id}`).on('click', function() {
-                        const icon = $(this).find('i');
-                        icon.toggleClass('bx-like bxs-like liked');
+                        const postId = $(this).data('post-id');
+                        likePost(postId, $(this).find('i'));
                     });
                 });
+
             },
             error: function(xhr, status, error) {
                 console.error("An error occurred while fetching user's posts.");
@@ -541,6 +542,25 @@ $(document).ready(function() {
         });
     });
 
+    function likePost(postId, icon) {
+        $.ajax({
+            type: 'POST',
+            url: 'like_post.php',
+            data: { post_id: postId },
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    alert('Post liked successfully');
+                    icon.toggleClass('bx-like bxs-like liked');
+                } else {
+                    console.error("Error liking post:", response.message);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("An error occurred while liking the post:", error);
+            }
+        });
+    }
 
     // Attach event listener to handle edit/delete button clicks for dynamically generated posts
     $(document).on('click', '.usrsp1right_icon', function() {
@@ -624,3 +644,51 @@ $(document).ready(function() {
 
 
 });
+
+
+
+//Funnction to fetch the notifications
+$(document).ready(function() {
+    function fetchNotifications() {
+        $.ajax({
+            type: 'GET',
+            url: 'fetch_notifications.php',
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    const notifications = response.notifications;
+                    let notificationsHtml = '';
+
+                    notifications.forEach(notification => {
+                        notificationsHtml += `
+                            <div class="user_Reaction_Comments">
+                                <div class="urc_right">
+                                    <img src="${notification.profile_picture}" alt="DP">
+                                </div>
+                                <div class="urc_left">
+                                    <div class="ul_up">
+                                        <p><strong>${notification.firstname} ${notification.lastname}</strong><br> ${notification.message}</p>
+                                    </div>
+                                    <div class="ul_down">
+                                        ${notification.notification_time}
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+
+                    $('#notificationsList').html(notificationsHtml);
+                } else {
+                    console.error('Failed to fetch notifications:', response.message);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('An error occurred while fetching notifications:', error);
+            }
+        });
+    }
+
+    fetchNotifications();
+    setInterval(fetchNotifications, 1000); 
+});
+

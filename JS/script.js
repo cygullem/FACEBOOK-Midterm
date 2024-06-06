@@ -1,34 +1,18 @@
+
+
 // Like icon turns blue when clicked
-document.addEventListener('DOMContentLoaded', () => {
-    console.log("DOM fully loaded and parsed");
-    const likeDiv = document.getElementById('likeIcon');
-    if (likeDiv) {
-        likeDiv.addEventListener('click', () => {
-            const icon = likeDiv.querySelector('i');
-            icon.classList.toggle('bx-like');
-            icon.classList.toggle('bxs-like');
-        });
-    } else {
-        console.error("Element with ID 'likeIcon' not found");
-    }
-});
-
-
 // document.addEventListener('DOMContentLoaded', () => {
-//     setTimeout(() => {
-//         console.log("DOM fully loaded and parsed");
-//         const likeDiv = document.getElementById('likeIcon');
-//         if (likeDiv) {
-//             // ... rest of your code
-//             likeDiv.addEventListener('click', () => {
-//                 const icon = likeDiv.querySelector('i');
-//                 icon.classList.toggle('bx-like');
-//                 icon.classList.toggle('bxs-like');
-//             });
-//         } else {
-//             console.error("Element with ID 'likeIcon' still not found");
-//         }
-//     }, 1000); // Wait for 1 second before trying to find the element
+//     console.log("DOM fully loaded and parsed");
+//     const likeDiv = document.getElementById('likeIcon');
+//     if (likeDiv) {
+//         likeDiv.addEventListener('click', () => {
+//             const icon = likeDiv.querySelector('i');
+//             icon.classList.toggle('bx-like');
+//             icon.classList.toggle('bxs-like');
+//         });
+//     } else {
+//         console.error("Element with ID 'likeIcon' not found");
+//     }
 // });
 
 

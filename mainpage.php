@@ -96,7 +96,7 @@ $loggedInUserId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
             <div class="FBM realtime_Notifs" onclick="openNotifCont()">
                 <i class="fa-solid fa-bell"></i>
                 <div class="realtime_Notifs_Count">
-                    <p>4</p>
+                    <p>0</p>
                 </div>
             </div>
 
@@ -115,21 +115,8 @@ $loggedInUserId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
                         </div>
                     </div>
 
-                    <div class="user_Reaction_Comments" id="notificationsList">
-                        <div class="urc_right">
-                            <!-- profile picture goes here (someone who like, or comment in my content posted) -->
-                            <img src="Assets/Dhaniel.png" alt="DP">
-                        </div>
-                        <div class="urc_left">
-                            <div class="ul_up">
-                                <!-- user's firstname and lastname here together with the type (like or comment) -->
-                                <p><strong>Dhaniel Malinao</strong><br> liked your post "Birdland".</p>
-                            </div>
-                            <div class="ul_down">
-                                <!-- time here of the activity (like or comment)/an hour ago/ minutes ago/ a day ago/ a week ago -->
-                                an hour ago
-                            </div>
-                        </div>
+                    <div id="notificationsList">
+                        
                     </div>
 
                 </div>
