@@ -647,48 +647,86 @@ $(document).ready(function() {
 
 
 
-//Funnction to fetch the notifications
 $(document).ready(function() {
-    function fetchNotifications() {
-        $.ajax({
-            type: 'GET',
-            url: 'fetch_notifications.php',
-            dataType: 'json',
-            success: function(response) {
-                if (response.status === 'success') {
-                    const notifications = response.notifications;
-                    let notificationsHtml = '';
-
-                    notifications.forEach(notification => {
-                        notificationsHtml += `
-                            <div class="user_Reaction_Comments">
-                                <div class="urc_right">
-                                    <img src="${notification.profile_picture}" alt="DP">
-                                </div>
-                                <div class="urc_left">
-                                    <div class="ul_up">
-                                        <p><strong>${notification.firstname} ${notification.lastname}</strong><br> ${notification.message}</p>
-                                    </div>
-                                    <div class="ul_down">
-                                        ${notification.notification_time}
-                                    </div>
-                                </div>
-                            </div>
-                        `;
-                    });
-
-                    $('#notificationsList').html(notificationsHtml);
-                } else {
-                    console.error('Failed to fetch notifications:', response.message);
-                }
-            },
-            error: function(xhr, status, error) {
-                console.error('An error occurred while fetching notifications:', error);
-            }
-        });
+    function getTimeAgo(timestamp) {
+        const now = new Date();
+        const notificationTime = new Date(timestamp);
+        const diff = now - notificationTime;
+        const diffInMinutes = Math.floor(diff / (1000 * 60));
+        const diffInHours = Math.floor(diff / (1000 * 60 * 60));
+        const diffInDays = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const diffInWeeks = Math.floor(diff / (1000 * 60 * 60 * 24 * 7));
+        const diffInMonths = Math.floor(diff / (1000 * 60 * 60 * 24 * 30));
+    
+        if (diffInMinutes < 1) {
+            return 'just now';
+        } else if (diffInMinutes === 1) {
+            return '1 minute ago';
+        } else if (diffInMinutes < 60) {
+            return `${diffInMinutes} minutes ago`;
+        } else if (diffInHours === 1) {
+            return '1 hour ago';
+        } else if (diffInHours < 24) {
+            return `${diffInHours} hours ago`;
+        } else if (diffInDays === 1) {
+            return '1 day ago';
+        } else if (diffInDays < 7) {
+            return `${diffInDays} days ago`;
+        } else if (diffInWeeks === 1) {
+            return '1 week ago';
+        } else if (diffInWeeks < 4) {
+            return `${diffInWeeks} weeks ago`;
+        } else if (diffInMonths === 1) {
+            return '1 month ago';
+        } else {
+            return `${diffInMonths} months ago`;
+        }
     }
-
-    fetchNotifications();
-    setInterval(fetchNotifications, 1000); 
+    
+    $(document).ready(function() {
+        function fetchNotifications() {
+            $.ajax({
+                type: 'GET',
+                url: 'fetch_notifications.php',
+                dataType: 'json',
+                success: function(response) {
+                    if (response.status === 'success') {
+                        const notifications = response.notifications;
+                        let notificationsHtml = '';
+    
+                        notifications.forEach(notification => {
+                            const timeAgo = getTimeAgo(notification.notification_time);
+                            notificationsHtml += `
+                                <div class="user_Reaction_Comments">
+                                    <div class="urc_right">
+                                        <img src="${notification.profile_picture}" alt="DP">
+                                    </div>
+                                    <div class="urc_left">
+                                        <div class="ul_up">
+                                            <p><strong>${notification.firstname} ${notification.lastname}</strong><br> ${notification.message}</p>
+                                        </div>
+                                        <div class="ul_down">
+                                            ${timeAgo}
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                        });
+    
+                        $('#notificationsList').html(notificationsHtml);
+                    } else {
+                        console.error('Failed to fetch notifications:', response.message);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('An error occurred while fetching notifications:', error);
+                }
+            });
+        }
+    
+        fetchNotifications();
+        setInterval(fetchNotifications, 60000); // Refresh notifications every minute
+    });     // Refresh notifications every minute
 });
+
 
