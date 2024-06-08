@@ -1,8 +1,5 @@
-error in the console:
+Unkike functonality.
+-must delete the notification when the user unlike the post.
+-add alert function to confirm the unliking of user's  post.
 
-<br />
-<b>Fatal error</b>:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'n.liked_by' in 'on clause' in C:\xampp\htdocs\FACEBOOK-Midterm\fetch_notifications.php:20
-Stack trace:
-#0 C:\xampp\htdocs\FACEBOOK-Midterm\fetch_notifications.php(20): PDOStatement-&gt;execute(Array)
-#1 {main}
-  thrown in <b>C:\xampp\htdocs\FACEBOOK-Midterm\fetch_notifications.php</b> on line <b>20</b><br />
+Comment notification.
