@@ -460,6 +460,10 @@ $(document).ready(function() {
             dataType: 'json',
             success: function(response) {
                 response.forEach(function(post) {
+                    var isLiked = post.is_liked_by_user > 0;
+                    var likeClass = isLiked ? 'bxs-like liked' : 'bx-like';
+                    var likeColor = isLiked ? '#0866ff' : '';
+    
                     var postHtml = `
                         <div class="users_Posts">
                             <div class="usrsP_1">
@@ -501,7 +505,7 @@ $(document).ready(function() {
                             </div>
                             <div class="usrsP_activities">
                                 <div class="usrsP_ like" id="likeIcon${post.id}" data-post-id="${post.id}">
-                                    <i class='bx bx-like'></i>
+                                    <i class='bx ${likeClass}' style='color: ${likeColor}'></i>
                                     <p>Like</p>
                                 </div>
                                 <div class="usrsP_ comment" id="openCommentModal" onclick="popupCommentModal(${post.id})">
@@ -530,8 +534,7 @@ $(document).ready(function() {
 
                     // Add event listener to like icon
                     $(`#likeIcon${post.id}`).on('click', function() {
-                        const postId = $(this).data('post-id');
-                        likePost(postId, $(this).find('i'));
+                        likePost(post.id, $(this).find('i'));
                     });
                 });
 
@@ -550,8 +553,7 @@ $(document).ready(function() {
             dataType: 'json',
             success: function(response) {
                 if (response.status === 'success') {
-                    alert('Post liked successfully');
-                    icon.toggleClass('bx-like bxs-like liked');
+                    icon.removeClass('bx-like').addClass('bxs-like').css('color', '#0866ff');
                 } else {
                     console.error("Error liking post:", response.message);
                 }
@@ -561,6 +563,11 @@ $(document).ready(function() {
             }
         });
     }
+    
+    
+    
+    
+    
 
     // Attach event listener to handle edit/delete button clicks for dynamically generated posts
     $(document).on('click', '.usrsp1right_icon', function() {
@@ -647,86 +654,82 @@ $(document).ready(function() {
 
 
 
-$(document).ready(function() {
-    function getTimeAgo(timestamp) {
-        const now = new Date();
-        const notificationTime = new Date(timestamp);
-        const diff = now - notificationTime;
-        const diffInMinutes = Math.floor(diff / (1000 * 60));
-        const diffInHours = Math.floor(diff / (1000 * 60 * 60));
-        const diffInDays = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const diffInWeeks = Math.floor(diff / (1000 * 60 * 60 * 24 * 7));
-        const diffInMonths = Math.floor(diff / (1000 * 60 * 60 * 24 * 30));
-    
-        if (diffInMinutes < 1) {
-            return 'just now';
-        } else if (diffInMinutes === 1) {
-            return '1 minute ago';
-        } else if (diffInMinutes < 60) {
-            return `${diffInMinutes} minutes ago`;
-        } else if (diffInHours === 1) {
-            return '1 hour ago';
-        } else if (diffInHours < 24) {
-            return `${diffInHours} hours ago`;
-        } else if (diffInDays === 1) {
-            return '1 day ago';
-        } else if (diffInDays < 7) {
-            return `${diffInDays} days ago`;
-        } else if (diffInWeeks === 1) {
-            return '1 week ago';
-        } else if (diffInWeeks < 4) {
-            return `${diffInWeeks} weeks ago`;
-        } else if (diffInMonths === 1) {
-            return '1 month ago';
-        } else {
-            return `${diffInMonths} months ago`;
-        }
+function getTimeAgo(timestamp) {
+    const now = new Date();
+    const notificationTime = new Date(timestamp);
+    const diff = now - notificationTime;
+    const diffInMinutes = Math.floor(diff / (1000 * 60));
+    const diffInHours = Math.floor(diff / (1000 * 60 * 60));
+    const diffInDays = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const diffInWeeks = Math.floor(diff / (1000 * 60 * 60 * 24 * 7));
+    const diffInMonths = Math.floor(diff / (1000 * 60 * 60 * 24 * 30));
+
+    if (diffInMinutes < 1) {
+        return 'just now';
+    } else if (diffInMinutes === 1) {
+        return '1 minute ago';
+    } else if (diffInMinutes < 60) {
+        return `${diffInMinutes} minutes ago`;
+    } else if (diffInHours === 1) {
+        return '1 hour ago';
+    } else if (diffInHours < 24) {
+        return `${diffInHours} hours ago`;
+    } else if (diffInDays === 1) {
+        return '1 day ago';
+    } else if (diffInDays < 7) {
+        return `${diffInDays} days ago`;
+    } else if (diffInWeeks === 1) {
+        return '1 week ago';
+    } else if (diffInWeeks < 4) {
+        return `${diffInWeeks} weeks ago`;
+    } else if (diffInMonths === 1) {
+        return '1 month ago';
+    } else {
+        return `${diffInMonths} months ago`;
     }
-    
-    $(document).ready(function() {
-        function fetchNotifications() {
-            $.ajax({
-                type: 'GET',
-                url: 'fetch_notifications.php',
-                dataType: 'json',
-                success: function(response) {
-                    if (response.status === 'success') {
-                        const notifications = response.notifications;
-                        let notificationsHtml = '';
-    
-                        notifications.forEach(notification => {
-                            const timeAgo = getTimeAgo(notification.notification_time);
-                            notificationsHtml += `
-                                <div class="user_Reaction_Comments">
-                                    <div class="urc_right">
-                                        <img src="${notification.profile_picture}" alt="DP">
+}
+
+$(document).ready(function() {
+    function fetchNotifications() {
+        $.ajax({
+            type: 'GET',
+            url: 'fetch_notifications.php',
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    const notifications = response.notifications;
+                    let notificationsHtml = '';
+
+                    notifications.forEach(notification => {
+                        const timeAgo = getTimeAgo(notification.notification_time);
+                        notificationsHtml += `
+                            <div class="user_Reaction_Comments">
+                                <div class="urc_right">
+                                    <img src="${notification.liker_profile_picture}" alt="DP">
+                                </div>
+                                <div class="urc_left">
+                                    <div class="ul_up">
+                                        <p><strong>${notification.liker_firstname} ${notification.liker_lastname}</strong><br> ${notification.message}</p>
                                     </div>
-                                    <div class="urc_left">
-                                        <div class="ul_up">
-                                            <p><strong>${notification.firstname} ${notification.lastname}</strong><br> ${notification.message}</p>
-                                        </div>
-                                        <div class="ul_down">
-                                            ${timeAgo}
-                                        </div>
+                                    <div class="ul_down">
+                                        ${timeAgo}
                                     </div>
                                 </div>
-                            `;
-                        });
-    
-                        $('#notificationsList').html(notificationsHtml);
-                    } else {
-                        console.error('Failed to fetch notifications:', response.message);
-                    }
-                },
-                error: function(xhr, status, error) {
-                    console.error('An error occurred while fetching notifications:', error);
+                            </div>
+                        `;
+                    });
+
+                    $('#notificationsList').html(notificationsHtml);
+                } else {
+                    console.error('Failed to fetch notifications:', response.message);
                 }
-            });
-        }
-    
-        fetchNotifications();
-        setInterval(fetchNotifications, 60000); // Refresh notifications every minute
-    });     // Refresh notifications every minute
+            },
+            error: function(xhr, status, error) {
+                console.error('An error occurred while fetching notifications:', error);
+            }
+        });
+    }
+
+    fetchNotifications();
+    setInterval(fetchNotifications, 60000);
 });
-
-

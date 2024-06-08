@@ -1,38 +1,8 @@
-<!-- <div class="ul_down">
-    11 hours ago
-</div> -->
+error in the console:
 
-<div class="urc_right">
-                            <!-- profile picture goes here (someone who like, or comment in my content posted) -->
-                            <img src="Assets/Dhaniel.png" alt="DP">
-                        </div>
-                        <div class="urc_left">
-                            <div class="ul_up">
-                                <!-- user's firstname and lastname here together with the type (like or comment) -->
-                                <p><strong>Dhaniel Malinao</strong><br> liked your post "Birdland".</p>
-                            </div>
-                            <div class="ul_down">
-                                <!-- time here of the activity (like or comment)/an hour ago/ minutes ago/ a day ago/ a week ago -->
-                                an hour ago
-                            </div>
-                        </div>
-
-
-
-
-function getTimeAgo(timestamp) {
-        const now = new Date();
-        const notificationTime = new Date(timestamp);
-        const diff = now - notificationTime;
-        const diffInMinutes = Math.floor(diff / (1000 * 60));
-        const diffInHours = Math.floor(diff / (1000 * 60 * 60));
-        const diffInDays = Math.floor(diff / (1000 * 60 * 60 * 24));
-
-        if (diffInMinutes < 60) {
-            return diffInMinutes + ' minutes ago';
-        } else if (diffInHours < 24) {
-            return diffInHours + ' hours ago';
-        } else {
-            return diffInDays + ' days ago';
-        }
-    }
+<br />
+<b>Fatal error</b>:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'n.liked_by' in 'on clause' in C:\xampp\htdocs\FACEBOOK-Midterm\fetch_notifications.php:20
+Stack trace:
+#0 C:\xampp\htdocs\FACEBOOK-Midterm\fetch_notifications.php(20): PDOStatement-&gt;execute(Array)
+#1 {main}
+  thrown in <b>C:\xampp\htdocs\FACEBOOK-Midterm\fetch_notifications.php</b> on line <b>20</b><br />
