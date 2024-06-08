@@ -328,8 +328,12 @@ $(document).ready(function() {
             url: 'fetch_user_posts.php',
             data: { user_email: "<?php echo $_SESSION['email']; ?>" },
             dataType: 'json',
-            success: function(response) {   
+            success: function(response) {
                 response.forEach(function(post) {
+                    var isLiked = post.is_liked_by_user > 0;
+                    var likeClass = isLiked ? 'bxs-like liked' : 'bx-like';
+                    var likeColor = isLiked ? '#0866ff' : '';
+    
                     var postHtml = `
                         <div class="users_Posts">
                             <div class="usrsP_1">
@@ -376,13 +380,13 @@ $(document).ready(function() {
                                         100 Comments
                                     </p>
                                     <p>
-                                        1.3K shares
+                                        1K shares
                                     </p>
                                 </div>
                             </div>
                             <div class="usrsP_activities">
                                 <div class="usrsP_ like" id="likeIcon${post.id}" data-post-id="${post.id}">
-                                    <i class='bx bx-like'></i>
+                                     <i class='bx ${likeClass}' style='color: ${likeColor}'></i>
                                     <p>Like</p>
                                 </div>
                                 <div class="usrsP_ comment" onclick="popupCommentModal(${post.id})">
@@ -412,8 +416,7 @@ $(document).ready(function() {
                     
                     // Add event listener to like icon
                     $(`#likeIcon${post.id}`).on('click', function() {
-                        const postId = $(this).data('post-id');
-                        likePost(postId, $(this).find('i'));
+                        likePost(post.id, $(this).find('i'));
                     });
                 });
 
@@ -499,7 +502,7 @@ $(document).ready(function() {
                                         100 Comments
                                     </p>
                                     <p>
-                                        1.3K shares
+                                        1K shares
                                     </p>
                                 </div>
                             </div>
