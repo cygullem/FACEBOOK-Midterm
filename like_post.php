@@ -43,21 +43,23 @@ if (!$post) {
 $stmt_like = $pdo->prepare("INSERT INTO likes_table (user_id, post_id) VALUES (:user_id, :post_id)");
 $stmt_like->execute([':user_id' => $user_id, ':post_id' => $post_id]);
 
-// Insert a notification into the notifications_table
-$notification_message = "liked your post";
-$notification_type = "like"; // or other appropriate type
-$reference_id = $user_id; // assuming this is the ID of the user who liked the post
+// Only insert a notification if the user liking the post is not the owner of the post
+if ($post['user_id'] != $user_id) {
+    $notification_message = "liked your post";
+    $notification_type = "like"; // or other appropriate type
+    $reference_id = $user_id; // assuming this is the ID of the user who liked the post
 
-$stmt_notification = $pdo->prepare("
-    INSERT INTO notifications_table (user_id, type, reference_id, message) 
-    VALUES (:user_id, :type, :reference_id, :message)"
-);
-$stmt_notification->execute([
-    ':user_id' => $post['user_id'], // The owner of the post
-    ':type' => $notification_type,
-    ':reference_id' => $reference_id,
-    ':message' => $notification_message
-]);
+    $stmt_notification = $pdo->prepare("
+        INSERT INTO notifications_table (user_id, type, reference_id, message) 
+        VALUES (:user_id, :type, :reference_id, :message)"
+    );
+    $stmt_notification->execute([
+        ':user_id' => $post['user_id'], // The owner of the post
+        ':type' => $notification_type,
+        ':reference_id' => $reference_id,
+        ':message' => $notification_message
+    ]);
+}
 
 echo json_encode(['status' => 'success']);
 ?>

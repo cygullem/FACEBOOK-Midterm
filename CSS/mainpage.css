@@ -927,12 +927,6 @@ section{
   border-top: 1px solid #c6c6c6;
   border-bottom: 1px solid #c6c6c6;
 }
-.usrsP_ i.liked {
-  color: #0866ff;
-}
-.bx-like {
-  color: initial !important; 
-}
 
 .bxs-like {
   color: #0866ff !important; 

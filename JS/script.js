@@ -1,21 +1,5 @@
 
 
-// Like icon turns blue when clicked
-// document.addEventListener('DOMContentLoaded', () => {
-//     console.log("DOM fully loaded and parsed");
-//     const likeDiv = document.getElementById('likeIcon');
-//     if (likeDiv) {
-//         likeDiv.addEventListener('click', () => {
-//             const icon = likeDiv.querySelector('i');
-//             icon.classList.toggle('bx-like');
-//             icon.classList.toggle('bxs-like');
-//         });
-//     } else {
-//         console.error("Element with ID 'likeIcon' not found");
-//     }
-// });
-
-
 
 document.addEventListener("DOMContentLoaded", function () {
     const postContent = document.getElementById("postContent");
