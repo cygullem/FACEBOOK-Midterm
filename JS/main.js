@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    
+    // Like button functionality
     $('.like-btn').on('click', function() {
         var postId = $(this).data('post-id');
         $.ajax({
@@ -19,6 +21,8 @@ $(document).ready(function() {
         });
     });
 
+
+    // Fetch notifications
     document.addEventListener('DOMContentLoaded', function() {
         fetchNotifications();
     
@@ -85,6 +89,7 @@ $(document).ready(function() {
         });
     }
     
+    // Notification time created
     function timeAgo(date) {
         const now = new Date();
         const secondsPast = (now.getTime() - date.getTime()) / 1000;
@@ -109,6 +114,7 @@ $(document).ready(function() {
 
 
 
+    // Like post functionality 
     function likePost(postId) {
         $.ajax({
             type: 'POST',
@@ -131,7 +137,7 @@ $(document).ready(function() {
     
     
 
-
+    // Fetch followed accounts
     function fetchFollowedAccounts() {
         var userEmail = "<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ''; ?>";
 
@@ -413,6 +419,8 @@ $(document).ready(function() {
                     });
                 });
 
+
+                // like post
                 function likePost(postId, icon) {
                     var isLiked = icon.hasClass('bxs-like');
                     if (isLiked) {
@@ -712,6 +720,7 @@ $(document).ready(function() {
 
 
 
+// Set specific timestamp
 function getTimeAgo(timestamp) {
     const now = new Date();
     const notificationTime = new Date(timestamp);
@@ -747,6 +756,8 @@ function getTimeAgo(timestamp) {
     }
 }
 
+
+// Fetching notifications
 $(document).ready(function() {
     function fetchNotifications() {
         $.ajax({
@@ -791,3 +802,60 @@ $(document).ready(function() {
     fetchNotifications();
     setInterval(fetchNotifications, 30000);
 });
+
+
+$(document).ready(function() {
+    fetchUnreadNotifications();
+});
+
+function fetchUnreadNotifications() {
+    $.ajax({
+        type: 'GET',
+        url: 'fetch_unread_notifications.php',
+        dataType: 'json',
+        success: function(response) {
+            if (response.status === 'success') {
+                if (response.unread_count > 0) {
+                    $('.realtime_Notifs_Count p').text(response.unread_count);
+                    $('.realtime_Notifs_Count').show();
+                } else {
+                    $('.realtime_Notifs_Count').hide();
+                }
+            } else {
+                console.error("Error fetching notifications:", response.message);
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error("An error occurred while fetching notifications:", error);
+        }
+    });
+}
+
+
+function openNotifCont() {
+    var modal = document.getElementById("notificationArea");
+
+    // Toggle the modal's visibility
+    if (modal.style.display === "block") {
+        modal.style.display = "none";
+    } else {
+        modal.style.display = "block";
+
+        // Make an AJAX request to mark notifications as read
+        $.ajax({
+            type: 'POST',
+            url: 'mark_notifications_read.php',
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    $('.realtime_Notifs_Count').hide();
+                } else {
+                    console.error("Error updating notifications:", response.message);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("An error occurred while updating notifications:", error);
+            }
+        });
+    }
+}

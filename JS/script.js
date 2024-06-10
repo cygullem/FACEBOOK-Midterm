@@ -433,7 +433,7 @@ function submitEditedComment() {
 
 
 
-// fetch comments for a specific post ID
+// Fetch comments for a specific post ID
 function popupCommentModal(postId) {
     console.log("Post ID:", postId); 
 
@@ -461,7 +461,7 @@ function popupCommentModal(postId) {
                 }
 
                 var commentHtml = `
-                    <div class="userComment">
+                    <div class="userComment" id="comment-${comment.id}">
                         <div class="userprofilecomment">
                             <div class="upc_profile">
                                 <img src="${comment.profile_picture}" alt="">
@@ -480,6 +480,12 @@ function popupCommentModal(postId) {
                         </div>
                     </div>`;
                 $(".commentContainer").prepend(commentHtml);
+            });
+
+            // Attach delete event handlers to delete buttons
+            $('.delete-comment-btn').on('click', function() {
+                var commentId = $(this).data('comment-id');
+                deleteComment(commentId);
             });
         },
         error: function(xhr, status, error) {
@@ -520,6 +526,7 @@ function deleteComment(commentId) {
         }
     });
 }
+
 
 // Event listener for delete comment button
 $(document).on('click', '.delete-comment-btn', function() {
@@ -570,15 +577,3 @@ $('#login-form').submit(function(e) {
         }
     });
 });
-
-
-
-function openNotifCont(){
-    var modal = document.getElementById('notificationArea');
-
-    if(modal.style.display  == "none" || modal.style.display == ""){
-        modal.style.display = 'block';
-    } else{
-        modal.style.display = 'none';
-    }
-}

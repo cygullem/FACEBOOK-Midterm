@@ -1,5 +1,27 @@
-Unkike functonality.
--must delete the notification when the user unlike the post.
--add alert function to confirm the unliking of user's  post.
-
 Comment notification.
+- cant delete notification when the comment is deleted.
+
+
+
+
+
+    // Like post functionality 
+    function likePost(postId) {
+        $.ajax({
+            type: 'POST',
+            url: 'like_post.php',
+            data: { post_id: postId },
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    alert('Post liked successfully');
+                    // Optionally update the like button or count here
+                } else {
+                    console.error("Error liking post:", response.message);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("An error occurred while liking the post:", error);
+            }
+        });
+    }

@@ -20,11 +20,31 @@ if ($post_id === null || $comment === null) {
     exit();
 }
 
+// Insert the comment into the comment_table
 $stmt = $pdo->prepare("INSERT INTO comment_table (user_id, post_id, comment, comment_time) VALUES (?, ?, ?, ?)");
 $result = $stmt->execute([$user_id, $post_id, $comment, $comment_time]);
 
 if ($result) {
+    // Get the post owner's user_id
+    $stmt_post = $pdo->prepare("SELECT user_id FROM post_table WHERE id = ?");
+    $stmt_post->execute([$post_id]);
+    $post_owner_id = $stmt_post->fetchColumn();
+
+    // Insert a notification into the notifications_table if the commenter is not the post owner
+    if ($post_owner_id && $post_owner_id != $user_id) {
+        $notification_message = "commented on your post";
+        $notification_type = "comment";
+        $reference_id = $user_id;
+
+        $stmt_notification = $pdo->prepare("
+            INSERT INTO notifications_table (user_id, type, reference_id, message, is_read) 
+            VALUES (?, ?, ?, ?, 0)"
+        );
+        $stmt_notification->execute([$post_owner_id, $notification_type, $reference_id, $notification_message]);
+    }
+
     echo json_encode(['status' => 'success', 'message' => 'Comment added successfully']);
 } else {
     echo json_encode(['status' => 'error', 'message' => 'Failed to add comment']);
 }
+?>
