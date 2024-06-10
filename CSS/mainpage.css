@@ -680,7 +680,7 @@ section{
   margin-top: 20px;
   height: 20vh;
   width: 100%;
-  padding: 15px;
+  padding: 15px 15px 0 15px;
   border-radius: 10px;
   display: flex;
   gap: 5px;
