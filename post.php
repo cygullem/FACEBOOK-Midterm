@@ -14,14 +14,21 @@ if (!isset($_SESSION['email'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_SESSION['email'];
     $caption = $_POST['post_text'];
+    $filesArray = [];
 
-    if (!empty($_FILES['image']['name'])) {
-        $imageName = uniqid() . '_' . basename($_FILES['image']['name']);
-        $imagePath = 'Post_Images/' . $imageName;
-        move_uploaded_file($_FILES['image']['tmp_name'], $imagePath);
-    } else {
-        $imagePath = null;
+    if (!empty($_FILES['images']['name'][0])) {
+        foreach ($_FILES['images']['tmp_name'] as $key => $tmpName) {
+            $imageName = $_FILES["images"]["name"][$key];
+            $imageExtension = pathinfo($imageName, PATHINFO_EXTENSION);
+            $newImageName = uniqid() . '.' . $imageExtension;
+
+            $imagePath = 'Post_Images/' . $newImageName;
+            move_uploaded_file($tmpName, $imagePath);
+            $filesArray[] = $newImageName;
+        }
     }
+
+    $filesJson = json_encode($filesArray);
 
     $stmt = $pdo->prepare("SELECT id FROM login_table WHERE email = ?");
     $stmt->execute([$email]);
@@ -29,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($userId) {
         $stmt = $pdo->prepare("INSERT INTO post_table (user_id, caption, imagePost) VALUES (?, ?, ?)");
-        $stmt->execute([$userId, $caption, $imagePath]);
+        $stmt->execute([$userId, $caption, $filesJson]);
 
         if ($stmt->rowCount() > 0) {
             $response['status'] = 'success';
@@ -50,3 +57,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 echo json_encode($response);
+?>

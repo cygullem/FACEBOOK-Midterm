@@ -361,6 +361,7 @@ $loggedInUserId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
         <div class="popup">
             <div class="container_Post">
                 <div class="wrapper">
+
                     <section class="post">
                         <header>
                             Create Post
@@ -383,9 +384,9 @@ $loggedInUserId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
                             </div>
                             <textarea name="post_text" placeholder="What's on your mind <?php echo $_SESSION['firstname'] ?>?" spellcheck="false"></textarea>
                             <div class="post-scroll-effect">
-                                <input type="file" name="image" id="imageInput" multiple style="display: none;">
-                                <div class="post-image">
-                                    <img id="chosenImage" src="" alt=" ">
+                                <input type="file" name="images[]" id="imageInput" multiple style="display: none;">
+                                <div class="post-image" id="imagePreviewContainer">
+                                    <!-- Preview selected images here -->
                                 </div>
                             </div>
                             <div class="theme-emoji">
@@ -473,6 +474,26 @@ $loggedInUserId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
         </div>
     </div>
 
+    <script>
+        document.getElementById('fileInputTrigger').addEventListener('click', function() {
+            document.getElementById('imageInput').click();
+        });
+
+        document.getElementById('imageInput').addEventListener('change', function() {
+            const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+            imagePreviewContainer.innerHTML = '';
+            
+            Array.from(this.files).forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    imagePreviewContainer.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            });
+        });
+    </script>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

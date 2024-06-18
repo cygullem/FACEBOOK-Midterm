@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 03, 2024 at 05:18 AM
+-- Generation Time: Jun 18, 2024 at 05:25 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -35,45 +35,17 @@ CREATE TABLE `comment_table` (
   `comment_time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `comment_table`
---
-
-INSERT INTO `comment_table` (`id`, `user_id`, `post_id`, `comment`, `comment_time`) VALUES
-(3, 9, 6, 'I love it! and you ay natype hehe', '2024-05-10 14:58:45'),
-(8, 4, 6, 'nice kaayo 😍', '2024-05-10 09:29:59'),
-(9, 4, 17, 'commenting editing', '2024-05-10 15:53:56'),
-(12, 23, 19, 'WOW that\'s dope', '2024-05-10 16:27:28'),
-(15, 24, 22, '101', '2024-05-10 10:42:18'),
-(17, 24, 19, 'amazing', '2024-05-10 10:44:49'),
-(18, 4, 19, 'thanks guys hehe, appreciated', '2024-05-11 01:32:22'),
-(19, 4, 23, 'you\'re dope', '2024-05-10 10:46:40'),
-(20, 4, 9, 'HAHAHHAHA', '2024-05-10 10:47:56'),
-(21, 10, 24, 'trhs sht ezz reeaalll', '2024-05-10 10:48:38'),
-(22, 10, 19, 'nice', '2024-05-10 10:48:48'),
-(24, 25, 25, 'shesh', '2024-05-10 19:43:03'),
-(25, 25, 19, 'shesh', '2024-05-10 19:43:46'),
-(26, 25, 19, 'hm', '2024-05-10 19:46:00'),
-(27, 4, 19, 'das dope', '2024-05-11 01:59:30'),
-(30, 26, 19, 'edit', '2024-05-10 20:04:50'),
-(31, 4, 9, 'hahahahahah', '2024-05-10 20:06:54'),
-(32, 4, 8, 'sheesh', '2024-05-10 20:07:07'),
-(33, 4, 28, 'paita naman ani uy. ako naman hinuon alanganin.', '2024-05-12 01:59:09'),
-(34, 9, 29, 'bagan hup 👊👊👊', '2024-05-16 20:27:56'),
-(36, 4, 6, 'hahhahaa yiieee 🤣🤣🤣🤣🤣', '2024-05-29 02:44:47'),
-(37, 4, 31, 'Created by Dhaniel', '2024-06-02 20:27:01');
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `like_table`
+-- Table structure for table `likes_table`
 --
 
-CREATE TABLE `like_table` (
+CREATE TABLE `likes_table` (
   `id` int(11) NOT NULL,
-  `post_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `post_id` int(11) NOT NULL,
+  `like_time` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -127,9 +99,11 @@ INSERT INTO `login_table` (`id`, `firstname`, `lastname`, `email`, `profile_pict
 CREATE TABLE `notifications_table` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `post_id` int(11) NOT NULL,
-  `type` varchar(255) NOT NULL,
-  `time` timestamp NOT NULL DEFAULT current_timestamp()
+  `type` enum('like','comment','follow') NOT NULL,
+  `reference_id` int(11) NOT NULL,
+  `message` varchar(255) NOT NULL,
+  `notification_time` timestamp NOT NULL DEFAULT current_timestamp(),
+  `is_read` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -151,14 +125,7 @@ CREATE TABLE `post_table` (
 --
 
 INSERT INTO `post_table` (`id`, `user_id`, `caption`, `imagePost`, `created_at`) VALUES
-(6, 9, 'I love Canada hehe mwuah', 'Post_Images/lanscapeCanada.png', '2024-05-05 15:07:33'),
-(8, 10, 'I am the greatest of all. HAHA', 'Post_Images/66383c1a3b60a_Dhaniel.png', '2024-05-06 02:10:34'),
-(9, 11, 'Dhaniel the great', NULL, '2024-05-06 02:12:12'),
-(20, 23, 'JOHN DOPE YEAAAAH', 'Post_Images/Switzerland.png', '2024-05-10 16:26:12'),
-(21, 23, 'HAHAHHA', NULL, '2024-05-10 16:26:51'),
-(23, 24, 'Dope', 'Post_Images/663e4ea52e694_Switzerland.png', '2024-05-10 16:43:17'),
-(26, 26, 'Zane', 'Post_Images/Zane_Daniel.png', '2024-05-11 02:03:43'),
-(31, 4, 'Birdland', 'Post_Images/665d2750928b6_Birdland.png', '2024-06-03 02:15:44');
+(5, 4, '', '[\"6671a4eba8e0b.png\",\"6671a4eba9430.png\",\"6671a4eba99e4.png\",\"6671a4ebab54e.png\",\"6671a4ebabc36.png\",\"6671a4ebac148.png\"]', '2024-06-18 15:16:59');
 
 -- --------------------------------------------------------
 
@@ -178,41 +145,7 @@ CREATE TABLE `user_following` (
 --
 
 INSERT INTO `user_following` (`id`, `follower_id`, `followed_id`, `created_at`) VALUES
-(50, 14, 20, '2024-04-30 16:09:36'),
-(51, 14, 12, '2024-04-30 16:09:42'),
-(52, 14, 13, '2024-04-30 16:09:46'),
-(53, 14, 11, '2024-04-30 16:09:53'),
-(54, 14, 10, '2024-04-30 16:09:56'),
-(68, 9, 4, '2024-05-02 15:52:04'),
-(73, 12, 4, '2024-05-04 01:57:22'),
-(74, 10, 4, '2024-05-04 01:57:46'),
-(75, 14, 4, '2024-05-04 01:58:09'),
-(76, 13, 4, '2024-05-04 01:59:16'),
-(77, 13, 12, '2024-05-04 01:59:18'),
-(78, 13, 10, '2024-05-04 01:59:20'),
-(79, 13, 11, '2024-05-04 01:59:22'),
-(80, 13, 19, '2024-05-04 01:59:25'),
-(81, 13, 20, '2024-05-04 01:59:27'),
-(82, 13, 14, '2024-05-04 01:59:31'),
-(87, 21, 9, '2024-05-04 15:09:45'),
-(88, 21, 4, '2024-05-04 15:09:48'),
-(89, 21, 20, '2024-05-04 15:11:51'),
-(90, 10, 13, '2024-05-05 11:48:20'),
-(91, 10, 12, '2024-05-05 11:48:22'),
-(92, 10, 11, '2024-05-05 11:48:24'),
-(93, 10, 19, '2024-05-05 11:48:26'),
-(94, 10, 14, '2024-05-05 11:48:35'),
-(96, 11, 10, '2024-05-06 02:13:15'),
-(97, 11, 13, '2024-05-06 02:13:19'),
-(98, 11, 4, '2024-05-06 02:13:23'),
-(99, 19, 10, '2024-05-06 02:16:25'),
-(100, 19, 11, '2024-05-06 02:16:32'),
-(111, 12, 11, '2024-05-08 14:38:39'),
-(129, 23, 4, '2024-05-10 16:27:46'),
-(131, 24, 4, '2024-05-10 16:43:54'),
-(137, 25, 4, '2024-05-11 01:43:29'),
-(139, 26, 4, '2024-05-11 02:05:00'),
-(145, 4, 9, '2024-05-29 02:24:59');
+(1, 4, 9, '2024-06-18 15:16:20');
 
 --
 -- Indexes for dumped tables
@@ -225,10 +158,12 @@ ALTER TABLE `comment_table`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `like_table`
+-- Indexes for table `likes_table`
 --
-ALTER TABLE `like_table`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `likes_table`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `post_id` (`post_id`);
 
 --
 -- Indexes for table `login_table`
@@ -240,7 +175,8 @@ ALTER TABLE `login_table`
 -- Indexes for table `notifications_table`
 --
 ALTER TABLE `notifications_table`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `post_table`
@@ -264,12 +200,12 @@ ALTER TABLE `user_following`
 -- AUTO_INCREMENT for table `comment_table`
 --
 ALTER TABLE `comment_table`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `like_table`
+-- AUTO_INCREMENT for table `likes_table`
 --
-ALTER TABLE `like_table`
+ALTER TABLE `likes_table`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -288,17 +224,30 @@ ALTER TABLE `notifications_table`
 -- AUTO_INCREMENT for table `post_table`
 --
 ALTER TABLE `post_table`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user_following`
 --
 ALTER TABLE `user_following`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `likes_table`
+--
+ALTER TABLE `likes_table`
+  ADD CONSTRAINT `likes_table_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `login_table` (`id`),
+  ADD CONSTRAINT `likes_table_ibfk_2` FOREIGN KEY (`post_id`) REFERENCES `post_table` (`id`);
+
+--
+-- Constraints for table `notifications_table`
+--
+ALTER TABLE `notifications_table`
+  ADD CONSTRAINT `notifications_table_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `login_table` (`id`);
 
 --
 -- Constraints for table `user_following`

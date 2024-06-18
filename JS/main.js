@@ -22,72 +22,6 @@ $(document).ready(function() {
     });
 
 
-    // Fetch notifications
-    document.addEventListener('DOMContentLoaded', function() {
-        fetchNotifications();
-    
-        document.querySelector('.rnctau_all').addEventListener('click', function() {
-            document.querySelector('.rnctau_all').classList.add('active');
-            document.querySelector('.rnctau_unread').classList.remove('active');
-            fetchNotifications('all');
-        });
-    
-        document.querySelector('.rnctau_unread').addEventListener('click', function() {
-            document.querySelector('.rnctau_all').classList.remove('active');
-            document.querySelector('.rnctau_unread').classList.add('active');
-            fetchNotifications('unread');
-        });
-    });
-    
-    function fetchNotifications(filter = 'all') {
-        $.ajax({
-            type: 'GET',
-            url: 'notifications.php',
-            data: { filter: filter },
-            dataType: 'json',
-            success: function(response) {
-                if (response.status === 'success') {
-                    const notificationsList = document.getElementById('notificationsList');
-                    notificationsList.innerHTML = '';
-    
-                    response.notifications.forEach(function(notification) {
-                        const notificationItem = document.createElement('div');
-                        notificationItem.className = 'user_Reaction_Comments';
-    
-                        const profilePic = document.createElement('img');
-                        profilePic.src = notification.profile_picture;
-    
-                        const urcRight = document.createElement('div');
-                        urcRight.className = 'urc_right';
-                        urcRight.appendChild(profilePic);
-    
-                        const notificationText = document.createElement('div');
-                        notificationText.className = 'ul_up';
-                        notificationText.innerHTML = `<strong>${notification.firstname} ${notification.lastname}</strong> ${notification.message}`;
-    
-                        const notificationTime = document.createElement('div');
-                        notificationTime.className = 'ul_down';
-                        notificationTime.textContent = timeAgo(new Date(notification.notification_time));
-    
-                        const urcLeft = document.createElement('div');
-                        urcLeft.className = 'urc_left';
-                        urcLeft.appendChild(notificationText);
-                        urcLeft.appendChild(notificationTime);
-    
-                        notificationItem.appendChild(urcRight);
-                        notificationItem.appendChild(urcLeft);
-    
-                        notificationsList.appendChild(notificationItem);
-                    });
-                } else {
-                    console.error("Error fetching notifications:", response.message);
-                }
-            },
-            error: function(xhr, status, error) {
-                console.error("An error occurred while fetching notifications:", error);
-            }
-        });
-    }
     
     // Notification time created
     function timeAgo(date) {
@@ -301,6 +235,7 @@ $(document).ready(function() {
     fetchAccounts();
 
 
+
     // Follow & Remove Button Click Event
     $(document).on('click', '.followBtn, .removeBtn', function() {
         var friendId = $(this).closest('.user_follow').attr('data-user-id');
@@ -322,175 +257,6 @@ $(document).ready(function() {
             error: function(xhr, status, error) {
                 console.error(xhr.responseText);
                 alert('An error occurred while ' + (isFollowAction ? 'following' : 'unfollowing'));
-            }
-        });
-    });
-
-
-    // Fetching user's posts
-    $(document).ready(function() {
-        $.ajax({
-            type: 'POST',
-            url: 'fetch_user_posts.php',
-            data: { user_email: "<?php echo $_SESSION['email']; ?>" },
-            dataType: 'json',
-            success: function(response) {
-                response.forEach(function(post) {
-                    var isLiked = post.is_liked_by_user > 0;
-                    var likeClass = isLiked ? 'bxs-like liked' : 'bx-like';
-                    var likeColor = isLiked ? '#0866ff' : '';
-
-                    var postHtml = `
-                        <div class="users_Posts">
-                            <div class="usrsP_1">
-                                <div class="usrsp1left">
-                                    <div class="usrsp1left_01">
-                                        <img src="${post.profile_picture}" alt="Profile">
-                                    </div>
-                                    <div class="usrsp1left_02">
-                                        <p>${post.firstname} ${post.lastname}</p>
-                                        <span>${post.created_at} &#183; <i class='fa-solid fa-user-group'></i></span>
-                                    </div>
-                                </div>
-                                <div class="usrsp1right">
-                                    <div class="usrsp1right_icon">
-                                        <i class="fa-solid fa-ellipsis"></i>
-                                        <div class="usrsp_options">
-                                            <p class="edit-btn" data-post-id="${post.id}">Edit</p>
-                                            <p class="delete-btn" data-post-id="${post.id}">Delete</p>
-                                        </div>
-                                        <div class="triangle"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="usrsP_caption">
-                                <p>${post.caption}</p>
-                            </div>
-                            <div class="usrsP_imagePosted">
-                                ${post.imagePost ? `<img src="${post.imagePost}" alt="Posted Image">` : ''}
-                            </div>
-                            <div class="ComLikeCount">
-                                <div class="reaction_count">
-                                    <div>
-                                        <img src="Assets/fb-like.png" alt="DP">
-                                        <img src="Assets/fb-heart.png" alt="DP">
-                                        <img src="Assets/fb-wow.png" alt="DP">
-                                    </div>
-                                    <p>100 Likes</p>
-                                </div>
-                                <div class="comshare_container">
-                                    <p onclick="popupCommentModal(${post.id})">100 Comments</p>
-                                    <p>1K shares</p>
-                                </div>
-                            </div>
-                            <div class="usrsP_activities">
-                                <div class="usrsP_ like" id="likeIcon${post.id}" data-post-id="${post.id}">
-                                    <i class='bx ${likeClass}' style='color: ${likeColor}'></i>
-                                    <p>Like</p>
-                                </div>
-                                <div class="usrsP_ comment" onclick="popupCommentModal(${post.id})">
-                                    <i class="fa-regular fa-comment"></i>
-                                    <p>Comment</p>
-                                </div>
-                                <div class="usrsP_ share">
-                                    <i class='bx bx-share'></i>
-                                    <p>Share</p>
-                                </div>
-                            </div>
-                            <div class="usrsP_comment">
-                                <div class="usrspcomL">
-                                    <img src="${post.profile_picture}" alt="Profile Image">
-                                </div>
-                                <div class="usrspcomR">
-                                    <form action="add_comment.php" class="commentForm" method="post">
-                                        <input type="hidden" name="post_id" value="${post.id}">
-                                        <input type="text" name="comment" placeholder="Comment as ${post.firstname} ${post.lastname}" required>
-                                        <button type="submit" class="commentBtn"><i class="fa-regular fa-paper-plane"></i></button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>`;
-                    
-                    $(".users_Followers").after(postHtml);
-                    
-                    // Add event listener to like icon
-                    $(`#likeIcon${post.id}`).on('click', function() {
-                        likePost(post.id, $(this).find('i'));
-                    });
-                });
-
-
-                // like post
-                function likePost(postId, icon) {
-                    var isLiked = icon.hasClass('bxs-like');
-                    if (isLiked) {
-                        if (confirm('Are you sure you want to unlike this post?')) {
-                            $.ajax({
-                                type: 'POST',
-                                url: 'unlike_post.php',
-                                data: { post_id: postId },
-                                dataType: 'json',
-                                success: function(response) {
-                                    if (response.status === 'success') {
-                                        icon.removeClass('bxs-like').addClass('bx-like').css('color', '');
-                                    } else {
-                                        console.error("Error unliking post:", response.message);
-                                    }
-                                },
-                                error: function(xhr, status, error) {
-                                    console.error("An error occurred while unliking the post:", error);
-                                }
-                            });
-                        }
-                    } else {
-                        $.ajax({
-                            type: 'POST',
-                            url: 'like_post.php',
-                            data: { post_id: postId },
-                            dataType: 'json',
-                            success: function(response) {
-                                if (response.status === 'success') {
-                                    icon.removeClass('bx-like').addClass('bxs-like').css('color', '#0866ff');
-                                } else {
-                                    console.error("Error liking post:", response.message);
-                                }
-                            },
-                            error: function(xhr, status, error) {
-                                console.error("An error occurred while liking the post:", error);
-                            }
-                        });
-                    }
-                }
-
-                // Submit comment form
-                $(document).on('submit', '.commentForm', function(event) {
-                    event.preventDefault(); 
-                    var formData = $(this).serialize();
-                    var commentForm = $(this);
-                    $.ajax({
-                        type: 'POST',
-                        url: $(this).attr('action'),
-                        data: formData,
-                        dataType: 'json',
-                        success: function(response) {
-                            if (response.status === 'success') {
-                                alert("Comment posted successfully");
-                                console.log('Comment added successfully');
-                            } else {
-                                console.error('Failed to add comment');
-                            }
-                        },
-                        error: function(xhr, status, error) {
-                            console.error("An error occurred while adding comment.");
-                        },
-                        complete: function() {
-                            commentForm[0].reset();
-                        }
-                    });
-                });
-            },
-            error: function(xhr, status, error) {
-                console.error("An error occurred while fetching user's posts.");
             }
         });
     });
@@ -715,7 +481,6 @@ $(document).ready(function() {
         });
     });
 
-
 });
 
 
@@ -753,6 +518,35 @@ function getTimeAgo(timestamp) {
         return '1 month ago';
     } else {
         return `${diffInMonths} months ago`;
+    }
+}
+
+
+function openNotifCont() {
+    var modal = document.getElementById("notificationArea");
+
+    // Toggle the modal's visibility
+    if (modal.style.display === "block") {
+        modal.style.display = "none";
+    } else {
+        modal.style.display = "block";
+
+        // Make an AJAX request to mark notifications as read
+        $.ajax({
+            type: 'POST',
+            url: 'mark_notifications_read.php',
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    $('.realtime_Notifs_Count').hide();
+                } else {
+                    console.error("Error updating notifications:", response.message);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("An error occurred while updating notifications:", error);
+            }
+        });
     }
 }
 
@@ -804,6 +598,75 @@ $(document).ready(function() {
 });
 
 
+// Fetch notifications
+document.addEventListener('DOMContentLoaded', function() {
+    fetchNotifications();
+
+    document.querySelector('.rnctau_all').addEventListener('click', function() {
+        document.querySelector('.rnctau_all').classList.add('active');
+        document.querySelector('.rnctau_unread').classList.remove('active');
+        fetchNotifications('all');
+    });
+
+    document.querySelector('.rnctau_unread').addEventListener('click', function() {
+        document.querySelector('.rnctau_all').classList.remove('active');
+        document.querySelector('.rnctau_unread').classList.add('active');
+        fetchNotifications('unread');
+    });
+});
+
+function fetchNotifications(filter = 'all') {
+    $.ajax({
+        type: 'GET',
+        url: 'notifications.php',
+        data: { filter: filter },
+        dataType: 'json',
+        success: function(response) {
+            if (response.status === 'success') {
+                const notificationsList = document.getElementById('notificationsList');
+                notificationsList.innerHTML = '';
+
+                response.notifications.forEach(function(notification) {
+                    const notificationItem = document.createElement('div');
+                    notificationItem.className = 'user_Reaction_Comments';
+
+                    const profilePic = document.createElement('img');
+                    profilePic.src = notification.profile_picture;
+
+                    const urcRight = document.createElement('div');
+                    urcRight.className = 'urc_right';
+                    urcRight.appendChild(profilePic);
+
+                    const notificationText = document.createElement('div');
+                    notificationText.className = 'ul_up';
+                    notificationText.innerHTML = `<strong>${notification.firstname} ${notification.lastname}</strong> ${notification.message}`;
+
+                    const notificationTime = document.createElement('div');
+                    notificationTime.className = 'ul_down';
+                    notificationTime.textContent = timeAgo(new Date(notification.notification_time));
+
+                    const urcLeft = document.createElement('div');
+                    urcLeft.className = 'urc_left';
+                    urcLeft.appendChild(notificationText);
+                    urcLeft.appendChild(notificationTime);
+
+                    notificationItem.appendChild(urcRight);
+                    notificationItem.appendChild(urcLeft);
+
+                    notificationsList.appendChild(notificationItem);
+                });
+            } else {
+                console.error("Error fetching notifications:", response.message);
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error("An error occurred while fetching notifications:", error);
+        }
+    });
+}
+
+
+
 $(document).ready(function() {
     fetchUnreadNotifications();
 });
@@ -832,30 +695,185 @@ function fetchUnreadNotifications() {
 }
 
 
-function openNotifCont() {
-    var modal = document.getElementById("notificationArea");
+// Fetch User's Posts
+$(document).ready(function() {
+    fetchUserPosts();
 
-    // Toggle the modal's visibility
-    if (modal.style.display === "block") {
-        modal.style.display = "none";
-    } else {
-        modal.style.display = "block";
-
-        // Make an AJAX request to mark notifications as read
+    function fetchUserPosts() {
         $.ajax({
             type: 'POST',
-            url: 'mark_notifications_read.php',
+            url: 'fetch_user_posts.php',
+            data: { user_email: "<?php echo $_SESSION['email']; ?>" },
             dataType: 'json',
             success: function(response) {
-                if (response.status === 'success') {
-                    $('.realtime_Notifs_Count').hide();
-                } else {
-                    console.error("Error updating notifications:", response.message);
+                response.forEach(function(post) {
+                    var isLiked = post.is_liked_by_user > 0;
+                    var likeClass = isLiked ? 'bxs-like liked' : 'bx-like';
+                    var likeColor = isLiked ? '#0866ff' : '';
+
+                    // Handle multiple images
+                    let imagesHTML = '';
+                    if (post.imagePost) {
+                        var images = JSON.parse(post.imagePost);
+                        images.forEach(function(image, index) {
+                            imagesHTML += '<div class="image-item" data-index="' + index + '"><img src="Post_Images/' + image + '" alt="Posted Image"></div>';
+                        });
+                    }
+
+                    var postHtml = `
+                        <div class="users_Posts">
+                            <div class="usrsP_1">
+                                <div class="usrsp1left">
+                                    <div class="usrsp1left_01">
+                                        <img src="${post.profile_picture}" alt="Profile">
+                                    </div>
+                                    <div class="usrsp1left_02">
+                                        <p>${post.firstname} ${post.lastname}</p>
+                                        <span>${post.created_at} &#183; <i class='fa-solid fa-user-group'></i></span>
+                                    </div>
+                                </div>
+                                <div class="usrsp1right">
+                                    <div class="usrsp1right_icon">
+                                        <i class="fa-solid fa-ellipsis"></i>
+                                        <div class="usrsp_options">
+                                            <p class="edit-btn" data-post-id="${post.id}">Edit</p>
+                                            <p class="delete-btn" data-post-id="${post.id}">Delete</p>
+                                        </div>
+                                        <div class="triangle"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="usrsP_caption">
+                                <p>${post.caption}</p>
+                            </div>
+                            <div class="usrsP_imagePosted">
+                                ${imagesHTML}
+                            </div>
+                            <div class="ComLikeCount">
+                                <div class="reaction_count">
+                                    <div>
+                                        <img src="Assets/fb-like.png" alt="DP">
+                                        <img src="Assets/fb-heart.png" alt="DP">
+                                        <img src="Assets/fb-wow.png" alt="DP">
+                                    </div>
+                                    <p>100 Likes</p>
+                                </div>
+                                <div class="comshare_container">
+                                    <p onclick="popupCommentModal(${post.id})">100 Comments</p>
+                                    <p>1K shares</p>
+                                </div>
+                            </div>
+                            <div class="usrsP_activities">
+                                <div class="usrsP_ like" id="likeIcon${post.id}" data-post-id="${post.id}">
+                                    <i class='bx ${likeClass}' style='color: ${likeColor}'></i>
+                                    <p>Like</p>
+                                </div>
+                                <div class="usrsP_ comment" onclick="popupCommentModal(${post.id})">
+                                    <i class="fa-regular fa-comment"></i>
+                                    <p>Comment</p>
+                                </div>
+                                <div class="usrsP_ share">
+                                    <i class='bx bx-share'></i>
+                                    <p>Share</p>
+                                </div>
+                            </div>
+                            <div class="usrsP_comment">
+                                <div class="usrspcomL">
+                                    <img src="${post.profile_picture}" alt="Profile Image">
+                                </div>
+                                <div class="usrspcomR">
+                                    <form action="add_comment.php" class="commentForm" method="post">
+                                        <input type="hidden" name="post_id" value="${post.id}">
+                                        <input type="text" name="comment" placeholder="Comment as ${post.firstname} ${post.lastname}" required>
+                                        <button type="submit" class="commentBtn"><i class="fa-regular fa-paper-plane"></i></button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>`;
+
+                    $(".users_Followers").after(postHtml);
+                    
+                    // Add event listener to like icon
+                    $(`#likeIcon${post.id}`).on('click', function() {
+                        likePost(post.id, $(this).find('i'));
+                    });
+                });
+
+                // like post
+                function likePost(postId, icon) {
+                    var isLiked = icon.hasClass('bxs-like');
+                    if (isLiked) {
+                        if (confirm('Are you sure you want to unlike this post?')) {
+                            $.ajax({
+                                type: 'POST',
+                                url: 'unlike_post.php',
+                                data: { post_id: postId },
+                                dataType: 'json',
+                                success: function(response) {
+                                    if (response.status === 'success') {
+                                        icon.removeClass('bxs-like').addClass('bx-like').css('color', '');
+                                    } else {
+                                        console.error("Error unliking post:", response.message);
+                                    }
+                                },
+                                error: function(xhr, status, error) {
+                                    console.error("An error occurred while unliking the post:", error);
+                                }
+                            });
+                        }
+                    } else {
+                        $.ajax({
+                            type: 'POST',
+                            url: 'like_post.php',
+                            data: { post_id: postId },
+                            dataType: 'json',
+                            success: function(response) {
+                                if (response.status === 'success') {
+                                    icon.removeClass('bx-like').addClass('bxs-like').css('color', '#0866ff');
+                                } else {
+                                    console.error("Error liking post:", response.message);
+                                }
+                            },
+                            error: function(xhr, status, error) {
+                                console.error("An error occurred while liking the post:", error);
+                            }
+                        });
+                    }
                 }
+
+                // Submit comment form
+                $(document).on('submit', '.commentForm', function(event) {
+                    event.preventDefault(); 
+                    var formData = $(this).serialize();
+                    var commentForm = $(this);
+                    $.ajax({
+                        type: 'POST',
+                        url: $(this).attr('action'),
+                        data: formData,
+                        dataType: 'json',
+                        success: function(response) {
+                            if (response.status === 'success') {
+                                alert("Comment posted successfully");
+                                console.log('Comment added successfully');
+                            } else {
+                                console.error('Failed to add comment');
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error("An error occurred while adding comment.");
+                        },
+                        complete: function() {
+                            commentForm[0].reset();
+                        }
+                    });
+                });
             },
             error: function(xhr, status, error) {
-                console.error("An error occurred while updating notifications:", error);
+                console.error("An error occurred while fetching user's posts.");
+                console.error("Status:", status);
+                console.error("Error:", error);
+                console.error("XHR Response:", xhr.responseText); // Check the server's response
             }
         });
     }
-}
+});
