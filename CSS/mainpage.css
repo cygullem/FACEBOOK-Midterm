@@ -758,7 +758,6 @@ section{
 /*-------------------------------------------------------- USER POSTS AREA --------------------------------------------------------*/
 .users_Posts {
   margin-top: 17px;
-  /* height: 70vh; */
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -767,38 +766,38 @@ section{
   border-radius: 10px;
   background-color: #ffffff;
 }
-.users_Posts > div{
+.users_Posts > div {
   width: 100%;
 }
-.usrsP_1{
+.usrsP_1 {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 10px;
   height: 80px;
 }
-.usrsp1left{
+.usrsp1left {
   display: flex;
   height: 50px;
   width: 100%;
 }
-.usrsp1left > div{
+.usrsp1left > div {
   cursor: pointer;
   display: flex;
   height: 100%;
 }
-.usrsp1left_01{
+.usrsp1left_01 {
   height: 50px;
   width: 50px;
   border-radius: 50%;
   object-fit: cover;
   overflow: hidden;
 }
-.usrsp1left_01 img{
+.usrsp1left_01 img {
   height: 100%;
   width: 100%;
 }
-.usrsp1left_02{
+.usrsp1left_02 {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -807,26 +806,26 @@ section{
   margin-left: 10px;
   padding: 0 5px 0 5px;
 }
-.usrsp1left_02 p{
+.usrsp1left_02 p {
   color: #747474;
   font-size: 18px;
   font-weight: 500;
 }
-.usrsp1left_02 span{
+.usrsp1left_02 span {
   color: #b5b6b8;
 }
-.usrsp1left_02 span i{
+.usrsp1left_02 span i {
   color: #b5b6b8;
   font-size: 10px;
 }
-.usrsp1right{
+.usrsp1right {
   height: 50px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
 }
-.usrsp1right_icon{
+.usrsp1right_icon {
   position: relative;
   display: flex;
   align-items: center;
@@ -835,7 +834,7 @@ section{
   width: 40px;
   border-radius: 50%;
 }
-.usrsp_options{
+.usrsp_options {
   cursor: pointer;
   user-select: none;
   z-index: 123;
@@ -848,7 +847,7 @@ section{
   flex-direction: column;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
 }
-.usrsp_options p{
+.usrsp_options p {
   padding: 5px 20px 5px 20px;
   border-bottom: 1px solid gray;
   font-size: 20px;
@@ -857,11 +856,11 @@ section{
   align-items: center;
   justify-content: flex-start;
 }
-.usrsp_options p:hover{
+.usrsp_options p:hover {
   background-color: #bcbcbc;
   border-radius: 5px;
 }
-.triangle{
+.triangle {
   display: none;
   position: absolute;
   top: 42px;
@@ -870,22 +869,18 @@ section{
   border-left: 15px solid transparent;
 }
 
-
-
-.usrsp1right_icon i{
+.usrsp1right_icon i {
   font-size: 23px;
   color: #646b74;
 }
-.usrsp1right_icon:hover{
+.usrsp1right_icon:hover {
   background-color: #e4e6e8;
 }
-.usrsp1right_icon:active{
+.usrsp1right_icon:active {
   scale: .923;
 }
 
-
-.usrsP_caption{
-  /* max-width: 765px; */
+.usrsP_caption {
   color: #6d6d6d;
   width: 100%;
   padding: 0 10px 10px 10px;
@@ -896,28 +891,48 @@ section{
   overflow: hidden;
   border-bottom: 1px solid #c6c6c6;
 }
-.usrsP_caption p{
+.usrsP_caption p {
   text-wrap: wrap;
   word-wrap: break-word; 
   overflow-wrap: break-word;
 }
 
-
-.usrsP_imagePosted{
+.usrsP_imagePosted {
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px;
+  position: relative;
   object-fit: contain;
   border-style: 1px 0 1px 0 solid #dee0e3;
 }
-.usrsP_imagePosted img{
+.usrsP_imagePosted img {
   height: 100%;
   width: 100%;
 }
+.usrsP_imagePosted .image-item {
+  position: relative;
+}
+.usrsP_imagePosted .extra-image {
+  position: relative;
+}
+.usrsP_imagePosted .extra-images-count {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 50%;
+  z-index: 1;
+}
 
 
-.usrsP_activities{
+
+.usrsP_activities {
   height: 50px;
   width: 100%;
   padding: 5px;
@@ -932,7 +947,7 @@ section{
   color: #0866ff !important; 
 }
 
-.usrsP_{
+.usrsP_ {
   cursor: pointer;
   user-select: none;
   height: 100%;
@@ -943,24 +958,25 @@ section{
   gap: 8px;
   border-radius: 6px;
 }
-.usrsP_:hover{
+.usrsP_:hover {
   background-color: #e9e9e9;
 }
-.usrsP_:active{
+.usrsP_:active {
   scale: .923;
 }
-.usrsP_ i{
+.usrsP_ i {
   color: #9da1a7;
   font-size: 25px;
 }
-.usrsP_ p{
+.usrsP_ p {
   font-weight: 500;
   color: #797a7e;
 }
-.share i{
+.share i {
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
 }
+
 
 
 

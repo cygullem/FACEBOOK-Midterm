@@ -25,3 +25,7 @@ Comment notification.
             }
         });
     }
+
+
+- cant fetch the posts of followed accounts
+

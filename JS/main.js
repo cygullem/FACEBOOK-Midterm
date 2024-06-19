@@ -318,6 +318,22 @@ $(document).ready(function() {
                     var likeClass = isLiked ? 'bxs-like liked' : 'bx-like';
                     var likeColor = isLiked ? '#0866ff' : '';
     
+                    var imagesHtml = '';
+                    if (post.images && post.images.length > 0) {
+                        for (var i = 0; i < Math.min(4, post.images.length); i++) {
+                            imagesHtml += `<div class="image-item"><img src="${post.images[i]}" alt="Posted Image"></div>`;
+                        }
+                        if (post.images.length > 4) {
+                            var extraCount = post.images.length - 4;
+                            imagesHtml += `
+                                <div class="image-item extra-image">
+                                    <img src="${post.images[3]}" alt="Posted Image">
+                                    <div class="extra-images-count">+${extraCount}</div>
+                                </div>
+                            `;
+                        }
+                    }
+    
                     var postHtml = `
                         <div class="users_Posts">
                             <div class="usrsP_1">
@@ -335,7 +351,7 @@ $(document).ready(function() {
                                 <p>${post.caption}</p>
                             </div>
                             <div class="usrsP_imagePosted">
-                                ${post.imagePost ? `<img src="${post.imagePost}" alt="Posted Image">` : ''}
+                                ${imagesHtml}
                             </div>
                             <div class="ComLikeCount">
                                 <div class="reaction_count">
@@ -385,19 +401,19 @@ $(document).ready(function() {
                             </div>
                         </div>`;
                     $(".users_Followers").after(postHtml);
-
+    
                     // Add event listener to like icon
                     $(`#likeIcon${post.id}`).on('click', function() {
                         likePost(post.id, $(this).find('i'));
                     });
                 });
-
             },
             error: function(xhr, status, error) {
                 console.error("An error occurred while fetching user's posts.");
             }
         });
-    }); 
+    });
+
     
     
 
