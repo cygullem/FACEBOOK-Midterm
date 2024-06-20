@@ -312,6 +312,14 @@ $loggedInUserId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
                 </div>
             </div>
 
+            <!-- Lightbox for images preview -->
+            <div id="lightbox" class="lightbox">
+                <span class="close">&times;</span>
+                <img class="lightbox-content" id="lightbox-image">
+                <a class="prev">&#10094;</a>
+                <a class="next">&#10095;</a>
+            </div>
+
         </div>
 
         <div class="content-Right">

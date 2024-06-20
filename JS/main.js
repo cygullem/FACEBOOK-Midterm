@@ -265,6 +265,56 @@ $(document).ready(function() {
 
     // Fetching the posts of every followed accounts
     $(document).ready(function() {
+        var currentImageIndex;
+        var imagesArray;
+    
+        // Function to open the lightbox
+        function openLightbox(images, index) {
+            imagesArray = images;
+            currentImageIndex = index;
+            $('#lightbox-image').attr('src', `Post_Images/${imagesArray[currentImageIndex]}`);
+            $('#lightbox').fadeIn();
+        }
+    
+        // Function to close the lightbox
+        function closeLightbox() {
+            $('#lightbox').fadeOut();
+        }
+    
+        // Function to show the next image
+        function showNextImage() {
+            currentImageIndex = (currentImageIndex + 1) % imagesArray.length;
+            $('#lightbox-image').attr('src', `Post_Images/${imagesArray[currentImageIndex]}`);
+        }
+    
+        // Function to show the previous image
+        function showPrevImage() {
+            currentImageIndex = (currentImageIndex - 1 + imagesArray.length) % imagesArray.length;
+            $('#lightbox-image').attr('src', `Post_Images/${imagesArray[currentImageIndex]}`);
+        }
+    
+        // Event listener for image click
+        $(document).on('click', '.image-item img', function() {
+            var images = JSON.parse($(this).closest('.usrsP_imagePosted').attr('data-images'));
+            var index = $(this).parent().index();
+            openLightbox(images, index);
+        });
+    
+        // Event listener for close button
+        $('#lightbox .close').click(function() {
+            closeLightbox();
+        });
+    
+        // Event listeners for navigation arrows
+        $('#lightbox .next').click(function() {
+            showNextImage();
+        });
+    
+        $('#lightbox .prev').click(function() {
+            showPrevImage();
+        });
+    
+        // Modify the AJAX success function to add data attribute to image container
         $.ajax({
             type: 'POST',
             url: 'fetch_following_posts.php',
@@ -307,7 +357,7 @@ $(document).ready(function() {
                             <div class="usrsP_caption">
                                 <p>${post.caption}</p>
                             </div>
-                            <div class="usrsP_imagePosted">
+                            <div class="usrsP_imagePosted" data-images='${JSON.stringify(post.images)}'>
                                 ${imagesHtml}
                             </div>
                             <div class="ComLikeCount">
@@ -364,7 +414,7 @@ $(document).ready(function() {
                 console.error("An error occurred while fetching user's posts.");
                 console.error("Status:", status);
                 console.error("Error:", error);
-                console.error("XHR Response:", xhr.responseText);
+                console.error("XHR Response:", xhr.responseText); 
             }
         });
     });

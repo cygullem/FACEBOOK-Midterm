@@ -27,5 +27,5 @@ Comment notification.
     }
 
 
-- cant fetch the posts of followed accounts
-
+- doesn't have preview of images
+- doesn't have carousel like functionality
