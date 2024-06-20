@@ -902,7 +902,7 @@ section{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 5px;
-  position: relative;
+  /* position: relative; */
   object-fit: contain;
   border-style: 1px 0 1px 0 solid #dee0e3;
 }
@@ -916,7 +916,7 @@ section{
 .usrsP_imagePosted .extra-image {
   position: relative;
 }
-.usrsP_imagePosted .extra-images-count {
+/* .usrsP_imagePosted .extra-images-count {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -928,7 +928,7 @@ section{
   padding: 10px 20px;
   border-radius: 50%;
   z-index: 1;
-}
+} */
 
 
 

@@ -50,4 +50,12 @@ $stmt_posts->execute();
 
 $posts = $stmt_posts->fetchAll(PDO::FETCH_ASSOC);
 
+// Process each post to decode the images JSON
+foreach ($posts as &$post) {
+    if (isset($post['imagePost'])) { // Ensure this matches the correct column name
+        $post['images'] = json_decode($post['imagePost'], true); // Decode into an array
+    }
+}
+
 echo json_encode($posts);
+?>
