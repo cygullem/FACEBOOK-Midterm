@@ -267,7 +267,7 @@ $(document).ready(function() {
     $(document).ready(function() {
         var currentImageIndex;
         var imagesArray;
-    
+
         // Function to open the lightbox
         function openLightbox(images, index) {
             imagesArray = images;
@@ -275,45 +275,45 @@ $(document).ready(function() {
             $('#lightbox-image').attr('src', `Post_Images/${imagesArray[currentImageIndex]}`);
             $('#lightbox').fadeIn();
         }
-    
+
         // Function to close the lightbox
         function closeLightbox() {
             $('#lightbox').fadeOut();
         }
-    
+
         // Function to show the next image
         function showNextImage() {
             currentImageIndex = (currentImageIndex + 1) % imagesArray.length;
             $('#lightbox-image').attr('src', `Post_Images/${imagesArray[currentImageIndex]}`);
         }
-    
+
         // Function to show the previous image
         function showPrevImage() {
             currentImageIndex = (currentImageIndex - 1 + imagesArray.length) % imagesArray.length;
             $('#lightbox-image').attr('src', `Post_Images/${imagesArray[currentImageIndex]}`);
         }
-    
+
         // Event listener for image click
         $(document).on('click', '.image-item img', function() {
             var images = JSON.parse($(this).closest('.usrsP_imagePosted').attr('data-images'));
             var index = $(this).parent().index();
             openLightbox(images, index);
         });
-    
+
         // Event listener for close button
         $('#lightbox .close').click(function() {
             closeLightbox();
         });
-    
+
         // Event listeners for navigation arrows
         $('#lightbox .next').click(function() {
             showNextImage();
         });
-    
+
         $('#lightbox .prev').click(function() {
             showPrevImage();
         });
-    
+
         // Modify the AJAX success function to add data attribute to image container
         $.ajax({
             type: 'POST',
@@ -324,23 +324,23 @@ $(document).ready(function() {
                     var isLiked = post.is_liked_by_user > 0;
                     var likeClass = isLiked ? 'bxs-like liked' : 'bx-like';
                     var likeColor = isLiked ? '#0866ff' : '';
-    
+
                     var imagesHtml = '';
                     if (post.images && post.images.length > 0) {
                         for (var i = 0; i < Math.min(4, post.images.length); i++) {
-                            imagesHtml += `<div class="image-item"><img src="Post_Images/${post.images[i]}" alt="Posted Image"></div>`;
+                            imagesHtml += `<div class="image-item" data-index="${i}"><img src="Post_Images/${post.images[i]}" alt="Posted Image"></div>`;
                         }
                         if (post.images.length > 4) {
                             var extraCount = post.images.length - 4;
                             imagesHtml += `
-                                <div class="image-item extra-image">
+                                <div class="image-item extra-image" data-index="3">
                                     <img src="Post_Images/${post.images[3]}" alt="Posted Image">
                                     <div class="extra-images-count">+${extraCount}</div>
                                 </div>
                             `;
                         }
                     }
-    
+
                     var postHtml = `
                         <div class="users_Posts">
                             <div class="usrsP_1">
@@ -367,17 +367,11 @@ $(document).ready(function() {
                                         <img src="Assets/fb-heart.png" alt="DP">
                                         <img src="Assets/fb-wow.png" alt="DP">
                                     </div>
-                                    <p>
-                                        100 Likes
-                                    </p>
+                                    <p>100 Likes</p>
                                 </div>
                                 <div class="comshare_container">
-                                    <p onclick="popupCommentModal(${post.id})">
-                                        100 Comments
-                                    </p>
-                                    <p>
-                                        1K shares
-                                    </p>
+                                    <p onclick="popupCommentModal(${post.id})">100 Comments</p>
+                                    <p>1K shares</p>
                                 </div>
                             </div>
                             <div class="usrsP_activities">
@@ -408,6 +402,11 @@ $(document).ready(function() {
                             </div>
                         </div>`;
                     $(".users_Followers").after(postHtml);
+
+                   // Add event listener to like icon
+                   $(`#likeIcon${post.id}`).on('click', function() {
+                        likePost(post.id, $(this).find('i'));
+                    });
                 });
             },
             error: function(xhr, status, error) {
@@ -418,167 +417,6 @@ $(document).ready(function() {
             }
         });
     });
-    
-
-    
-    // Fetch User's Posts
-    $(document).ready(function() {
-        fetchUserPosts();
-
-        function fetchUserPosts() {
-            $.ajax({
-                type: 'POST',
-                url: 'fetch_user_posts.php',
-                data: { user_email: "<?php echo $_SESSION['email']; ?>" },
-                dataType: 'json',
-                success: function(response) {
-                    response.forEach(function(post) {
-                        var isLiked = post.is_liked_by_user > 0;
-                        var likeClass = isLiked ? 'bxs-like liked' : 'bx-like';
-                        var likeColor = isLiked ? '#0866ff' : '';
-
-                        // Handle multiple images
-                        let imagesHTML = '';
-                        if (post.imagePost) {
-                            var images = JSON.parse(post.imagePost);
-                            imagesHTML = images.map((image, index) => `<div class="image-item" data-index="${index}"><img src="Post_Images/${image}" alt="Posted Image"></div>`).join('');
-                        }
-
-                        var postHtml = `
-                            <div class="users_Posts">
-                                <div class="usrsP_1">
-                                    <div class="usrsp1left">
-                                        <div class="usrsp1left_01">
-                                            <img src="${post.profile_picture}" alt="Profile">
-                                        </div>
-                                        <div class="usrsp1left_02">
-                                            <p>${post.firstname} ${post.lastname}</p>
-                                            <span>${post.created_at} &#183; <i class='fa-solid fa-user-group'></i></span>
-                                        </div>
-                                    </div>
-                                    <div class="usrsp1right">
-                                        <div class="usrsp1right_icon">
-                                            <i class="fa-solid fa-ellipsis"></i>
-                                            <div class="usrsp_options">
-                                                <p class="edit-btn" data-post-id="${post.id}">Edit</p>
-                                                <p class="delete-btn" data-post-id="${post.id}">Delete</p>
-                                            </div>
-                                            <div class="triangle"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="usrsP_caption">
-                                    <p>${post.caption}</p>
-                                </div>
-                                <div class="usrsP_imagePosted" data-images='${JSON.stringify(images)}'>
-                                    ${imagesHTML}
-                                </div>
-                                <div class="ComLikeCount">
-                                    <div class="reaction_count">
-                                        <div>
-                                            <img src="Assets/fb-like.png" alt="DP">
-                                            <img src="Assets/fb-heart.png" alt="DP">
-                                            <img src="Assets/fb-wow.png" alt="DP">
-                                        </div>
-                                        <p>100 Likes</p>
-                                    </div>
-                                    <div class="comshare_container">
-                                        <p onclick="popupCommentModal(${post.id})">100 Comments</p>
-                                        <p>1K shares</p>
-                                    </div>
-                                </div>
-                                <div class="usrsP_activities">
-                                    <div class="usrsP_ like" id="likeIcon${post.id}" data-post-id="${post.id}">
-                                        <i class='bx ${likeClass}' style='color: ${likeColor}'></i>
-                                        <p>Like</p>
-                                    </div>
-                                    <div class="usrsP_ comment" onclick="popupCommentModal(${post.id})">
-                                        <i class="fa-regular fa-comment"></i>
-                                        <p>Comment</p>
-                                    </div>
-                                    <div class="usrsP_ share">
-                                        <i class='bx bx-share'></i>
-                                        <p>Share</p>
-                                    </div>
-                                </div>
-                                <div class="usrsP_comment">
-                                    <div class="usrspcomL">
-                                        <img src="${post.profile_picture}" alt="Profile Image">
-                                    </div>
-                                    <div class="usrspcomR">
-                                        <form action="add_comment.php" class="commentForm" method="post">
-                                            <input type="hidden" name="post_id" value="${post.id}">
-                                            <input type="text" name="comment" placeholder="Comment as ${post.firstname} ${post.lastname}" required>
-                                            <button type="submit" class="commentBtn"><i class="fa-regular fa-paper-plane"></i></button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>`;
-
-                        $(".users_Followers").after(postHtml);
-
-                        // Add event listener to like icon
-                        $(`#likeIcon${post.id}`).on('click', function() {
-                            likePost(post.id, $(this).find('i'));
-                        });
-                    });
-
-                    // Event listener for image click
-                    $(document).on('click', '.image-item img', function() {
-                        var images = JSON.parse($(this).closest('.usrsP_imagePosted').attr('data-images'));
-                        var index = $(this).parent().data('index');
-                        openLightbox(images, index);
-                    });
-                },
-                error: function(xhr, status, error) {
-                    console.error("An error occurred while fetching user's posts.");
-                    console.error("Status:", status);
-                    console.error("Error:", error);
-                    console.error("XHR Response:", xhr.responseText); 
-                }
-            });
-        }
-
-        // Function to open the lightbox
-        function openLightbox(images, index) {
-            currentImageIndex = index;
-            imagesArray = images;
-            $('#lightbox-image').attr('src', `Post_Images/${images[currentImageIndex]}`);
-            $('#lightbox').fadeIn();
-        }
-
-        // Function to close the lightbox
-        function closeLightbox() {
-            $('#lightbox').fadeOut();
-        }
-
-        // Function to show the next image
-        function showNextImage() {
-            currentImageIndex = (currentImageIndex + 1) % imagesArray.length;
-            $('#lightbox-image').attr('src', `Post_Images/${imagesArray[currentImageIndex]}`);
-        }
-
-        // Function to show the previous image
-        function showPrevImage() {
-            currentImageIndex = (currentImageIndex - 1 + imagesArray.length) % imagesArray.length;
-            $('#lightbox-image').attr('src', `Post_Images/${imagesArray[currentImageIndex]}`);
-        }
-
-        // Event listener for close button
-        $('#lightbox .close').click(function() {
-            closeLightbox();
-        });
-
-        // Event listeners for navigation arrows
-        $('#lightbox .next').click(function() {
-            showNextImage();
-        });
-
-        $('#lightbox .prev').click(function() {
-            showPrevImage();
-        });
-    });
-
 
 
 
@@ -622,6 +460,7 @@ $(document).ready(function() {
             });
         }
     }
+
 
 
 
@@ -709,6 +548,236 @@ $(document).ready(function() {
 
 
 
+
+// Fetch User's Posts
+$(document).ready(function() {
+    fetchUserPosts();
+
+    function fetchUserPosts() {
+        $.ajax({
+            type: 'POST',
+            url: 'fetch_user_posts.php',
+            data: { user_email: "<?php echo $_SESSION['email']; ?>" },
+            dataType: 'json',
+            success: function(response) {
+                response.forEach(function(post) {
+                    var isLiked = post.is_liked_by_user > 0;
+                    var likeClass = isLiked ? 'bxs-like liked' : 'bx-like';
+                    var likeColor = isLiked ? '#0866ff' : '';
+
+                    // Handle multiple images
+                    let imagesHTML = '';
+                    let images = [];
+                    if (post.imagePost) {
+                        images = JSON.parse(post.imagePost);
+                        imagesHTML = images.map((image, index) => `<div class="image-item" data-index="${index}"><img src="Post_Images/${image}" alt="Posted Image"></div>`).join('');
+                    }
+
+                    var postHtml = `
+                        <div class="users_Posts">
+                            <div class="usrsP_1">
+                                <div class="usrsp1left">
+                                    <div class="usrsp1left_01">
+                                        <img src="${post.profile_picture}" alt="Profile">
+                                    </div>
+                                    <div class="usrsp1left_02">
+                                        <p>${post.firstname} ${post.lastname}</p>
+                                        <span>${post.created_at} &#183; <i class='fa-solid fa-user-group'></i></span>
+                                    </div>
+                                </div>
+                                <div class="usrsp1right">
+                                    <div class="usrsp1right_icon">
+                                        <i class="fa-solid fa-ellipsis"></i>
+                                        <div class="usrsp_options">
+                                            <p class="edit-btn" data-post-id="${post.id}">Edit</p>
+                                            <p class="delete-btn" data-post-id="${post.id}">Delete</p>
+                                        </div>
+                                        <div class="triangle"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="usrsP_caption">
+                                <p>${post.caption}</p>
+                            </div>
+                            <div class="usrsP_imagePosted" data-images='${JSON.stringify(images)}'>
+                                ${imagesHTML}
+                            </div>
+                            <div class="ComLikeCount">
+                                <div class="reaction_count">
+                                    <div>
+                                        <img src="Assets/fb-like.png" alt="DP">
+                                        <img src="Assets/fb-heart.png" alt="DP">
+                                        <img src="Assets/fb-wow.png" alt="DP">
+                                    </div>
+                                    <p>100 Likes</p>
+                                </div>
+                                <div class="comshare_container">
+                                    <p onclick="popupCommentModal(${post.id})">100 Comments</p>
+                                    <p>1K shares</p>
+                                </div>
+                            </div>
+                            <div class="usrsP_activities">
+                                <div class="usrsP_ like" id="likeIcon${post.id}" data-post-id="${post.id}">
+                                    <i class='bx ${likeClass}' style='color: ${likeColor}'></i>
+                                    <p>Like</p>
+                                </div>
+                                <div class="usrsP_ comment" onclick="popupCommentModal(${post.id})">
+                                    <i class="fa-regular fa-comment"></i>
+                                    <p>Comment</p>
+                                </div>
+                                <div class="usrsP_ share">
+                                    <i class='bx bx-share'></i>
+                                    <p>Share</p>
+                                </div>
+                            </div>
+                            <div class="usrsP_comment">
+                                <div class="usrspcomL">
+                                    <img src="${post.profile_picture}" alt="Profile Image">
+                                </div>
+                                <div class="usrspcomR">
+                                    <form action="add_comment.php" class="commentForm" method="post">
+                                        <input type="hidden" name="post_id" value="${post.id}">
+                                        <input type="text" name="comment" placeholder="Comment as ${post.firstname} ${post.lastname}" required>
+                                        <button type="submit" class="commentBtn"><i class="fa-regular fa-paper-plane"></i></button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>`;
+
+                    $(".users_Followers").after(postHtml);
+
+                    // Add event listener to like icon
+                    $(`#likeIcon${post.id}`).on('click', function() {
+                        likePost(post.id, $(this).find('i'));
+                    });
+                });
+
+                // Event listener for image click
+                $(document).on('click', '.image-item img', function() {
+                    var images = JSON.parse($(this).closest('.usrsP_imagePosted').attr('data-images'));
+                    var index = $(this).parent().attr('data-index'); // Ensure data-index is read correctly
+                    console.log(images, index); // Debugging
+                    openLightbox(images, parseInt(index)); // Ensure index is an integer
+                });
+
+                // like post
+                function likePost(postId, icon) {
+                    var isLiked = icon.hasClass('bxs-like');
+                    if (isLiked) {
+                        if (confirm('Are you sure you want to unlike this post?')) {
+                            $.ajax({
+                                type: 'POST',
+                                url: 'unlike_post.php',
+                                data: { post_id: postId },
+                                dataType: 'json',
+                                success: function(response) {
+                                    if (response.status === 'success') {
+                                        icon.removeClass('bxs-like').addClass('bx-like').css('color', '');
+                                    } else {
+                                        console.error("Error unliking post:", response.message);
+                                    }
+                                },
+                                error: function(xhr, status, error) {
+                                    console.error("An error occurred while unliking the post:", error);
+                                }
+                            });
+                        }
+                    } else {
+                        $.ajax({
+                            type: 'POST',
+                            url: 'like_post.php',
+                            data: { post_id: postId },
+                            dataType: 'json',
+                            success: function(response) {
+                                if (response.status === 'success') {
+                                    icon.removeClass('bx-like').addClass('bxs-like').css('color', '#0866ff');
+                                } else {
+                                    console.error("Error liking post:", response.message);
+                                }
+                            },
+                            error: function(xhr, status, error) {
+                                console.error("An error occurred while liking the post:", error);
+                            }
+                        });
+                    }
+                }
+
+                // Submit comment form
+                $(document).on('submit', '.commentForm', function(event) {
+                    event.preventDefault(); 
+                    var formData = $(this).serialize();
+                    var commentForm = $(this);
+                    $.ajax({
+                        type: 'POST',
+                        url: $(this).attr('action'),
+                        data: formData,
+                        dataType: 'json',
+                        success: function(response) {
+                            if (response.status === 'success') {
+                                alert("Comment posted successfully");
+                                console.log('Comment added successfully');
+                            } else {
+                                console.error('Failed to add comment');
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error("An error occurred while adding comment.");
+                        },
+                        complete: function() {
+                            commentForm[0].reset();
+                        }
+                    });
+                });
+            },
+            error: function(xhr, status, error) {
+                console.error("An error occurred while fetching user's posts.");
+                console.error("Status:", status);
+                console.error("Error:", error);
+                console.error("XHR Response:", xhr.responseText); // Check the server's response
+            }
+        });
+    }
+
+    // Function to open the lightbox
+    function openLightbox(images, index) {
+        currentImageIndex = index;
+        imagesArray = images;
+        console.log('Opening lightbox with images:', imagesArray, 'at index:', currentImageIndex); // Debugging
+        $('#lightbox-image').attr('src', `Post_Images/${imagesArray[currentImageIndex]}`);
+        $('#lightbox').fadeIn();
+    }
+
+    // Function to close the lightbox
+    function closeLightbox() {
+        $('#lightbox').fadeOut();
+    }
+
+    // Function to show the next image
+    function showNextImage() {
+        currentImageIndex = (currentImageIndex + 1) % imagesArray.length;
+        $('#lightbox-image').attr('src', `Post_Images/${imagesArray[currentImageIndex]}`);
+    }
+
+    // Function to show the previous image
+    function showPrevImage() {
+        currentImageIndex = (currentImageIndex - 1 + imagesArray.length) % imagesArray.length;
+        $('#lightbox-image').attr('src', `Post_Images/${imagesArray[currentImageIndex]}`);
+    }
+
+    // Event listener for close button
+    $('#lightbox .close').click(function() {
+        closeLightbox();
+    });
+
+    // Event listeners for navigation arrows
+    $('#lightbox .next').click(function() {
+        showNextImage();
+    });
+
+    $('#lightbox .prev').click(function() {
+        showPrevImage();
+    });
+});
 
 
 
