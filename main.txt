@@ -26,6 +26,3 @@ Comment notification.
         });
     }
 
-
-- doesn't have preview of images
-- doesn't have carousel like functionality

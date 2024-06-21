@@ -837,7 +837,7 @@ section{
 .usrsp_options {
   cursor: pointer;
   user-select: none;
-  z-index: 123;
+  z-index: 999;
   position: absolute;
   top: 60px;
   right: 17px;

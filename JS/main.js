@@ -441,9 +441,7 @@ $(document).ready(function() {
                         let imagesHTML = '';
                         if (post.imagePost) {
                             var images = JSON.parse(post.imagePost);
-                            images.forEach(function(image, index) {
-                                imagesHTML += '<div class="image-item" data-index="' + index + '"><img src="Post_Images/' + image + '" alt="Posted Image"></div>';
-                            });
+                            imagesHTML = images.map((image, index) => `<div class="image-item" data-index="${index}"><img src="Post_Images/${image}" alt="Posted Image"></div>`).join('');
                         }
 
                         var postHtml = `
@@ -472,7 +470,7 @@ $(document).ready(function() {
                                 <div class="usrsP_caption">
                                     <p>${post.caption}</p>
                                 </div>
-                                <div class="usrsP_imagePosted">
+                                <div class="usrsP_imagePosted" data-images='${JSON.stringify(images)}'>
                                     ${imagesHTML}
                                 </div>
                                 <div class="ComLikeCount">
@@ -518,91 +516,69 @@ $(document).ready(function() {
                             </div>`;
 
                         $(".users_Followers").after(postHtml);
-                        
+
                         // Add event listener to like icon
                         $(`#likeIcon${post.id}`).on('click', function() {
                             likePost(post.id, $(this).find('i'));
                         });
                     });
 
-                    // like post
-                    function likePost(postId, icon) {
-                        var isLiked = icon.hasClass('bxs-like');
-                        if (isLiked) {
-                            if (confirm('Are you sure you want to unlike this post?')) {
-                                $.ajax({
-                                    type: 'POST',
-                                    url: 'unlike_post.php',
-                                    data: { post_id: postId },
-                                    dataType: 'json',
-                                    success: function(response) {
-                                        if (response.status === 'success') {
-                                            icon.removeClass('bxs-like').addClass('bx-like').css('color', '');
-                                        } else {
-                                            console.error("Error unliking post:", response.message);
-                                        }
-                                    },
-                                    error: function(xhr, status, error) {
-                                        console.error("An error occurred while unliking the post:", error);
-                                    }
-                                });
-                            }
-                        } else {
-                            $.ajax({
-                                type: 'POST',
-                                url: 'like_post.php',
-                                data: { post_id: postId },
-                                dataType: 'json',
-                                success: function(response) {
-                                    if (response.status === 'success') {
-                                        icon.removeClass('bx-like').addClass('bxs-like').css('color', '#0866ff');
-                                    } else {
-                                        console.error("Error liking post:", response.message);
-                                    }
-                                },
-                                error: function(xhr, status, error) {
-                                    console.error("An error occurred while liking the post:", error);
-                                }
-                            });
-                        }
-                    }
-
-                    // Submit comment form
-                    $(document).on('submit', '.commentForm', function(event) {
-                        event.preventDefault(); 
-                        var formData = $(this).serialize();
-                        var commentForm = $(this);
-                        $.ajax({
-                            type: 'POST',
-                            url: $(this).attr('action'),
-                            data: formData,
-                            dataType: 'json',
-                            success: function(response) {
-                                if (response.status === 'success') {
-                                    alert("Comment posted successfully");
-                                    console.log('Comment added successfully');
-                                } else {
-                                    console.error('Failed to add comment');
-                                }
-                            },
-                            error: function(xhr, status, error) {
-                                console.error("An error occurred while adding comment.");
-                            },
-                            complete: function() {
-                                commentForm[0].reset();
-                            }
-                        });
+                    // Event listener for image click
+                    $(document).on('click', '.image-item img', function() {
+                        var images = JSON.parse($(this).closest('.usrsP_imagePosted').attr('data-images'));
+                        var index = $(this).parent().data('index');
+                        openLightbox(images, index);
                     });
                 },
                 error: function(xhr, status, error) {
                     console.error("An error occurred while fetching user's posts.");
                     console.error("Status:", status);
                     console.error("Error:", error);
-                    console.error("XHR Response:", xhr.responseText); // Check the server's response
+                    console.error("XHR Response:", xhr.responseText); 
                 }
             });
         }
+
+        // Function to open the lightbox
+        function openLightbox(images, index) {
+            currentImageIndex = index;
+            imagesArray = images;
+            $('#lightbox-image').attr('src', `Post_Images/${images[currentImageIndex]}`);
+            $('#lightbox').fadeIn();
+        }
+
+        // Function to close the lightbox
+        function closeLightbox() {
+            $('#lightbox').fadeOut();
+        }
+
+        // Function to show the next image
+        function showNextImage() {
+            currentImageIndex = (currentImageIndex + 1) % imagesArray.length;
+            $('#lightbox-image').attr('src', `Post_Images/${imagesArray[currentImageIndex]}`);
+        }
+
+        // Function to show the previous image
+        function showPrevImage() {
+            currentImageIndex = (currentImageIndex - 1 + imagesArray.length) % imagesArray.length;
+            $('#lightbox-image').attr('src', `Post_Images/${imagesArray[currentImageIndex]}`);
+        }
+
+        // Event listener for close button
+        $('#lightbox .close').click(function() {
+            closeLightbox();
+        });
+
+        // Event listeners for navigation arrows
+        $('#lightbox .next').click(function() {
+            showNextImage();
+        });
+
+        $('#lightbox .prev').click(function() {
+            showPrevImage();
+        });
     });
+
 
 
 
