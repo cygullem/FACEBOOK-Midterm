@@ -837,9 +837,9 @@ section{
 .usrsp_options {
   cursor: pointer;
   user-select: none;
-  z-index: 999;
+  z-index: 99999;
   position: absolute;
-  top: 60px;
+  top: 45px;
   right: 17px;
   background-color: rgb(195, 195, 195);
   border-radius: 5px 0 5px 5px;
@@ -876,9 +876,9 @@ section{
 .usrsp1right_icon:hover {
   background-color: #e4e6e8;
 }
-.usrsp1right_icon:active {
+/* .usrsp1right_icon:active {
   scale: .923;
-}
+} */
 
 .usrsP_caption {
   color: #6d6d6d;
@@ -900,15 +900,16 @@ section{
 .usrsP_imagePosted {
   width: 100%;
   display: grid;
+  align-items: center;
   grid-template-columns: repeat(2, 1fr);
   gap: 5px;
-  /* position: relative; */
   object-fit: contain;
   border-style: 1px 0 1px 0 solid #dee0e3;
 }
 .usrsP_imagePosted img {
   height: 100%;
   width: 100%;
+  object-fit: cover;
 }
 .usrsP_imagePosted .image-item {
   position: relative;
@@ -916,19 +917,7 @@ section{
 .usrsP_imagePosted .extra-image {
   position: relative;
 }
-/* .usrsP_imagePosted .extra-images-count {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  font-size: 24px;
-  font-weight: bold;
-  padding: 10px 20px;
-  border-radius: 50%;
-  z-index: 1;
-} */
+
 
 
 
@@ -958,17 +947,10 @@ section{
   position: absolute;
   top: 20px;
   right: 35px;
-  color: white;
+  color: red;
   font-size: 40px;
   font-weight: bold;
   transition: 0.3s;
-  cursor: pointer;
-}
-
-.close:hover,
-.close:focus {
-  color: #bbb;
-  text-decoration: none;
   cursor: pointer;
 }
 
@@ -1912,4 +1894,45 @@ form textarea:valid~button:hover {
 }
 .textarea{
   height: 40px !important;
+}
+
+
+
+/*========================================================== Media Query ==========================================================*/
+
+@media only screen and (max-width: 768px){
+  ::-webkit-scrollbar{
+    display: none;
+  }
+  p{
+    font-size: 12px;
+  }
+  h1{
+    font-size: 15px;
+  }
+  nav,
+  span,
+  .content-Left,
+  .content-Right{
+    display: none;
+   }
+  .content-Center{
+    width: 100%;
+    gap: 13px;
+  }
+  .post{
+    width: 500px;
+  }
+  .usrsp1left_02 p{
+    width: 200px;
+  }
+  .close{
+    color: red;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
+  .users_Posts{
+    border-radius: 0px;
+  }
 }
