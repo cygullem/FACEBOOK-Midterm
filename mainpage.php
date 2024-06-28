@@ -266,23 +266,25 @@ $loggedInUserId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
                 </div>
             </div>
 
-            <!-- Posts will be generated here using the ajax -->
+            <!-- Your existing HTML for posts -->
 
             <!-- Edit Post Modal -->
             <div id="editPostModal" class="modal">
                 <div class="modal-content">
-                    <span class="close closeEditPostModal" onclick="closeEditPostModal()"><i class="fa-solid fa-xmark"></i></span>
+                    <span class="close closeEditPostModal"><i class="fa-solid fa-xmark"></i></span>
                     <h2>Edit Post</h2>
                     <form id="editPostForm">
                         <input type="hidden" id="postId">
                         <label for="editCaption">Caption:</label>
                         <textarea id="editCaption" name="editCaption" rows="4" cols="50"></textarea>
-                        <label for="editImage">Image:</label>
-                        <input type="file" id="editImage" name="editImage">
+                        <div id="existingImagesContainer"></div>
+                        <label for="editImage">Add New Image:</label>
+                        <input type="file" id="editImage" name="editImage[]" multiple>
                         <button class="saveChangesBtn" type="submit">Save Changes</button>
                     </form>
                 </div>
             </div>
+
 
             <!-- Comment Modal -->
             <div id="commentPostModal" class="comment_Modal">

@@ -462,90 +462,106 @@ $(document).ready(function() {
     }
 
 
-
-
-    // Attach event listener to handle edit/delete button clicks for dynamically generated posts
-    $(document).on('click', '.usrsp1right_icon', function() {
-        $(this).find('.usrsp_options').toggle();
+    // delete images
+    $(document).on('click', '.delete-image', function() {
+        $(this).parent().remove();
     });
-
-
-    $(document).on('click', '.edit-btn', function() {
-        var postId = $(this).data('post-id');
+    
+    // Attach   event listener to handle edit/delete button clicks for dynamically generated posts
+    // $(document).on('click', '.edit-btn', function() {
+    //     var postId = $(this).data('post-id');
         
-        $.ajax({
-            type: 'POST',
-            url: 'fetch_post_data.php',
-            data: { postId: postId },
-            dataType: 'json',
-            success: function(post) {
-                $('#postId').val(post.id);
-                $('#editCaption').val(post.caption);
-                $('#editPostModal').show();
-            },
-            error: function(xhr, status, error) {
-                console.error("An error occurred while fetching post data.");
-            }
-        });
-    });
-
-
-    $(document).on("click", ".delete-btn", function() {
-        var postId = $(this).data("post-id");
-        
-        if (confirm("Are you sure you want to delete this post?")) {
-            $.ajax({
-                type: "POST",
-                url: "delete_post.php",
-                data: { post_id: postId },
-                dataType: "json",
-                success: function(response) {
-                    console.log("Post deleted successfully");
-                    $(this).closest('.users_Posts').remove();
-                    window.location.reload();
-                },
-                error: function(xhr, status, error) {
-                    console.error("Error deleting post");
-                }
-            });
-        } else {
-            console.log("Deletion canceled");
-        }
-    });
+    //     $.ajax({
+    //         type: 'POST',
+    //         url: 'fetch_post_data.php',
+    //         data: { postId: postId },
+    //         dataType: 'json',
+    //         success: function(post) {
+    //             $('#postId').val(post.id);
+    //             $('#editCaption').val(post.caption);
+    
+    //             var imagesHtml = '';
+    //             if (post.imagePost) {
+    //                 var images = JSON.parse(post.imagePost);
+    //                 images.forEach(function(image) {
+    //                     imagesHtml += `<div class="existing-image">
+    //                         <img src="Post_Images/${image}" alt="Post Image">
+    //                         <button class="delete-image" data-image="${image}">Remove</button>
+    //                     </div>`;
+    //                 });
+    //             }
+    //             $('#existingImagesContainer').html(imagesHtml);
+    
+    //             $('#editPostModal').show();
+    //         },
+    //         error: function(xhr, status, error) {
+    //             console.error("An error occurred while fetching post data.");
+    //         }
+    //     });
+    // });
     
 
 
-    // Handle form submission for editing the post
-    $('#editPostForm').submit(function(event) {
+    // $(document).on("click", ".delete-btn", function() {
+    //     var postId = $(this).data("post-id");
+        
+    //     if (confirm("Are you sure you want to delete this post?")) {
+    //         $.ajax({
+    //             type: "POST",
+    //             url: "delete_post.php",
+    //             data: { post_id: postId },
+    //             dataType: "json",
+    //             success: function(response) {
+    //                 console.log("Post deleted successfully");
+    //                 $(this).closest('.users_Posts').remove();
+    //                 window.location.reload();
+    //             },
+    //             error: function(xhr, status, error) {
+    //                 console.error("Error deleting post");
+    //             }
+    //         });
+    //     } else {
+    //         console.log("Deletion canceled");
+    //     }
+    // });
+    
+
+
+    // Edit post submission
+    $('#editPostForm').on('submit', function(event) {
         event.preventDefault();
-        var postId = $('#postId').val();
-        var editedCaption = $('#editCaption').val();
-        var editedImage = $('#editImage').prop('files')[0];
-        var formData = new FormData();
-        formData.append('postId', postId);
-        formData.append('caption', editedCaption);
-        if (editedImage) {
-            formData.append('image', editedImage);
-        }
+        var formData = new FormData(this);
+    
+        // Add images to delete to the form data
+        var imagesToDelete = [];
+        $('#existingImagesContainer .existing-image').each(function() {
+            if (!$(this).find('img').length) {
+                imagesToDelete.push($(this).find('.delete-image').data('image'));
+            }
+        });
+        formData.append('imagesToDelete', JSON.stringify(imagesToDelete));
+    
         $.ajax({
             type: 'POST',
-            url: 'upload_posts.php',
+            url: 'update_post.php',
             data: formData,
             processData: false,
             contentType: false,
             dataType: 'json',
             success: function(response) {
-                $('#editPostModal').hide();
-                window.location.reload();
+                if (response.status === 'success') {
+                    alert('Post updated successfully');
+                    location.reload(); // Reload the page to reflect the changes
+                } else {
+                    console.error('Failed to update post:', response.message);
+                }
             },
             error: function(xhr, status, error) {
-                console.error("An error occurred while updating the post.");
+                console.error('An error occurred while updating the post.');
             }
         });
     });
-
 });
-
 
 
 
@@ -565,7 +581,6 @@ $(document).ready(function() {
                     var likeClass = isLiked ? 'bxs-like liked' : 'bx-like';
                     var likeColor = isLiked ? '#0866ff' : '';
 
-                    // Handle multiple images
                     let imagesHTML = '';
                     let images = [];
                     if (post.imagePost) {
@@ -586,7 +601,7 @@ $(document).ready(function() {
                                     </div>
                                 </div>
                                 <div class="usrsp1right">
-                                    <div class="usrsp1right_icon">
+                                    <div class="usrsp1right_icon" data-post-id="${post.id}">
                                         <i class="fa-solid fa-ellipsis"></i>
                                         <div class="usrsp_options">
                                             <p class="edit-btn" data-post-id="${post.id}">Edit</p>
@@ -655,12 +670,12 @@ $(document).ready(function() {
                 // Event listener for image click
                 $(document).on('click', '.image-item img', function() {
                     var images = JSON.parse($(this).closest('.usrsP_imagePosted').attr('data-images'));
-                    var index = $(this).parent().attr('data-index'); // Ensure data-index is read correctly
-                    console.log(images, index); // Debugging
-                    openLightbox(images, parseInt(index)); // Ensure index is an integer
+                    var index = $(this).parent().attr('data-index');
+                    console.log(images, index);
+                    openLightbox(images, parseInt(index));
                 });
 
-                // like post
+                // Like post
                 function likePost(postId, icon) {
                     var isLiked = icon.hasClass('bxs-like');
                     if (isLiked) {
@@ -728,55 +743,111 @@ $(document).ready(function() {
                         }
                     });
                 });
+
+                // Edit button click event
+                $(document).on('click', '.usrsp1right_icon', function() {
+                    $(this).find('.usrsp_options').toggle();
+                });
+
+                $(document).on('click', '.edit-btn', function() {
+                    var postId = $(this).data('post-id');
+
+                    $.ajax({
+                        type: 'POST',
+                        url: 'fetch_post_data.php',
+                        data: { postId: postId },
+                        dataType: 'json',
+                        success: function(post) {
+                            $('#postId').val(post.id);
+                            $('#editCaption').val(post.caption);
+
+                            var imagesHtml = '';
+                            if (post.imagePost) {
+                                var images = JSON.parse(post.imagePost);
+                                images.forEach(function(image) {
+                                    imagesHtml += `<div class="existing-image">
+                                        <img src="Post_Images/${image}" alt="Post Image">
+                                        <button class="delete-image" data-image="${image}">Remove</button>
+                                    </div>`;
+                                });
+                            }
+                            $('#existingImagesContainer').html(imagesHtml);
+
+                            $('#editPostModal').fadeIn();
+                        },
+                        error: function(xhr, status, error) {
+                            console.error("An error occurred while fetching user's posts.");
+                            console.error("Status:", status);
+                            console.error("Error:", error);
+                            console.error("XHR Response:", xhr.responseText);
+                        }
+                    });
+                });
+
+                // Close edit post modal
+                $(document).on('click', '.closeEditPostModal', function() {
+                    $('#editPostModal').fadeOut();
+                });
+
+                // Delete post
+                $(document).on('click', '.delete-btn', function() {
+                    var postId = $(this).data('post-id');
+                    if (confirm('Are you sure you want to delete this post?')) {
+                        $.ajax({
+                            type: 'POST',
+                            url: 'delete_post.php',
+                            data: { post_id: postId },
+                            dataType: 'json',
+                            success: function(response) {
+                                if (response.status === 'success') {
+                                    alert('Post deleted successfully');
+                                    // Remove post from the DOM
+                                    $(`div[data-post-id="${postId}"]`).remove();
+                                } else {
+                                    console.error("Error deleting post:", response.message);
+                                }
+                            },
+                            error: function(xhr, status, error) {
+                                console.error("An error occurred while deleting the post:", error);
+                            }
+                        });
+                    }
+                });
+
+                // Event listener for remove image button in edit post modal
+                $(document).on('click', '.delete-image', function() {
+                    var image = $(this).data('image');
+                    var postId = $('#postId').val();
+                    if (confirm('Are you sure you want to remove this image?')) {
+                        $.ajax({
+                            type: 'POST',
+                            url: 'remove_post_image.php',
+                            data: { postId: postId, image: image },
+                            dataType: 'json',
+                            success: function(response) {
+                                if (response.status === 'success') {
+                                    alert('Image removed successfully');
+                                    // Remove image from the DOM
+                                    $(`button[data-image="${image}"]`).closest('.existing-image').remove();
+                                } else {
+                                    console.error("Error removing image:", response.message);
+                                }
+                            },
+                            error: function(xhr, status, error) {
+                                console.error("An error occurred while removing the image:", error);
+                            }
+                        });
+                    }
+                });
             },
             error: function(xhr, status, error) {
                 console.error("An error occurred while fetching user's posts.");
                 console.error("Status:", status);
                 console.error("Error:", error);
-                console.error("XHR Response:", xhr.responseText); // Check the server's response
+                console.error("XHR Response:", xhr.responseText);
             }
         });
     }
-
-    // Function to open the lightbox
-    function openLightbox(images, index) {
-        currentImageIndex = index;
-        imagesArray = images;
-        console.log('Opening lightbox with images:', imagesArray, 'at index:', currentImageIndex); // Debugging
-        $('#lightbox-image').attr('src', `Post_Images/${imagesArray[currentImageIndex]}`);
-        $('#lightbox').fadeIn();
-    }
-
-    // Function to close the lightbox
-    function closeLightbox() {
-        $('#lightbox').fadeOut();
-    }
-
-    // Function to show the next image
-    function showNextImage() {
-        currentImageIndex = (currentImageIndex + 1) % imagesArray.length;
-        $('#lightbox-image').attr('src', `Post_Images/${imagesArray[currentImageIndex]}`);
-    }
-
-    // Function to show the previous image
-    function showPrevImage() {
-        currentImageIndex = (currentImageIndex - 1 + imagesArray.length) % imagesArray.length;
-        $('#lightbox-image').attr('src', `Post_Images/${imagesArray[currentImageIndex]}`);
-    }
-
-    // Event listener for close button
-    $('#lightbox .close').click(function() {
-        closeLightbox();
-    });
-
-    // Event listeners for navigation arrows
-    $('#lightbox .next').click(function() {
-        showNextImage();
-    });
-
-    $('#lightbox .prev').click(function() {
-        showPrevImage();
-    });
 });
 
 
@@ -820,6 +891,7 @@ function getTimeAgo(timestamp) {
 }
 
 
+
 function openNotifCont() {
     var modal = document.getElementById("notificationArea");
 
@@ -847,6 +919,7 @@ function openNotifCont() {
         });
     }
 }
+
 
 
 // Fetching notifications
@@ -896,6 +969,7 @@ $(document).ready(function() {
 });
 
 
+
 // Fetch notifications
 document.addEventListener('DOMContentLoaded', function() {
     fetchNotifications();
@@ -912,6 +986,8 @@ document.addEventListener('DOMContentLoaded', function() {
         fetchNotifications('unread');
     });
 });
+
+
 
 function fetchNotifications(filter = 'all') {
     $.ajax({
@@ -968,6 +1044,8 @@ function fetchNotifications(filter = 'all') {
 $(document).ready(function() {
     fetchUnreadNotifications();
 });
+
+
 
 function fetchUnreadNotifications() {
     $.ajax({

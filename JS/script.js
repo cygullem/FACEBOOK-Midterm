@@ -1,7 +1,5 @@
 
-
-
-document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function () {
     const postContent = document.getElementById("postContent");
     const popupContainer = document.getElementById("popupContainer");
     const closePopupBtn = document.getElementById("closePopup");
@@ -302,18 +300,37 @@ function toggleRefresh() {
 function redirectToProfilePage() {
     window.location.href = "profile_page.php";
 }
-function usrspEditDelete() {
-    var optionsDiv = document.querySelector('.usrsp_options');
-    var triangleDiv = document.querySelector('.triangle');
 
-    if (optionsDiv.style.display === 'block') {
+// function usrspEditDelete(event) {
+//     event.stopPropagation();
+
+//     var optionsDiv = event.currentTarget.querySelector('.usrsp_options');
+//     var triangleDiv = event.currentTarget.querySelector('.triangle');
+
+//     if (optionsDiv.style.display === 'block') {
+//         console.log("clicked");
+
+//         optionsDiv.style.display = 'none';
+//         triangleDiv.style.display = 'none';
+//     } else {
+//         optionsDiv.style.display = 'block';
+//         triangleDiv.style.display = 'block';
+//     }
+// }
+
+// Add event listener to the document to hide the options when clicking outside
+document.addEventListener('click', function(event) {
+    var optionsDivs = document.querySelectorAll('.usrsp_options');
+    var triangleDivs = document.querySelectorAll('.triangle');
+    optionsDivs.forEach(function(optionsDiv) {
         optionsDiv.style.display = 'none';
+    });
+    triangleDivs.forEach(function(triangleDiv) {
         triangleDiv.style.display = 'none';
-    } else {
-        optionsDiv.style.display = 'block';
-        triangleDiv.style.display = 'block';
-    }
-}
+    });
+});
+
+
 
 
 
