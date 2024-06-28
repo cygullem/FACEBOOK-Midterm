@@ -852,8 +852,6 @@ $(document).ready(function() {
 
 
 
-
-
 // Set specific timestamp
 function getTimeAgo(timestamp) {
     const now = new Date();
