@@ -15,7 +15,7 @@
     <div class="container flex">
         <div class="facebook-page flex">
             <div class="text">
-                <h1>facenote</h1>
+                <h1>facebook</h1>
                 <p>Connect with friends and the world </p>
                 <p>around you on Facenote.</p>
             </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 18, 2024 at 05:25 PM
+-- Generation Time: Jun 28, 2024 at 04:05 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -35,6 +35,16 @@ CREATE TABLE `comment_table` (
   `comment_time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `comment_table`
+--
+
+INSERT INTO `comment_table` (`id`, `user_id`, `post_id`, `comment`, `comment_time`) VALUES
+(2, 4, 19, 'nice, wanted to visit that country too', '2024-06-21 06:49:48'),
+(4, 12, 20, 'comment', '2024-06-21 02:13:29'),
+(5, 4, 23, 'hahah', '2024-06-23 20:26:08'),
+(6, 4, 19, 'nice', '2024-06-24 10:08:42');
+
 -- --------------------------------------------------------
 
 --
@@ -47,6 +57,18 @@ CREATE TABLE `likes_table` (
   `post_id` int(11) NOT NULL,
   `like_time` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `likes_table`
+--
+
+INSERT INTO `likes_table` (`id`, `user_id`, `post_id`, `like_time`) VALUES
+(1, 9, 19, '2024-06-21 06:32:17'),
+(2, 4, 20, '2024-06-21 06:32:52'),
+(3, 4, 19, '2024-06-21 06:45:09'),
+(4, 9, 20, '2024-06-21 06:46:18'),
+(5, 12, 20, '2024-06-21 08:13:25'),
+(6, 4, 23, '2024-06-21 08:14:57');
 
 -- --------------------------------------------------------
 
@@ -106,6 +128,20 @@ CREATE TABLE `notifications_table` (
   `is_read` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `notifications_table`
+--
+
+INSERT INTO `notifications_table` (`id`, `user_id`, `type`, `reference_id`, `message`, `notification_time`, `is_read`) VALUES
+(1, 4, 'comment', 12, 'commented on your post', '2024-06-20 15:11:15', 1),
+(2, 9, 'comment', 4, 'commented on your post', '2024-06-21 06:31:37', 1),
+(3, 9, 'like', 4, 'liked your post', '2024-06-21 06:45:09', 0),
+(4, 9, 'comment', 4, 'commented on your post', '2024-06-21 06:45:15', 0),
+(5, 4, 'like', 9, 'liked your post', '2024-06-21 06:46:18', 1),
+(6, 4, 'like', 12, 'liked your post', '2024-06-21 08:13:25', 1),
+(7, 4, 'comment', 12, 'commented on your post', '2024-06-21 08:13:29', 1),
+(8, 9, 'comment', 4, 'commented on your post', '2024-06-24 16:08:42', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -125,7 +161,9 @@ CREATE TABLE `post_table` (
 --
 
 INSERT INTO `post_table` (`id`, `user_id`, `caption`, `imagePost`, `created_at`) VALUES
-(5, 4, '', '[\"6671a4eba8e0b.png\",\"6671a4eba9430.png\",\"6671a4eba99e4.png\",\"6671a4ebab54e.png\",\"6671a4ebabc36.png\",\"6671a4ebac148.png\"]', '2024-06-18 15:16:59');
+(19, 9, 'One for the books', '[\"66744fbf7ce5c.png\",\"66744fbf7d442.png\"]', '2024-06-20 15:50:23'),
+(20, 4, '', '[\"66750a696ffce.png\",\"66750a69720b8.png\",\"66750a6972a9d.png\",\"66750a6973346.png\"]', '2024-06-21 05:06:49'),
+(23, 4, 'mutiple\r\n', '[\"66753654cc4d2.png\",\"66753654ccdba.png\",\"66753654cd3df.png\",\"66753654cd842.png\"]', '2024-06-21 08:14:12');
 
 -- --------------------------------------------------------
 
@@ -145,7 +183,20 @@ CREATE TABLE `user_following` (
 --
 
 INSERT INTO `user_following` (`id`, `follower_id`, `followed_id`, `created_at`) VALUES
-(1, 4, 9, '2024-06-18 15:16:20');
+(1, 4, 9, '2024-06-18 15:16:20'),
+(2, 9, 4, '2024-06-19 02:12:32'),
+(3, 12, 4, '2024-06-20 14:58:26'),
+(4, 12, 26, '2024-06-20 14:59:07'),
+(5, 12, 25, '2024-06-20 14:59:10'),
+(6, 12, 19, '2024-06-20 14:59:15'),
+(7, 12, 18, '2024-06-20 14:59:18'),
+(8, 12, 16, '2024-06-20 14:59:22'),
+(9, 12, 15, '2024-06-20 14:59:25'),
+(10, 12, 17, '2024-06-20 14:59:28'),
+(11, 12, 14, '2024-06-20 14:59:32'),
+(12, 12, 13, '2024-06-20 14:59:35'),
+(13, 12, 11, '2024-06-20 14:59:38'),
+(14, 12, 10, '2024-06-20 14:59:41');
 
 --
 -- Indexes for dumped tables
@@ -200,13 +251,13 @@ ALTER TABLE `user_following`
 -- AUTO_INCREMENT for table `comment_table`
 --
 ALTER TABLE `comment_table`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `likes_table`
 --
 ALTER TABLE `likes_table`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `login_table`
@@ -218,19 +269,19 @@ ALTER TABLE `login_table`
 -- AUTO_INCREMENT for table `notifications_table`
 --
 ALTER TABLE `notifications_table`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `post_table`
 --
 ALTER TABLE `post_table`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `user_following`
 --
 ALTER TABLE `user_following`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables
